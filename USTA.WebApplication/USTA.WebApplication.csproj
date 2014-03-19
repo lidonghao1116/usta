@@ -1,0 +1,2398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C5B9A63E-52C6-4252-95B4-B5E892450746}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>USTA.WebApplication</RootNamespace>
+    <AssemblyName>USTA.WebApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspNetPager, Version=7.3.0.0, Culture=neutral, PublicKeyToken=fb0a0fe055d40fd4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\AspNetPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\References\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="Combres">
+      <HintPath>..\References\Combres.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified">
+      <HintPath>..\References\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="FredCK.FCKeditorV2">
+      <HintPath>..\References\FredCK.FCKeditorV2.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\References\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJSON">
+      <HintPath>..\References\LitJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NPOI">
+      <HintPath>..\References\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.DDF">
+      <HintPath>..\References\NPOI.DDF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.HPSF">
+      <HintPath>..\References\NPOI.HPSF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.HSSF">
+      <HintPath>..\References\NPOI.HSSF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.POIFS">
+      <HintPath>..\References\NPOI.POIFS.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.Util">
+      <HintPath>..\References\NPOI.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="UrlRewritingNet.UrlRewriter">
+      <HintPath>..\References\UrlRewritingNet.UrlRewriter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administrator\AddArchivesForTeacherOrAssistant.aspx.cs">
+      <DependentUpon>AddArchivesForTeacherOrAssistant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddArchivesForTeacherOrAssistant.aspx.designer.cs">
+      <DependentUpon>AddArchivesForTeacherOrAssistant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddArchivesItem.aspx.cs">
+      <DependentUpon>AddArchivesItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddArchivesItem.aspx.designer.cs">
+      <DependentUpon>AddArchivesItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddCourseforAssitant.aspx.cs">
+      <DependentUpon>AddCourseforAssitant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddCourseforAssitant.aspx.designer.cs">
+      <DependentUpon>AddCourseforAssitant.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddCourseforTeacher.aspx.cs">
+      <DependentUpon>AddCourseforTeacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddCourseforTeacher.aspx.designer.cs">
+      <DependentUpon>AddCourseforTeacher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddFirstNotifyType.aspx.cs">
+      <DependentUpon>AddFirstNotifyType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddFirstNotifyType.aspx.designer.cs">
+      <DependentUpon>AddFirstNotifyType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddGameCategory.aspx.cs">
+      <DependentUpon>AddGameCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddGameCategory.aspx.designer.cs">
+      <DependentUpon>AddGameCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddGameType.aspx.cs">
+      <DependentUpon>AddGameType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddGameType.aspx.designer.cs">
+      <DependentUpon>AddGameType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddGradeCheckApplyReason.aspx.cs">
+      <DependentUpon>AddGradeCheckApplyReason.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddGradeCheckApplyReason.aspx.designer.cs">
+      <DependentUpon>AddGradeCheckApplyReason.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddGradeCheckDetail.aspx.cs">
+      <DependentUpon>AddGradeCheckDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddGradeCheckDetail.aspx.designer.cs">
+      <DependentUpon>AddGradeCheckDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddGradeCheckItem.aspx.cs">
+      <DependentUpon>AddGradeCheckItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddGradeCheckItem.aspx.designer.cs">
+      <DependentUpon>AddGradeCheckItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddNorm.aspx.cs">
+      <DependentUpon>AddNorm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddNorm.aspx.designer.cs">
+      <DependentUpon>AddNorm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddSalaryStandardValue.aspx.cs">
+      <DependentUpon>AddSalaryStandardValue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddSalaryStandardValue.aspx.designer.cs">
+      <DependentUpon>AddSalaryStandardValue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddSecondNotifyType.aspx.cs">
+      <DependentUpon>AddSecondNotifyType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddSecondNotifyType.aspx.designer.cs">
+      <DependentUpon>AddSecondNotifyType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AnswerNormConfirm.aspx.cs">
+      <DependentUpon>AnswerNormConfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AnswerNormConfirm.aspx.designer.cs">
+      <DependentUpon>AnswerNormConfirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ArchivesManage.aspx.cs">
+      <DependentUpon>ArchivesManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ArchivesManage.aspx.designer.cs">
+      <DependentUpon>ArchivesManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AssistantManager.aspx.cs">
+      <DependentUpon>AssistantManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AssistantManager.aspx.designer.cs">
+      <DependentUpon>AssistantManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\BaseConfig.aspx.cs">
+      <DependentUpon>BaseConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\BaseConfig.aspx.designer.cs">
+      <DependentUpon>BaseConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\BbsManage.aspx.cs">
+      <DependentUpon>BbsManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\BbsManage.aspx.designer.cs">
+      <DependentUpon>BbsManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\DealGradeCheckApply.aspx.cs">
+      <DependentUpon>DealGradeCheckApply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\DealGradeCheckApply.aspx.designer.cs">
+      <DependentUpon>DealGradeCheckApply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\DrawManage.aspx.cs">
+      <DependentUpon>DrawManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\DrawManage.aspx.designer.cs">
+      <DependentUpon>DrawManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditFirstNotifyType.aspx.cs">
+      <DependentUpon>EditFirstNotifyType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditFirstNotifyType.aspx.designer.cs">
+      <DependentUpon>EditFirstNotifyType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditGameCategory.aspx.cs">
+      <DependentUpon>EditGameCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditGameCategory.aspx.designer.cs">
+      <DependentUpon>EditGameCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditGameType.aspx.cs">
+      <DependentUpon>EditGameType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditGameType.aspx.designer.cs">
+      <DependentUpon>EditGameType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditGradeCheckApplyReason.aspx.cs">
+      <DependentUpon>EditGradeCheckApplyReason.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditGradeCheckApplyReason.aspx.designer.cs">
+      <DependentUpon>EditGradeCheckApplyReason.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditSecondNotifyType.aspx.cs">
+      <DependentUpon>EditSecondNotifyType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditSecondNotifyType.aspx.designer.cs">
+      <DependentUpon>EditSecondNotifyType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EnrollManage.aspx.cs">
+      <DependentUpon>EnrollManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EnrollManage.aspx.designer.cs">
+      <DependentUpon>EnrollManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ExamSeatArrange.aspx.cs">
+      <DependentUpon>ExamSeatArrange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ExamSeatArrange.aspx.designer.cs">
+      <DependentUpon>ExamSeatArrange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\OutputExamSeatArrange.ashx.cs">
+      <DependentUpon>OutputExamSeatArrange.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\OutputGradeCheckApplyExcel.ashx.cs">
+      <DependentUpon>OutputGradeCheckApplyExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\OutputGradeCheckApplyWord.aspx.cs">
+      <DependentUpon>OutputGradeCheckApplyWord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\OutputGradeCheckApplyWord.aspx.designer.cs">
+      <DependentUpon>OutputGradeCheckApplyWord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\OutPutSalaryEntryExcel.ashx.cs">
+      <DependentUpon>OutPutSalaryEntryExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\OutPutTeacherSalaryExcel.ashx.cs">
+      <DependentUpon>OutPutTeacherSalaryExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ProjectManager.aspx.cs">
+      <DependentUpon>ProjectManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ProjectManager.aspx.designer.cs">
+      <DependentUpon>ProjectManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\SelectSalaryItemForSummary.aspx.cs">
+      <DependentUpon>SelectSalaryItemForSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\SelectSalaryItemForSummary.aspx.designer.cs">
+      <DependentUpon>SelectSalaryItemForSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\TeacherSalaryQA.aspx.cs">
+      <DependentUpon>TeacherSalaryQA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\TeacherSalaryQA.aspx.designer.cs">
+      <DependentUpon>TeacherSalaryQA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewProjectManagerAuth.aspx.cs">
+      <DependentUpon>ViewProjectManagerAuth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewProjectManagerAuth.aspx.designer.cs">
+      <DependentUpon>ViewProjectManagerAuth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewTeacherSalaryDetail.aspx.cs">
+      <DependentUpon>ViewTeacherSalaryDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewTeacherSalaryDetail.aspx.designer.cs">
+      <DependentUpon>ViewTeacherSalaryDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewTeacherSalarySummaryDetail.aspx.cs">
+      <DependentUpon>ViewTeacherSalarySummaryDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewTeacherSalarySummaryDetail.aspx.designer.cs">
+      <DependentUpon>ViewTeacherSalarySummaryDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewGameCategoryInfo.aspx.cs">
+      <DependentUpon>ViewGameCategoryInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewGameCategoryInfo.aspx.designer.cs">
+      <DependentUpon>ViewGameCategoryInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\EditGradeCheckApply.aspx.cs">
+      <DependentUpon>EditGradeCheckApply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\EditGradeCheckApply.aspx.designer.cs">
+      <DependentUpon>EditGradeCheckApply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddNewProjectCategory.aspx.cs">
+      <DependentUpon>AddNewProjectCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddNewProjectCategory.aspx.designer.cs">
+      <DependentUpon>AddNewProjectCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddNewReim.aspx.cs">
+      <DependentUpon>AddNewReim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddNewReim.aspx.designer.cs">
+      <DependentUpon>AddNewReim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddNormConfirm.aspx.cs">
+      <DependentUpon>AddNormConfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddNormConfirm.aspx.designer.cs">
+      <DependentUpon>AddNormConfirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddProject.aspx.cs">
+      <DependentUpon>AddProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddProject.aspx.designer.cs">
+      <DependentUpon>AddProject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddReimEntry.aspx.cs">
+      <DependentUpon>AddReimEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddReimEntry.aspx.designer.cs">
+      <DependentUpon>AddReimEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddReimRule.aspx.cs">
+      <DependentUpon>AddReimRule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddReimRule.aspx.designer.cs">
+      <DependentUpon>AddReimRule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EnrollManage.aspx.cs">
+      <DependentUpon>EnrollManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EnrollManage.aspx.designer.cs">
+      <DependentUpon>EnrollManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\OutPutProjectExcel.ashx.cs">
+      <DependentUpon>OutPutProjectExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\OutPutProjectReimExcel.ashx.cs">
+      <DependentUpon>OutPutProjectReimExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\OutPutSalaryEntryExcel.ashx.cs">
+      <DependentUpon>OutPutSalaryEntryExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\OutPutTeacherSalaryExcel.ashx.cs">
+      <DependentUpon>OutPutTeacherSalaryExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\ProjectManager.aspx.cs">
+      <DependentUpon>ProjectManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\ProjectManager.aspx.designer.cs">
+      <DependentUpon>ProjectManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\SalaryManage.aspx.cs">
+      <DependentUpon>SalaryManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\SalaryManage.aspx.designer.cs">
+      <DependentUpon>SalaryManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\SalaryView.aspx.cs">
+      <DependentUpon>SalaryView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\SalaryView.aspx.designer.cs">
+      <DependentUpon>SalaryView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherViewProject.aspx.cs">
+      <DependentUpon>TeacherViewProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\TeacherViewProject.aspx.designer.cs">
+      <DependentUpon>TeacherViewProject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\ViewProject.aspx.cs">
+      <DependentUpon>ViewProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\ViewProject.aspx.designer.cs">
+      <DependentUpon>ViewProject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\ViewReimDetail.aspx.cs">
+      <DependentUpon>ViewReimDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\ViewReimDetail.aspx.designer.cs">
+      <DependentUpon>ViewReimDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\ViewReimEntry.aspx.cs">
+      <DependentUpon>ViewReimEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\ViewReimEntry.aspx.designer.cs">
+      <DependentUpon>ViewReimEntry.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Administrator\AddArchivesForTeacherOrAssistant.aspx" />
+    <Content Include="Administrator\AddArchivesItem.aspx" />
+    <Content Include="Administrator\AddFirstNotifyType.aspx" />
+    <Content Include="Administrator\AddGameCategory.aspx" />
+    <Content Include="Administrator\AddGameType.aspx" />
+    <Content Include="Administrator\AddGradeCheckApplyReason.aspx" />
+    <Content Include="Administrator\AddGradeCheckDetail.aspx" />
+    <Content Include="Administrator\AddSalaryStandardValue.aspx" />
+    <Content Include="Administrator\AddSecondNotifyType.aspx" />
+    <Content Include="Administrator\AnswerNormConfirm.aspx" />
+    <Content Include="Administrator\ArchivesManage.aspx" />
+    <Content Include="Administrator\DealGradeCheckApply.aspx" />
+    <Content Include="Administrator\DrawManage.aspx" />
+    <Content Include="Administrator\EditArchivesItem.aspx" />
+    <Compile Include="Administrator\CourseManager.aspx.cs">
+      <DependentUpon>CourseManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\CourseManager.aspx.designer.cs">
+      <DependentUpon>CourseManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\CurrentTermCourseList.aspx.cs">
+      <DependentUpon>CurrentTermCourseList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\CurrentTermCourseList.aspx.designer.cs">
+      <DependentUpon>CurrentTermCourseList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\DataBaseSynchronize.aspx.cs">
+      <DependentUpon>DataBaseSynchronize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\DataBaseSynchronize.aspx.designer.cs">
+      <DependentUpon>DataBaseSynchronize.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditArchivesItem.aspx.cs">
+      <DependentUpon>EditArchivesItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditArchivesItem.aspx.designer.cs">
+      <DependentUpon>EditArchivesItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditEnglishExamNotifyInfo.aspx.cs">
+      <DependentUpon>EditEnglishExamNotifyInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditEnglishExamNotifyInfo.aspx.designer.cs">
+      <DependentUpon>EditEnglishExamNotifyInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditForum.aspx.cs">
+      <DependentUpon>EditForum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditForum.aspx.designer.cs">
+      <DependentUpon>EditForum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditGradeCheckDetail.aspx.cs">
+      <DependentUpon>EditGradeCheckDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditGradeCheckDetail.aspx.designer.cs">
+      <DependentUpon>EditGradeCheckDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditGradeCheckItem.aspx.cs">
+      <DependentUpon>EditGradeCheckItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditGradeCheckItem.aspx.designer.cs">
+      <DependentUpon>EditGradeCheckItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditNorm.aspx.cs">
+      <DependentUpon>EditNorm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditNorm.aspx.designer.cs">
+      <DependentUpon>EditNorm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditNormFormula.aspx.cs">
+      <DependentUpon>EditNormFormula.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditNormFormula.aspx.designer.cs">
+      <DependentUpon>EditNormFormula.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditNormValue.aspx.cs">
+      <DependentUpon>EditNormValue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditNormValue.aspx.designer.cs">
+      <DependentUpon>EditNormValue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditNotifyInfo.aspx.cs">
+      <DependentUpon>EditNotifyInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditNotifyInfo.aspx.designer.cs">
+      <DependentUpon>EditNotifyInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EmailManage.aspx.cs">
+      <DependentUpon>EmailManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EmailManage.aspx.designer.cs">
+      <DependentUpon>EmailManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EnglishExamManage.aspx.cs">
+      <DependentUpon>EnglishExamManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EnglishExamManage.aspx.designer.cs">
+      <DependentUpon>EnglishExamManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\HistoryDataBak.aspx.cs">
+      <DependentUpon>HistoryDataBak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\HistoryDataBak.aspx.designer.cs">
+      <DependentUpon>HistoryDataBak.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ImportExamExcelData.aspx.cs">
+      <DependentUpon>ImportExamExcelData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ImportExamExcelData.aspx.designer.cs">
+      <DependentUpon>ImportExamExcelData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ImportExcelData.aspx.cs">
+      <DependentUpon>ImportExcelData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ImportExcelData.aspx.designer.cs">
+      <DependentUpon>ImportExcelData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\NormManager.aspx.cs">
+      <DependentUpon>NormManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\NormManager.aspx.designer.cs">
+      <DependentUpon>NormManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\NotifyInfoManage.aspx.cs">
+      <DependentUpon>NotifyInfoManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\NotifyInfoManage.aspx.designer.cs">
+      <DependentUpon>NotifyInfoManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\OutputAllEnglishExamSignUpExcel.ashx.cs">
+      <DependentUpon>OutputAllEnglishExamSignUpExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\OutPutNormExcel.ashx.cs">
+      <DependentUpon>OutPutNormExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\OutputGradeCheckExcel.ashx.cs">
+      <DependentUpon>OutputGradeCheckExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ShowUSTALogs.aspx.cs">
+      <DependentUpon>ShowUSTALogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ShowUSTALogs.aspx.designer.cs">
+      <DependentUpon>ShowUSTALogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\StudentManager.aspx.cs">
+      <DependentUpon>StudentManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\StudentManager.aspx.designer.cs">
+      <DependentUpon>StudentManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewArchives.aspx.cs">
+      <DependentUpon>ViewArchives.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewArchives.aspx.designer.cs">
+      <DependentUpon>ViewArchives.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewAssistantInfo.aspx.cs">
+      <DependentUpon>ViewAssistantInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewAssistantInfo.aspx.designer.cs">
+      <DependentUpon>ViewAssistantInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewChooseCourse.aspx.cs">
+      <DependentUpon>ViewChooseCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewChooseCourse.aspx.designer.cs">
+      <DependentUpon>ViewChooseCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewCourseAttention.aspx.cs">
+      <DependentUpon>ViewCourseAttention.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewCourseAttention.aspx.designer.cs">
+      <DependentUpon>ViewCourseAttention.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewCourses.aspx.cs">
+      <DependentUpon>ViewCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewCourses.aspx.designer.cs">
+      <DependentUpon>ViewCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewFeedBack.aspx.cs">
+      <DependentUpon>ViewFeedBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewFeedBack.aspx.designer.cs">
+      <DependentUpon>ViewFeedBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewFeedinfo.aspx.cs">
+      <DependentUpon>ViewFeedinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewFeedinfo.aspx.designer.cs">
+      <DependentUpon>ViewFeedinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewNormAuth.aspx.cs">
+      <DependentUpon>ViewNormAuth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewNormAuth.aspx.designer.cs">
+      <DependentUpon>ViewNormAuth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewStudentInfo.aspx.cs">
+      <DependentUpon>ViewStudentInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewStudentInfo.aspx.designer.cs">
+      <DependentUpon>ViewStudentInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\SalaryManage.aspx.cs">
+      <DependentUpon>SalaryManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\SalaryManage.aspx.designer.cs">
+      <DependentUpon>SalaryManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\SelectSalaryItem.aspx.cs">
+      <DependentUpon>SelectSalaryItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\SelectSalaryItem.aspx.designer.cs">
+      <DependentUpon>SelectSalaryItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddSalaryEntry.aspx.cs">
+      <DependentUpon>AddSalaryEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddSalaryEntry.aspx.designer.cs">
+      <DependentUpon>AddSalaryEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddSalaryEntryConfirm.aspx.cs">
+      <DependentUpon>AddSalaryEntryConfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddSalaryEntryConfirm.aspx.designer.cs">
+      <DependentUpon>AddSalaryEntryConfirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\AddTeacherSalary.aspx.cs">
+      <DependentUpon>AddTeacherSalary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\AddTeacherSalary.aspx.designer.cs">
+      <DependentUpon>AddTeacherSalary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\EditSalaryItem.aspx.cs">
+      <DependentUpon>EditSalaryItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\EditSalaryItem.aspx.designer.cs">
+      <DependentUpon>EditSalaryItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\ViewSalaryAuth.aspx.cs">
+      <DependentUpon>ViewSalaryAuth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\ViewSalaryAuth.aspx.designer.cs">
+      <DependentUpon>ViewSalaryAuth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\ajaxUpload.ashx.cs">
+      <DependentUpon>ajaxUpload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\LoginOut.ashx.cs">
+      <DependentUpon>LoginOut.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\upload_json.ashx.cs">
+      <DependentUpon>upload_json.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\AddBigTopic.aspx.designer.cs">
+      <DependentUpon>AddBigTopic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\AvatarsSelect.aspx.designer.cs">
+      <DependentUpon>AvatarsSelect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\BBSCoursesindex.aspx.designer.cs">
+      <DependentUpon>BBSCoursesindex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\BBSOtherindex.aspx.designer.cs">
+      <DependentUpon>BBSOtherindex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\BBSSpecialindex.aspx.designer.cs">
+      <DependentUpon>BBSSpecialindex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\BBSTopicList.aspx.designer.cs">
+      <DependentUpon>BBSTopicList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\BBSTopicSearch.aspx.designer.cs">
+      <DependentUpon>BBSTopicSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\BBSUserinfo.aspx.designer.cs">
+      <DependentUpon>BBSUserinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\BBSViewTopic.aspx.designer.cs">
+      <DependentUpon>BBSViewTopic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\EditTopic.aspx.designer.cs">
+      <DependentUpon>EditTopic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\UploadAvatar.aspx.designer.cs">
+      <DependentUpon>UploadAvatar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckUser.aspx.designer.cs">
+      <DependentUpon>CheckUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CInfoCourseInfos.aspx.designer.cs">
+      <DependentUpon>CInfoCourseInfos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CInfoCourseIntro.aspx.designer.cs">
+      <DependentUpon>CInfoCourseIntro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CInfoCourseNotify.aspx.designer.cs">
+      <DependentUpon>CInfoCourseNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CInfoCourseResource.aspx.designer.cs">
+      <DependentUpon>CInfoCourseResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CInfoCourseTeacher.aspx.designer.cs">
+      <DependentUpon>CInfoCourseTeacher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\FeedBack.aspx.designer.cs">
+      <DependentUpon>FeedBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\NotifyList.aspx.designer.cs">
+      <DependentUpon>NotifyList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Upload.aspx.designer.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewAllCourses.aspx.designer.cs">
+      <DependentUpon>ViewAllCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewAllTeachers.aspx.designer.cs">
+      <DependentUpon>ViewAllTeachers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewCourseNotify.aspx.designer.cs">
+      <DependentUpon>ViewCourseNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewEnglishExamNotify.aspx.cs">
+      <DependentUpon>ViewEnglishExamNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewEnglishExamNotify.aspx.designer.cs">
+      <DependentUpon>ViewEnglishExamNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Viewfeedbackinfo.aspx.designer.cs">
+      <DependentUpon>Viewfeedbackinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewGradeCheckNotify.aspx.cs">
+      <DependentUpon>ViewGradeCheckNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewGradeCheckNotify.aspx.designer.cs">
+      <DependentUpon>ViewGradeCheckNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewHistoryData.aspx.designer.cs">
+      <DependentUpon>ViewHistoryData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewTeacherInfo.aspx.designer.cs">
+      <DependentUpon>ViewTeacherInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewTeacherSalaryDetail.aspx.cs">
+      <DependentUpon>ViewTeacherSalaryDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewTeacherSalaryDetail.aspx.designer.cs">
+      <DependentUpon>ViewTeacherSalaryDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\BBSindex.master.designer.cs">
+      <DependentUpon>BBSindex.master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\CourseInfoForCommon.master.designer.cs">
+      <DependentUpon>CourseInfoForCommon.master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\CourseInfoForStudent.master.designer.cs">
+      <DependentUpon>CourseInfoForStudent.master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\CourseInfoForTeacher.master.designer.cs">
+      <DependentUpon>CourseInfoForTeacher.master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\FrameManage.master.designer.cs">
+      <DependentUpon>FrameManage.master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\ViewExperimentResources.master.designer.cs">
+      <DependentUpon>ViewExperimentResources.master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\ViewSchoolworkNotify.master.designer.cs">
+      <DependentUpon>ViewSchoolworkNotify.master</DependentUpon>
+    </Compile>
+    <Compile Include="bbs\AddBigTopic.aspx.cs">
+      <DependentUpon>AddBigTopic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\AvatarsSelect.aspx.cs">
+      <DependentUpon>AvatarsSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\BBSCoursesindex.aspx.cs">
+      <DependentUpon>BBSCoursesindex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\BBSOtherindex.aspx.cs">
+      <DependentUpon>BBSOtherindex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\BBSSpecialindex.aspx.cs">
+      <DependentUpon>BBSSpecialindex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\BBSTopicList.aspx.cs">
+      <DependentUpon>BBSTopicList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\BBSTopicSearch.aspx.cs">
+      <DependentUpon>BBSTopicSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\BBSUserinfo.aspx.cs">
+      <DependentUpon>BBSUserinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\BBSViewTopic.aspx.cs">
+      <DependentUpon>BBSViewTopic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\EditTopic.aspx.cs">
+      <DependentUpon>EditTopic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="bbs\UploadAvatar.aspx.cs">
+      <DependentUpon>UploadAvatar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckUser.aspx.cs">
+      <DependentUpon>CheckUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\CInfoCourseInfos.aspx.cs">
+      <DependentUpon>CInfoCourseInfos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\CInfoCourseIntro.aspx.cs">
+      <DependentUpon>CInfoCourseIntro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\CInfoCourseNotify.aspx.cs">
+      <DependentUpon>CInfoCourseNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\CInfoCourseResource.aspx.cs">
+      <DependentUpon>CInfoCourseResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\CInfoCourseTeacher.aspx.cs">
+      <DependentUpon>CInfoCourseTeacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\FeedBack.aspx.cs">
+      <DependentUpon>FeedBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\NotifyList.aspx.cs">
+      <DependentUpon>NotifyList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\Upload.aspx.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewAllCourses.aspx.cs">
+      <DependentUpon>ViewAllCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewAllTeachers.aspx.cs">
+      <DependentUpon>ViewAllTeachers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewCourseNotify.aspx.cs">
+      <DependentUpon>ViewCourseNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\Viewfeedbackinfo.aspx.cs">
+      <DependentUpon>Viewfeedbackinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewHistoryData.aspx.cs">
+      <DependentUpon>ViewHistoryData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\ViewTeacherInfo.aspx.cs">
+      <DependentUpon>ViewTeacherInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\BBSindex.master.cs">
+      <DependentUpon>BBSindex.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\CourseInfoForCommon.master.cs">
+      <DependentUpon>CourseInfoForCommon.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\CourseInfoForStudent.master.cs">
+      <DependentUpon>CourseInfoForStudent.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\CourseInfoForTeacher.master.cs">
+      <DependentUpon>CourseInfoForTeacher.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\FrameManage.master.cs">
+      <DependentUpon>FrameManage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\ViewExperimentResources.master.cs">
+      <DependentUpon>ViewExperimentResources.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\ViewSchoolworkNotify.master.cs">
+      <DependentUpon>ViewSchoolworkNotify.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student\AddExperiment.aspx.cs">
+      <DependentUpon>AddExperiment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\AddExperiment.aspx.designer.cs">
+      <DependentUpon>AddExperiment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoCourseInfo.aspx.cs">
+      <DependentUpon>CInfoCourseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoCourseInfo.aspx.designer.cs">
+      <DependentUpon>CInfoCourseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoCourseIntro.aspx.cs">
+      <DependentUpon>CInfoCourseIntro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoCourseIntro.aspx.designer.cs">
+      <DependentUpon>CInfoCourseIntro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoCourseNotify.aspx.cs">
+      <DependentUpon>CInfoCourseNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoCourseNotify.aspx.designer.cs">
+      <DependentUpon>CInfoCourseNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoCourseResource.aspx.cs">
+      <DependentUpon>CInfoCourseResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoCourseResource.aspx.designer.cs">
+      <DependentUpon>CInfoCourseResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoCourseTeacher.aspx.cs">
+      <DependentUpon>CInfoCourseTeacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoCourseTeacher.aspx.designer.cs">
+      <DependentUpon>CInfoCourseTeacher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoExperiment.aspx.cs">
+      <DependentUpon>CInfoExperiment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoExperiment.aspx.designer.cs">
+      <DependentUpon>CInfoExperiment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoExperimentResource.aspx.cs">
+      <DependentUpon>CInfoExperimentResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoExperimentResource.aspx.designer.cs">
+      <DependentUpon>CInfoExperimentResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoSchoolwork.aspx.cs">
+      <DependentUpon>CInfoSchoolwork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoSchoolwork.aspx.designer.cs">
+      <DependentUpon>CInfoSchoolwork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoSchoolworkNotify.aspx.cs">
+      <DependentUpon>CInfoSchoolworkNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoSchoolworkNotify.aspx.designer.cs">
+      <DependentUpon>CInfoSchoolworkNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\CInfoTeachingPlan.aspx.cs">
+      <DependentUpon>CInfoTeachingPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\CInfoTeachingPlan.aspx.designer.cs">
+      <DependentUpon>CInfoTeachingPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Courses.aspx.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Courses.aspx.designer.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\EditEnglishExamSignUpInfo.aspx.cs">
+      <DependentUpon>EditEnglishExamSignUpInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\EditEnglishExamSignUpInfo.aspx.designer.cs">
+      <DependentUpon>EditEnglishExamSignUpInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\EditExperiment.aspx.cs">
+      <DependentUpon>EditExperiment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\EditExperiment.aspx.designer.cs">
+      <DependentUpon>EditExperiment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\EditStudentinfo.aspx.cs">
+      <DependentUpon>EditStudentinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\EditStudentinfo.aspx.designer.cs">
+      <DependentUpon>EditStudentinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\EnglishExamSignUp.aspx.cs">
+      <DependentUpon>EnglishExamSignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\EnglishExamSignUp.aspx.designer.cs">
+      <DependentUpon>EnglishExamSignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\ExperimentsAndSchoolWorksManage.aspx.cs">
+      <DependentUpon>ExperimentsAndSchoolWorksManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\ExperimentsAndSchoolWorksManage.aspx.designer.cs">
+      <DependentUpon>ExperimentsAndSchoolWorksManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\GradeCheckApply.aspx.cs">
+      <DependentUpon>GradeCheckApply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\GradeCheckApply.aspx.designer.cs">
+      <DependentUpon>GradeCheckApply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\MyGradeCheckManage.aspx.cs">
+      <DependentUpon>MyGradeCheckManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\MyGradeCheckManage.aspx.designer.cs">
+      <DependentUpon>MyGradeCheckManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\OtherCourses.aspx.cs">
+      <DependentUpon>OtherCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\OtherCourses.aspx.designer.cs">
+      <DependentUpon>OtherCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\ViewMyInfo.aspx.cs">
+      <DependentUpon>ViewMyInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\ViewMyInfo.aspx.designer.cs">
+      <DependentUpon>ViewMyInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddCourseResource.aspx.cs">
+      <DependentUpon>AddCourseResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddCourseResource.aspx.designer.cs">
+      <DependentUpon>AddCourseResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddExperimentResource.aspx.cs">
+      <DependentUpon>AddExperimentResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddExperimentResource.aspx.designer.cs">
+      <DependentUpon>AddExperimentResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddNotifyInfo.aspx.cs">
+      <DependentUpon>AddNotifyInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddNotifyInfo.aspx.designer.cs">
+      <DependentUpon>AddNotifyInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\AddSchoolworkNotify.aspx.cs">
+      <DependentUpon>AddSchoolworkNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\AddSchoolworkNotify.aspx.designer.cs">
+      <DependentUpon>AddSchoolworkNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Ashx\BatchDownloadFiles.ashx.cs">
+      <DependentUpon>BatchDownloadFiles.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoAttachment.aspx.cs">
+      <DependentUpon>CInfoAttachment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoAttachment.aspx.designer.cs">
+      <DependentUpon>CInfoAttachment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseInfos.aspx.cs">
+      <DependentUpon>CInfoCourseInfos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseInfos.aspx.designer.cs">
+      <DependentUpon>CInfoCourseInfos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseIntro.aspx.cs">
+      <DependentUpon>CInfoCourseIntro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseIntro.aspx.designer.cs">
+      <DependentUpon>CInfoCourseIntro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseNotify.aspx.cs">
+      <DependentUpon>CInfoCourseNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseNotify.aspx.designer.cs">
+      <DependentUpon>CInfoCourseNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseResource.aspx.cs">
+      <DependentUpon>CInfoCourseResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseResource.aspx.designer.cs">
+      <DependentUpon>CInfoCourseResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseTeacher.aspx.cs">
+      <DependentUpon>CInfoCourseTeacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoCourseTeacher.aspx.designer.cs">
+      <DependentUpon>CInfoCourseTeacher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoExperimentResource.aspx.cs">
+      <DependentUpon>CInfoExperimentResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoExperimentResource.aspx.designer.cs">
+      <DependentUpon>CInfoExperimentResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoSchoolworkNotify.aspx.cs">
+      <DependentUpon>CInfoSchoolworkNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoSchoolworkNotify.aspx.designer.cs">
+      <DependentUpon>CInfoSchoolworkNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoTeachingPlan.aspx.cs">
+      <DependentUpon>CInfoTeachingPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoTeachingPlan.aspx.designer.cs">
+      <DependentUpon>CInfoTeachingPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\CInfoUploadScore.aspx.cs">
+      <DependentUpon>CInfoUploadScore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\CInfoUploadScore.aspx.designer.cs">
+      <DependentUpon>CInfoUploadScore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\Courses.aspx.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\Courses.aspx.designer.cs">
+      <DependentUpon>Courses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditCourseinfoTip.aspx.cs">
+      <DependentUpon>EditCourseinfoTip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditCourseinfoTip.aspx.designer.cs">
+      <DependentUpon>EditCourseinfoTip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditCourseIntroduction.aspx.cs">
+      <DependentUpon>EditCourseIntroduction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditCourseIntroduction.aspx.designer.cs">
+      <DependentUpon>EditCourseIntroduction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditCourseResource.aspx.cs">
+      <DependentUpon>EditCourseResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditCourseResource.aspx.designer.cs">
+      <DependentUpon>EditCourseResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditEnglishExamSignUpInfo.aspx.cs">
+      <DependentUpon>EditEnglishExamSignUpInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditEnglishExamSignUpInfo.aspx.designer.cs">
+      <DependentUpon>EditEnglishExamSignUpInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditEnglishExamSignUpInfoState.aspx.cs">
+      <DependentUpon>EditEnglishExamSignUpInfoState.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditEnglishExamSignUpInfoState.aspx.designer.cs">
+      <DependentUpon>EditEnglishExamSignUpInfoState.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditExperimentResource.aspx.cs">
+      <DependentUpon>EditExperimentResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditExperimentResource.aspx.designer.cs">
+      <DependentUpon>EditExperimentResource.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditNotifyInfo.aspx.cs">
+      <DependentUpon>EditNotifyInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditNotifyInfo.aspx.designer.cs">
+      <DependentUpon>EditNotifyInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditSchoolworkNotify.aspx.cs">
+      <DependentUpon>EditSchoolworkNotify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditSchoolworkNotify.aspx.designer.cs">
+      <DependentUpon>EditSchoolworkNotify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditTeacherInfo.aspx.cs">
+      <DependentUpon>EditTeacherInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditTeacherInfo.aspx.designer.cs">
+      <DependentUpon>EditTeacherInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditTeacherResume.aspx.cs">
+      <DependentUpon>EditTeacherResume.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditTeacherResume.aspx.designer.cs">
+      <DependentUpon>EditTeacherResume.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EditTeachingPlan.aspx.cs">
+      <DependentUpon>EditTeachingPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EditTeachingPlan.aspx.designer.cs">
+      <DependentUpon>EditTeachingPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\EnglishExamManage.aspx.cs">
+      <DependentUpon>EnglishExamManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\EnglishExamManage.aspx.designer.cs">
+      <DependentUpon>EnglishExamManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\MyFeedBacks.aspx.cs">
+      <DependentUpon>MyFeedBacks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\MyFeedBacks.aspx.designer.cs">
+      <DependentUpon>MyFeedBacks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\NormManager.aspx.cs">
+      <DependentUpon>NormManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\NormManager.aspx.designer.cs">
+      <DependentUpon>NormManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\NormView.aspx.cs">
+      <DependentUpon>NormView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\NormView.aspx.designer.cs">
+      <DependentUpon>NormView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\OtherCourses.aspx.cs">
+      <DependentUpon>OtherCourses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\OtherCourses.aspx.designer.cs">
+      <DependentUpon>OtherCourses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\OutputEnglishExamSignUpExcel.ashx.cs">
+      <DependentUpon>OutputEnglishExamSignUpExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\TeacherSalaryQA.aspx.cs">
+      <DependentUpon>TeacherSalaryQA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\TeacherSalaryQA.aspx.designer.cs">
+      <DependentUpon>TeacherSalaryQA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\UploadScore.ashx.cs">
+      <DependentUpon>UploadScore.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VExpRExperimentReq.aspx.cs">
+      <DependentUpon>VExpRExperimentReq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VExpRExperimentReq.aspx.designer.cs">
+      <DependentUpon>VExpRExperimentReq.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VExpRExperimentSubed.aspx.cs">
+      <DependentUpon>VExpRExperimentSubed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VExpRExperimentSubed.aspx.designer.cs">
+      <DependentUpon>VExpRExperimentSubed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VExpRExperimentUnSubed.aspx.cs">
+      <DependentUpon>VExpRExperimentUnSubed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VExpRExperimentUnSubed.aspx.designer.cs">
+      <DependentUpon>VExpRExperimentUnSubed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\ViewFeedinfo.aspx.cs">
+      <DependentUpon>ViewFeedinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\ViewFeedinfo.aspx.designer.cs">
+      <DependentUpon>ViewFeedinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\ViewTeacherInfo.aspx.cs">
+      <DependentUpon>ViewTeacherInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\ViewTeacherInfo.aspx.designer.cs">
+      <DependentUpon>ViewTeacherInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\ViewTeacherSalarySummaryDetail.aspx.cs">
+      <DependentUpon>ViewTeacherSalarySummaryDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\ViewTeacherSalarySummaryDetail.aspx.designer.cs">
+      <DependentUpon>ViewTeacherSalarySummaryDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VSCheckExperiments.aspx.cs">
+      <DependentUpon>VSCheckExperiments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VSCheckExperiments.aspx.designer.cs">
+      <DependentUpon>VSCheckExperiments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VSCheckSchoolworks.aspx.cs">
+      <DependentUpon>VSCheckSchoolworks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VSCheckSchoolworks.aspx.designer.cs">
+      <DependentUpon>VSCheckSchoolworks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VSWorkNOnlineWorkSubed.aspx.cs">
+      <DependentUpon>VSWorkNOnlineWorkSubed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VSWorkNOnlineWorkSubed.aspx.designer.cs">
+      <DependentUpon>VSWorkNOnlineWorkSubed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VSWorkNOnlineWorkUnSubed.aspx.cs">
+      <DependentUpon>VSWorkNOnlineWorkUnSubed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VSWorkNOnlineWorkUnSubed.aspx.designer.cs">
+      <DependentUpon>VSWorkNOnlineWorkUnSubed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VSWorkNPaperWork.aspx.cs">
+      <DependentUpon>VSWorkNPaperWork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VSWorkNPaperWork.aspx.designer.cs">
+      <DependentUpon>VSWorkNPaperWork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher\VSWorkNWorkReq.aspx.cs">
+      <DependentUpon>VSWorkNWorkReq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teacher\VSWorkNWorkReq.aspx.designer.cs">
+      <DependentUpon>VSWorkNWorkReq.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Administrator\DataBaseBak\" />
+    <Folder Include="Administrator\ExamSeatArrangeExcel\" />
+    <Folder Include="Administrator\GradeCheckApplyExcel\" />
+    <Folder Include="Administrator\GradeCheckApplyWord\" />
+    <Folder Include="Administrator\GradeCheckExcel\" />
+    <Folder Include="Administrator\GradeCheckImportExcel\" />
+    <Folder Include="aspnet_client\system_web\2_0_50727\" />
+    <Folder Include="aspnet_client\system_web\4_0_30319\" />
+    <Folder Include="bin\" />
+    <Folder Include="Teacher\ScoreExcel\" />
+    <Folder Include="temp\" />
+    <Folder Include="UploadFiles\AdminNotify\" />
+    <Folder Include="UploadFiles\Archives\" />
+    <Folder Include="UploadFiles\bbsAvatar\" />
+    <Folder Include="UploadFiles\bbs\" />
+    <Folder Include="UploadFiles\CourseNotify\" />
+    <Folder Include="UploadFiles\CourseResources\" />
+    <Folder Include="UploadFiles\emailAttachments\" />
+    <Folder Include="UploadFiles\ExperimentResources\" />
+    <Folder Include="UploadFiles\Experiments\" />
+    <Folder Include="UploadFiles\GradeCheckExcel\" />
+    <Folder Include="UploadFiles\SchoolWorks\" />
+    <Folder Include="UploadImages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="404.htm" />
+    <Content Include="Administrator\AddCourseforAssitant.aspx" />
+    <Content Include="Administrator\AddCourseforTeacher.aspx" />
+    <Content Include="Administrator\AddGradeCheckItem.aspx" />
+    <Content Include="Administrator\AddNorm.aspx" />
+    <Content Include="Administrator\AssistantManager.aspx" />
+    <Content Include="Administrator\BaseConfig.aspx" />
+    <Content Include="Administrator\BbsManage.aspx" />
+    <Content Include="Administrator\CourseManager.aspx" />
+    <Content Include="Administrator\CurrentTermCourseList.aspx" />
+    <Content Include="Administrator\DataBaseSynchronize.aspx" />
+    <Content Include="Administrator\EditEnglishExamNotifyInfo.aspx" />
+    <Content Include="Administrator\EditFirstNotifyType.aspx" />
+    <Content Include="Administrator\EditForum.aspx" />
+    <Content Include="Administrator\EditGameCategory.aspx" />
+    <Content Include="Administrator\EditGameType.aspx" />
+    <Content Include="Administrator\EditGradeCheckApplyReason.aspx" />
+    <Content Include="Administrator\EditGradeCheckDetail.aspx" />
+    <Content Include="Administrator\EditGradeCheckItem.aspx" />
+    <Content Include="Administrator\EditNorm.aspx" />
+    <Content Include="Administrator\EditNormFormula.aspx" />
+    <Content Include="Administrator\EditNormValue.aspx" />
+    <Content Include="Administrator\EditNotifyInfo.aspx" />
+    <Content Include="Administrator\EditSecondNotifyType.aspx" />
+    <Content Include="Administrator\EmailManage.aspx" />
+    <Content Include="Administrator\EnglishExamManage.aspx" />
+    <Content Include="Administrator\EnrollManage.aspx" />
+    <Content Include="Administrator\ExamSeatArrange.aspx" />
+    <Content Include="Administrator\HistoryDataBak.aspx" />
+    <Content Include="Administrator\ImportExamExcelData.aspx" />
+    <Content Include="Administrator\ImportExcelData.aspx" />
+    <Content Include="Administrator\NormManager.aspx" />
+    <Content Include="Administrator\NotifyInfoManage.aspx" />
+    <Content Include="Administrator\OutputGradeCheckApplyWord.aspx" />
+    <Content Include="Administrator\ProjectManager.aspx" />
+    <Content Include="Administrator\SelectSalaryItemForSummary.aspx" />
+    <Content Include="Administrator\ShowUSTALogs.aspx" />
+    <Content Include="Administrator\StudentManager.aspx" />
+    <Content Include="Administrator\TeacherSalaryQA.aspx" />
+    <Content Include="Administrator\ViewArchives.aspx" />
+    <Content Include="Administrator\ViewAssistantInfo.aspx" />
+    <Content Include="Administrator\ViewChooseCourse.aspx" />
+    <Content Include="Administrator\ViewCourseAttention.aspx" />
+    <Content Include="Administrator\ViewCourses.aspx" />
+    <Content Include="Administrator\ViewFeedBack.aspx" />
+    <Content Include="Administrator\ViewFeedinfo.aspx" />
+    <Content Include="Administrator\ViewNormAuth.aspx" />
+    <Content Include="Administrator\ViewProjectManagerAuth.aspx" />
+    <Content Include="Administrator\ViewStudentInfo.aspx" />
+    <Content Include="Administrator\SalaryManage.aspx" />
+    <Content Include="Administrator\SelectSalaryItem.aspx" />
+    <Content Include="Administrator\AddSalaryEntry.aspx" />
+    <Content Include="Administrator\AddSalaryEntryConfirm.aspx" />
+    <Content Include="Administrator\AddTeacherSalary.aspx" />
+    <Content Include="Administrator\EditSalaryItem.aspx" />
+    <Content Include="Administrator\ViewSalaryAuth.aspx" />
+    <Content Include="Administrator\ViewTeacherSalaryDetail.aspx" />
+    <Content Include="Administrator\ViewTeacherSalarySummaryDetail.aspx" />
+    <Content Include="bbs\AddBigTopic.aspx" />
+    <Content Include="bbs\AvatarsSelect.aspx" />
+    <Content Include="bbs\avatar\1-1.gif" />
+    <Content Include="bbs\avatar\1-2.gif" />
+    <Content Include="bbs\avatar\1-3.gif" />
+    <Content Include="bbs\avatar\1-4.gif" />
+    <Content Include="bbs\avatar\1-5.gif" />
+    <Content Include="bbs\avatar\1-6.gif" />
+    <Content Include="bbs\avatar\1-7.gif" />
+    <Content Include="bbs\avatar\1-8.gif" />
+    <Content Include="bbs\avatar\1-9.gif" />
+    <Content Include="bbs\avatar\2-1.gif" />
+    <Content Include="bbs\avatar\2-2.gif" />
+    <Content Include="bbs\avatar\2-3.gif" />
+    <Content Include="bbs\avatar\2-4.gif" />
+    <Content Include="bbs\avatar\2-5.gif" />
+    <Content Include="bbs\avatar\2-6.gif" />
+    <Content Include="bbs\avatar\2-7.gif" />
+    <Content Include="bbs\avatar\2-8.gif" />
+    <Content Include="bbs\avatar\2-9.gif" />
+    <Content Include="bbs\avatar\3-1.gif" />
+    <Content Include="bbs\avatar\3-2.gif" />
+    <Content Include="bbs\avatar\3-3.gif" />
+    <Content Include="bbs\avatar\3-4.gif" />
+    <Content Include="bbs\avatar\3-5.gif" />
+    <Content Include="bbs\avatar\3-6.gif" />
+    <Content Include="bbs\avatar\3-7.gif" />
+    <Content Include="bbs\BBSCoursesindex.aspx" />
+    <Content Include="bbs\BBSOtherindex.aspx" />
+    <Content Include="bbs\BBSSpecialindex.aspx" />
+    <Content Include="bbs\BBSTopicList.aspx" />
+    <Content Include="bbs\BBSTopicSearch.aspx" />
+    <Content Include="bbs\BBSUserinfo.aspx" />
+    <Content Include="bbs\BBSViewTopic.aspx" />
+    <Content Include="bbs\EditTopic.aspx" />
+    <Content Include="bbs\images\bbstree.gif" />
+    <Content Include="bbs\images\forum.gif" />
+    <Content Include="bbs\images\forum_new.gif" />
+    <Content Include="bbs\javascript\ajaxAboutBbs.js" />
+    <Content Include="bbs\UploadAvatar.aspx" />
+    <Content Include="CheckUser.aspx" />
+    <Content Include="Common\CInfoCourseInfos.aspx" />
+    <Content Include="Common\CInfoCourseIntro.aspx" />
+    <Content Include="Common\CInfoCourseNotify.aspx" />
+    <Content Include="Common\CInfoCourseResource.aspx" />
+    <Content Include="Common\CInfoCourseTeacher.aspx" />
+    <Content Include="Common\Error.aspx" />
+    <Content Include="Common\FeedBack.aspx" />
+    <Content Include="Common\NotifyList.aspx" />
+    <Content Include="Common\Upload.aspx" />
+    <Content Include="Common\ViewAllCourses.aspx" />
+    <Content Include="Common\ViewAllTeachers.aspx" />
+    <Content Include="Common\ViewCourseNotify.aspx" />
+    <Content Include="Common\ViewEnglishExamNotify.aspx" />
+    <Content Include="Common\Viewfeedbackinfo.aspx" />
+    <Content Include="Common\ViewGameCategoryInfo.aspx" />
+    <Content Include="Common\ViewGradeCheckNotify.aspx" />
+    <Content Include="Common\ViewHistoryData.aspx" />
+    <Content Include="Common\ViewTeacherInfo.aspx" />
+    <Content Include="Common\ViewTeacherSalaryDetail.aspx" />
+    <Content Include="css\404.css" />
+    <Content Include="css\css.css" />
+    <Content Include="css\error.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\upload.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="images\1-BG.JPG" />
+    <Content Include="images\404\maintenanceCorners.gif" />
+    <Content Include="images\404\zoom.png" />
+    <Content Include="images\admin_left_1.gif" />
+    <Content Include="images\admin_left_2.gif" />
+    <Content Include="images\ann.gif" />
+    <Content Include="images\A_login_01.jpg" />
+    <Content Include="images\A_login_02.jpg" />
+    <Content Include="images\A_login_03.jpg" />
+    <Content Include="images\A_login_04.jpg" />
+    <Content Include="images\btnLogin.gif" />
+    <Content Include="images\btnReset.gif" />
+    <Content Include="images\BULLET.GIF" />
+    <Content Include="images\error48.gif" />
+    <Content Include="images\errorbg.gif" />
+    <Content Include="images\footBg.gif" />
+    <Content Include="images\headbg.gif" />
+    <Content Include="images\HELP.GIF" />
+    <Content Include="images\homeBg.gif" />
+    <Content Include="images\isTop.gif" />
+    <Content Include="images\loadingAnimation.gif" />
+    <Content Include="images\loginBg.gif" />
+    <Content Include="images\loginBottomBg.gif" />
+    <Content Include="images\loginTopBg.gif" />
+    <Content Include="images\logo.gif" />
+    <Content Include="images\menubg.gif" />
+    <Content Include="images\new.gif" />
+    <Content Include="images\note_error.gif" />
+    <Content Include="images\NOTE_OK.GIF" />
+    <Content Include="images\onTop.gif" />
+    <Content Include="images\ready.gif" />
+    <Content Include="images\star.png" />
+    <Content Include="images\TITLE.GIF" />
+    <Content Include="images\title_bg_quit.gif" />
+    <Content Include="images\top.gif" />
+    <Content Include="images\topBg.gif" />
+    <Content Include="images\TRUE.GIF" />
+    <Content Include="images\USER.GIF" />
+    <Content Include="images\ustclogo.gif" />
+    <Content Include="images\word.jpg" />
+    <Content Include="javascript\CodaBubble\CodaBubble.css" />
+    <Content Include="javascript\CodaBubble\images\bubble-1.png" />
+    <Content Include="javascript\CodaBubble\images\bubble-2.png" />
+    <Content Include="javascript\CodaBubble\images\bubble-3.png" />
+    <Content Include="javascript\CodaBubble\images\bubble-4.png" />
+    <Content Include="javascript\CodaBubble\images\bubble-5.png" />
+    <Content Include="javascript\CodaBubble\images\bubble-6.png" />
+    <Content Include="javascript\CodaBubble\images\bubble-7.png" />
+    <Content Include="javascript\CodaBubble\images\bubble-8.png" />
+    <Content Include="javascript\Common.js" />
+    <Content Include="javascript\jquery-1.4.min.js" />
+    <Content Include="javascript\jquery.form.js" />
+    <Content Include="javascript\kindeditorInit.js" />
+    <Content Include="javascript\loadingAnimation.gif" />
+    <Content Include="javascript\qtip\jquery.qtip-1.0.0-rc3.min.js" />
+    <Content Include="javascript\tab\jquery-1.js" />
+    <Content Include="javascript\tab\loading.gif" />
+    <Content Include="javascript\tab\tab.png" />
+    <Content Include="javascript\tab\ui.css" />
+    <Content Include="javascript\tab\ui.js" />
+    <Content Include="javascript\tab\ui_002.js" />
+    <Content Include="javascript\thickbox.css" />
+    <Content Include="javascript\thickbox.js" />
+    <Content Include="javascript\ui\date\ui.all.css" />
+    <Content Include="javascript\ui\date\ui.base.css" />
+    <Content Include="javascript\ui\date\ui.core.js" />
+    <Content Include="javascript\ui\date\ui.datepicker.css" />
+    <Content Include="javascript\ui\date\ui.datepicker.js" />
+    <Content Include="javascript\ui\date\ui.theme.css" />
+    <Content Include="javascript\ui\My97DatePicker\calendar.js" />
+    <Content Include="javascript\ui\My97DatePicker\config.js" />
+    <Content Include="javascript\ui\My97DatePicker\lang\en.js" />
+    <Content Include="javascript\ui\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="javascript\ui\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="javascript\ui\My97DatePicker\My97DatePicker.htm" />
+    <Content Include="javascript\ui\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="javascript\ui\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="javascript\ui\My97DatePicker\skin\default\img.gif" />
+    <Content Include="javascript\ui\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="javascript\ui\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="javascript\ui\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="javascript\ui\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="javascript\ui\My97DatePicker\WdatePicker.js" />
+    <Content Include="javascript\upload\images\ajax-loader.gif" />
+    <Content Include="javascript\upload\images\loading.gif" />
+    <Content Include="javascript\upload\upload.js" />
+    <Content Include="javascript\validate\cmxforms.js" />
+    <Content Include="javascript\validate\jquery.validate.js" />
+    <Content Include="javascript\validate\jquery.validate.min.js" />
+    <Content Include="kindeditor\kindeditor-min.js" />
+    <Content Include="kindeditor\kindeditor.js" />
+    <Content Include="kindeditor\lang\en.js" />
+    <Content Include="kindeditor\lang\zh_CN.js" />
+    <Content Include="kindeditor\lang\zh_TW.js" />
+    <Content Include="kindeditor\license.txt" />
+    <Content Include="kindeditor\plugins\anchor\anchor.js" />
+    <Content Include="kindeditor\plugins\clearhtml\clearhtml.js" />
+    <Content Include="kindeditor\plugins\code\code.js" />
+    <Content Include="kindeditor\plugins\code\prettify.css" />
+    <Content Include="kindeditor\plugins\code\prettify.js" />
+    <Content Include="kindeditor\plugins\emoticons\emoticons.js" />
+    <Content Include="kindeditor\plugins\emoticons\images\0.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\1.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\10.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\100.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\101.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\102.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\103.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\104.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\105.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\106.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\107.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\108.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\109.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\11.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\110.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\111.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\112.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\113.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\114.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\115.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\116.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\117.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\118.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\119.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\12.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\120.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\121.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\122.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\123.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\124.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\125.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\126.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\127.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\128.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\129.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\13.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\130.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\131.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\132.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\133.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\134.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\14.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\15.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\16.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\17.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\18.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\19.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\2.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\20.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\21.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\22.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\23.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\24.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\25.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\26.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\27.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\28.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\29.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\3.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\30.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\31.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\32.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\33.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\34.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\35.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\36.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\37.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\38.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\39.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\4.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\40.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\41.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\42.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\43.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\44.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\45.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\46.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\47.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\48.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\49.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\5.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\50.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\51.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\52.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\53.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\54.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\55.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\56.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\57.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\58.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\59.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\6.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\60.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\61.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\62.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\63.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\64.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\65.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\66.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\67.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\68.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\69.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\7.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\70.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\71.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\72.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\73.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\74.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\75.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\76.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\77.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\78.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\79.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\8.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\80.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\81.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\82.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\83.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\84.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\85.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\86.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\87.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\88.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\89.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\9.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\90.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\91.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\92.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\93.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\94.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\95.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\96.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\97.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\98.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\99.gif" />
+    <Content Include="kindeditor\plugins\emoticons\images\static.gif" />
+    <Content Include="kindeditor\plugins\filemanager\filemanager.js" />
+    <Content Include="kindeditor\plugins\filemanager\images\file-16.gif" />
+    <Content Include="kindeditor\plugins\filemanager\images\file-64.gif" />
+    <Content Include="kindeditor\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="kindeditor\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="kindeditor\plugins\filemanager\images\go-up.gif" />
+    <Content Include="kindeditor\plugins\flash\flash.js" />
+    <Content Include="kindeditor\plugins\image\image.js" />
+    <Content Include="kindeditor\plugins\image\images\align_left.gif" />
+    <Content Include="kindeditor\plugins\image\images\align_right.gif" />
+    <Content Include="kindeditor\plugins\image\images\align_top.gif" />
+    <Content Include="kindeditor\plugins\image\images\refresh.gif" />
+    <Content Include="kindeditor\plugins\insertfile\insertfile.js" />
+    <Content Include="kindeditor\plugins\lineheight\lineheight.js" />
+    <Content Include="kindeditor\plugins\link\link.js" />
+    <Content Include="kindeditor\plugins\map\map.html" />
+    <Content Include="kindeditor\plugins\map\map.js" />
+    <Content Include="kindeditor\plugins\media\media.js" />
+    <Content Include="kindeditor\plugins\pagebreak\pagebreak.js" />
+    <Content Include="kindeditor\plugins\plainpaste\plainpaste.js" />
+    <Content Include="kindeditor\plugins\preview\preview.js" />
+    <Content Include="kindeditor\plugins\quickformat\quickformat.js" />
+    <Content Include="kindeditor\plugins\table\table.js" />
+    <Content Include="kindeditor\plugins\template\html\1.html" />
+    <Content Include="kindeditor\plugins\template\html\2.html" />
+    <Content Include="kindeditor\plugins\template\html\3.html" />
+    <Content Include="kindeditor\plugins\template\template.js" />
+    <Content Include="kindeditor\plugins\wordpaste\wordpaste.js" />
+    <Content Include="kindeditor\themes\common\anchor.gif" />
+    <Content Include="kindeditor\themes\common\blank.gif" />
+    <Content Include="kindeditor\themes\common\flash.gif" />
+    <Content Include="kindeditor\themes\common\loading.gif" />
+    <Content Include="kindeditor\themes\common\media.gif" />
+    <Content Include="kindeditor\themes\common\rm.gif" />
+    <Content Include="kindeditor\themes\default\bg.gif" />
+    <Content Include="kindeditor\themes\default\default.css" />
+    <Content Include="kindeditor\themes\default\default.png" />
+    <Content Include="kindeditor\themes\simple\simple.css" />
+    <Content Include="kindeditor\说明.htm" />
+    <Content Include="LogFiles\USTALogFile.txt" />
+    <Content Include="Student\AddExperiment.aspx" />
+    <Content Include="Student\CInfoCourseInfo.aspx" />
+    <Content Include="Student\CInfoCourseIntro.aspx" />
+    <Content Include="Student\CInfoCourseNotify.aspx" />
+    <Content Include="Student\CInfoCourseResource.aspx" />
+    <Content Include="Student\CInfoCourseTeacher.aspx" />
+    <Content Include="Student\CInfoExperiment.aspx" />
+    <Content Include="Student\CInfoExperimentResource.aspx" />
+    <Content Include="Student\CInfoSchoolwork.aspx" />
+    <Content Include="Student\CInfoSchoolworkNotify.aspx" />
+    <Content Include="Student\CInfoTeachingPlan.aspx" />
+    <Content Include="Student\Courses.aspx" />
+    <Content Include="Student\EditEnglishExamSignUpInfo.aspx" />
+    <Content Include="Student\EditExperiment.aspx" />
+    <Content Include="Student\EditGradeCheckApply.aspx" />
+    <Content Include="Student\EditStudentinfo.aspx" />
+    <Content Include="Student\EnglishExamSignUp.aspx" />
+    <Content Include="Student\ExperimentsAndSchoolWorksManage.aspx" />
+    <Content Include="Student\GradeCheckApply.aspx" />
+    <Content Include="Student\MyGradeCheckManage.aspx" />
+    <Content Include="Student\OtherCourses.aspx" />
+    <Content Include="Student\ViewMyInfo.aspx" />
+    <Content Include="Teacher\AddCourseResource.aspx" />
+    <Content Include="Teacher\AddExperimentResource.aspx" />
+    <Content Include="Teacher\AddNewProjectCategory.aspx" />
+    <Content Include="Teacher\AddNewReim.aspx" />
+    <Content Include="Teacher\AddNormConfirm.aspx" />
+    <Content Include="Teacher\AddNotifyInfo.aspx" />
+    <Content Include="Teacher\AddProject.aspx" />
+    <Content Include="Teacher\AddReimEntry.aspx" />
+    <Content Include="Teacher\AddReimRule.aspx" />
+    <Content Include="Teacher\AddSchoolworkNotify.aspx" />
+    <Content Include="Teacher\CInfoAttachment.aspx" />
+    <Content Include="Teacher\CInfoCourseInfos.aspx" />
+    <Content Include="Teacher\CInfoCourseIntro.aspx" />
+    <Content Include="Teacher\CInfoCourseNotify.aspx" />
+    <Content Include="Teacher\CInfoCourseResource.aspx" />
+    <Content Include="Teacher\CInfoCourseTeacher.aspx" />
+    <Content Include="Teacher\CInfoExperimentResource.aspx" />
+    <Content Include="Teacher\CInfoSchoolworkNotify.aspx" />
+    <Content Include="Teacher\CInfoTeachingPlan.aspx" />
+    <Content Include="Teacher\CInfoUploadScore.aspx" />
+    <Content Include="Teacher\Courses.aspx" />
+    <Content Include="Teacher\EditCourseinfoTip.aspx" />
+    <Content Include="Teacher\EditCourseIntroduction.aspx" />
+    <Content Include="Teacher\EditCourseResource.aspx" />
+    <Content Include="Teacher\EditEnglishExamSignUpInfo.aspx" />
+    <Content Include="Teacher\EditEnglishExamSignUpInfoState.aspx" />
+    <Content Include="Teacher\EditExperimentResource.aspx" />
+    <Content Include="Teacher\EditNotifyInfo.aspx" />
+    <Content Include="Teacher\EditSchoolworkNotify.aspx" />
+    <Content Include="Teacher\EditTeacherInfo.aspx" />
+    <Content Include="Teacher\EditTeacherResume.aspx" />
+    <Content Include="Teacher\EditTeachingPlan.aspx" />
+    <Content Include="Teacher\EnglishExamManage.aspx" />
+    <Content Include="Teacher\EnrollManage.aspx" />
+    <Content Include="Teacher\MyFeedBacks.aspx" />
+    <Content Include="Teacher\NormManager.aspx" />
+    <Content Include="Teacher\NormView.aspx" />
+    <Content Include="Teacher\OtherCourses.aspx" />
+    <Content Include="Teacher\ProjectManager.aspx" />
+    <Content Include="Teacher\TeacherSalaryQA.aspx" />
+    <Content Include="Teacher\TeacherViewProject.aspx" />
+    <Content Include="Teacher\VExpRExperimentReq.aspx" />
+    <Content Include="Teacher\VExpRExperimentSubed.aspx" />
+    <Content Include="Teacher\VExpRExperimentUnSubed.aspx" />
+    <Content Include="Teacher\ViewFeedinfo.aspx" />
+    <Content Include="Teacher\ViewProject.aspx" />
+    <Content Include="Teacher\ViewReimDetail.aspx" />
+    <Content Include="Teacher\ViewReimEntry.aspx" />
+    <Content Include="Teacher\ViewTeacherInfo.aspx" />
+    <Content Include="Teacher\ViewTeacherSalarySummaryDetail.aspx" />
+    <Content Include="Teacher\VSCheckExperiments.aspx" />
+    <Content Include="Teacher\VSCheckSchoolworks.aspx" />
+    <Content Include="Teacher\VSWorkNOnlineWorkSubed.aspx" />
+    <Content Include="Teacher\VSWorkNOnlineWorkUnSubed.aspx" />
+    <Content Include="Teacher\VSWorkNPaperWork.aspx" />
+    <Content Include="Teacher\VSWorkNWorkReq.aspx" />
+    <Content Include="Teacher\SalaryManage.aspx" />
+    <Content Include="Teacher\SalaryView.aspx" />
+    <Content Include="tinymce\langs\zh.js" />
+    <Content Include="tinymce\license.txt" />
+    <Content Include="tinymce\plugins\advhr\css\advhr.css" />
+    <Content Include="tinymce\plugins\advhr\editor_plugin.js" />
+    <Content Include="tinymce\plugins\advhr\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\advhr\js\rule.js" />
+    <Content Include="tinymce\plugins\advhr\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\advhr\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\advhr\rule.htm" />
+    <Content Include="tinymce\plugins\advimage\css\advimage.css" />
+    <Content Include="tinymce\plugins\advimage\editor_plugin.js" />
+    <Content Include="tinymce\plugins\advimage\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\advimage\image.htm" />
+    <Content Include="tinymce\plugins\advimage\img\sample.gif" />
+    <Content Include="tinymce\plugins\advimage\js\image.js" />
+    <Content Include="tinymce\plugins\advimage\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\advimage\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\advlink\css\advlink.css" />
+    <Content Include="tinymce\plugins\advlink\editor_plugin.js" />
+    <Content Include="tinymce\plugins\advlink\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\advlink\js\advlink.js" />
+    <Content Include="tinymce\plugins\advlink\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\advlink\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\advlink\link.htm" />
+    <Content Include="tinymce\plugins\autoresize\editor_plugin.js" />
+    <Content Include="tinymce\plugins\autoresize\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\autosave\editor_plugin.js" />
+    <Content Include="tinymce\plugins\autosave\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\bbcode\editor_plugin.js" />
+    <Content Include="tinymce\plugins\bbcode\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\contextmenu\editor_plugin.js" />
+    <Content Include="tinymce\plugins\contextmenu\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\directionality\editor_plugin.js" />
+    <Content Include="tinymce\plugins\directionality\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\emotions\editor_plugin.js" />
+    <Content Include="tinymce\plugins\emotions\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\emotions\emotions.htm" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-cool.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-cry.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-embarassed.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-foot-in-mouth.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-frown.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-innocent.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-kiss.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-laughing.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-money-mouth.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-sealed.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-smile.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-surprised.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-tongue-out.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-undecided.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-wink.gif" />
+    <Content Include="tinymce\plugins\emotions\img\smiley-yell.gif" />
+    <Content Include="tinymce\plugins\emotions\js\emotions.js" />
+    <Content Include="tinymce\plugins\emotions\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\emotions\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\example\dialog.htm" />
+    <Content Include="tinymce\plugins\example\editor_plugin.js" />
+    <Content Include="tinymce\plugins\example\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\example\img\example.gif" />
+    <Content Include="tinymce\plugins\example\js\dialog.js" />
+    <Content Include="tinymce\plugins\example\langs\en.js" />
+    <Content Include="tinymce\plugins\example\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\fullpage\css\fullpage.css" />
+    <Content Include="tinymce\plugins\fullpage\editor_plugin.js" />
+    <Content Include="tinymce\plugins\fullpage\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\fullpage\fullpage.htm" />
+    <Content Include="tinymce\plugins\fullpage\js\fullpage.js" />
+    <Content Include="tinymce\plugins\fullpage\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\fullpage\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\fullscreen\editor_plugin.js" />
+    <Content Include="tinymce\plugins\fullscreen\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\fullscreen\fullscreen.htm" />
+    <Content Include="tinymce\plugins\iespell\editor_plugin.js" />
+    <Content Include="tinymce\plugins\iespell\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\inlinepopups\editor_plugin.js" />
+    <Content Include="tinymce\plugins\inlinepopups\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\inlinepopups\skins\clearlooks2\img\alert.gif" />
+    <Content Include="tinymce\plugins\inlinepopups\skins\clearlooks2\img\button.gif" />
+    <Content Include="tinymce\plugins\inlinepopups\skins\clearlooks2\img\buttons.gif" />
+    <Content Include="tinymce\plugins\inlinepopups\skins\clearlooks2\img\confirm.gif" />
+    <Content Include="tinymce\plugins\inlinepopups\skins\clearlooks2\img\corners.gif" />
+    <Content Include="tinymce\plugins\inlinepopups\skins\clearlooks2\img\horizontal.gif" />
+    <Content Include="tinymce\plugins\inlinepopups\skins\clearlooks2\img\vertical.gif" />
+    <Content Include="tinymce\plugins\inlinepopups\skins\clearlooks2\window.css" />
+    <Content Include="tinymce\plugins\inlinepopups\template.htm" />
+    <Content Include="tinymce\plugins\insertdatetime\editor_plugin.js" />
+    <Content Include="tinymce\plugins\insertdatetime\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\layer\editor_plugin.js" />
+    <Content Include="tinymce\plugins\layer\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\media\css\content.css" />
+    <Content Include="tinymce\plugins\media\css\media.css" />
+    <Content Include="tinymce\plugins\media\editor_plugin.js" />
+    <Content Include="tinymce\plugins\media\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\media\img\flash.gif" />
+    <Content Include="tinymce\plugins\media\img\flv_player.swf" />
+    <Content Include="tinymce\plugins\media\img\quicktime.gif" />
+    <Content Include="tinymce\plugins\media\img\realmedia.gif" />
+    <Content Include="tinymce\plugins\media\img\shockwave.gif" />
+    <Content Include="tinymce\plugins\media\img\trans.gif" />
+    <Content Include="tinymce\plugins\media\img\windowsmedia.gif" />
+    <Content Include="tinymce\plugins\media\js\embed.js" />
+    <Content Include="tinymce\plugins\media\js\media.js" />
+    <Content Include="tinymce\plugins\media\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\media\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\media\media.htm" />
+    <Content Include="tinymce\plugins\nonbreaking\editor_plugin.js" />
+    <Content Include="tinymce\plugins\nonbreaking\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\noneditable\editor_plugin.js" />
+    <Content Include="tinymce\plugins\noneditable\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\pagebreak\css\content.css" />
+    <Content Include="tinymce\plugins\pagebreak\editor_plugin.js" />
+    <Content Include="tinymce\plugins\pagebreak\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\pagebreak\img\pagebreak.gif" />
+    <Content Include="tinymce\plugins\pagebreak\img\trans.gif" />
+    <Content Include="tinymce\plugins\paste\editor_plugin.js" />
+    <Content Include="tinymce\plugins\paste\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\paste\js\pastetext.js" />
+    <Content Include="tinymce\plugins\paste\js\pasteword.js" />
+    <Content Include="tinymce\plugins\paste\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\paste\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\paste\pastetext.htm" />
+    <Content Include="tinymce\plugins\paste\pasteword.htm" />
+    <Content Include="tinymce\plugins\preview\editor_plugin.js" />
+    <Content Include="tinymce\plugins\preview\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\preview\example.html" />
+    <Content Include="tinymce\plugins\preview\jscripts\embed.js" />
+    <Content Include="tinymce\plugins\preview\preview.html" />
+    <Content Include="tinymce\plugins\print\editor_plugin.js" />
+    <Content Include="tinymce\plugins\print\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\safari\blank.htm" />
+    <Content Include="tinymce\plugins\safari\editor_plugin.js" />
+    <Content Include="tinymce\plugins\safari\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\save\editor_plugin.js" />
+    <Content Include="tinymce\plugins\save\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\searchreplace\css\searchreplace.css" />
+    <Content Include="tinymce\plugins\searchreplace\editor_plugin.js" />
+    <Content Include="tinymce\plugins\searchreplace\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\searchreplace\js\searchreplace.js" />
+    <Content Include="tinymce\plugins\searchreplace\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\searchreplace\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\searchreplace\searchreplace.htm" />
+    <Content Include="tinymce\plugins\spellchecker\css\content.css" />
+    <Content Include="tinymce\plugins\spellchecker\editor_plugin.js" />
+    <Content Include="tinymce\plugins\spellchecker\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\spellchecker\img\wline.gif" />
+    <Content Include="tinymce\plugins\style\css\props.css" />
+    <Content Include="tinymce\plugins\style\editor_plugin.js" />
+    <Content Include="tinymce\plugins\style\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\style\js\props.js" />
+    <Content Include="tinymce\plugins\style\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\style\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\style\props.htm" />
+    <Content Include="tinymce\plugins\tabfocus\editor_plugin.js" />
+    <Content Include="tinymce\plugins\tabfocus\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\table\cell.htm" />
+    <Content Include="tinymce\plugins\table\css\cell.css" />
+    <Content Include="tinymce\plugins\table\css\row.css" />
+    <Content Include="tinymce\plugins\table\css\table.css" />
+    <Content Include="tinymce\plugins\table\editor_plugin.js" />
+    <Content Include="tinymce\plugins\table\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\table\js\cell.js" />
+    <Content Include="tinymce\plugins\table\js\merge_cells.js" />
+    <Content Include="tinymce\plugins\table\js\row.js" />
+    <Content Include="tinymce\plugins\table\js\table.js" />
+    <Content Include="tinymce\plugins\table\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\table\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\table\merge_cells.htm" />
+    <Content Include="tinymce\plugins\table\row.htm" />
+    <Content Include="tinymce\plugins\table\table.htm" />
+    <Content Include="tinymce\plugins\template\blank.htm" />
+    <Content Include="tinymce\plugins\template\css\template.css" />
+    <Content Include="tinymce\plugins\template\editor_plugin.js" />
+    <Content Include="tinymce\plugins\template\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\template\js\template.js" />
+    <Content Include="tinymce\plugins\template\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\template\langs\zh_dlg.js" />
+    <Content Include="tinymce\plugins\template\template.htm" />
+    <Content Include="tinymce\plugins\visualchars\editor_plugin.js" />
+    <Content Include="tinymce\plugins\visualchars\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\wordcount\editor_plugin.js" />
+    <Content Include="tinymce\plugins\wordcount\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\abbr.htm" />
+    <Content Include="tinymce\plugins\xhtmlxtras\acronym.htm" />
+    <Content Include="tinymce\plugins\xhtmlxtras\attributes.htm" />
+    <Content Include="tinymce\plugins\xhtmlxtras\cite.htm" />
+    <Content Include="tinymce\plugins\xhtmlxtras\css\attributes.css" />
+    <Content Include="tinymce\plugins\xhtmlxtras\css\popup.css" />
+    <Content Include="tinymce\plugins\xhtmlxtras\del.htm" />
+    <Content Include="tinymce\plugins\xhtmlxtras\editor_plugin.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\editor_plugin_src.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\ins.htm" />
+    <Content Include="tinymce\plugins\xhtmlxtras\js\abbr.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\js\acronym.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\js\attributes.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\js\cite.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\js\del.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\js\element_common.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\js\ins.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\langs\en_dlg.js" />
+    <Content Include="tinymce\plugins\xhtmlxtras\langs\zh_dlg.js" />
+    <Content Include="tinymce\themes\advanced\about.htm" />
+    <Content Include="tinymce\themes\advanced\anchor.htm" />
+    <Content Include="tinymce\themes\advanced\charmap.htm" />
+    <Content Include="tinymce\themes\advanced\color_picker.htm" />
+    <Content Include="tinymce\themes\advanced\editor_template.js" />
+    <Content Include="tinymce\themes\advanced\editor_template_src.js" />
+    <Content Include="tinymce\themes\advanced\image.htm" />
+    <Content Include="tinymce\themes\advanced\img\colorpicker.jpg" />
+    <Content Include="tinymce\themes\advanced\img\icons.gif" />
+    <Content Include="tinymce\themes\advanced\js\about.js" />
+    <Content Include="tinymce\themes\advanced\js\anchor.js" />
+    <Content Include="tinymce\themes\advanced\js\charmap.js" />
+    <Content Include="tinymce\themes\advanced\js\color_picker.js" />
+    <Content Include="tinymce\themes\advanced\js\image.js" />
+    <Content Include="tinymce\themes\advanced\js\link.js" />
+    <Content Include="tinymce\themes\advanced\js\source_editor.js" />
+    <Content Include="tinymce\themes\advanced\langs\en.js" />
+    <Content Include="tinymce\themes\advanced\langs\en_dlg.js" />
+    <Content Include="tinymce\themes\advanced\langs\zh.js" />
+    <Content Include="tinymce\themes\advanced\langs\zh_dlg.js" />
+    <Content Include="tinymce\themes\advanced\link.htm" />
+    <Content Include="tinymce\themes\advanced\skins\default\content.css" />
+    <Content Include="tinymce\themes\advanced\skins\default\dialog.css" />
+    <Content Include="tinymce\themes\advanced\skins\default\img\buttons.png" />
+    <Content Include="tinymce\themes\advanced\skins\default\img\items.gif" />
+    <Content Include="tinymce\themes\advanced\skins\default\img\menu_arrow.gif" />
+    <Content Include="tinymce\themes\advanced\skins\default\img\menu_check.gif" />
+    <Content Include="tinymce\themes\advanced\skins\default\img\progress.gif" />
+    <Content Include="tinymce\themes\advanced\skins\default\img\tabs.gif" />
+    <Content Include="tinymce\themes\advanced\skins\default\ui.css" />
+    <Content Include="tinymce\themes\advanced\skins\o2k7\content.css" />
+    <Content Include="tinymce\themes\advanced\skins\o2k7\dialog.css" />
+    <Content Include="tinymce\themes\advanced\skins\o2k7\img\button_bg.png" />
+    <Content Include="tinymce\themes\advanced\skins\o2k7\img\button_bg_black.png" />
+    <Content Include="tinymce\themes\advanced\skins\o2k7\img\button_bg_silver.png" />
+    <Content Include="tinymce\themes\advanced\skins\o2k7\ui.css" />
+    <Content Include="tinymce\themes\advanced\skins\o2k7\ui_black.css" />
+    <Content Include="tinymce\themes\advanced\skins\o2k7\ui_silver.css" />
+    <Content Include="tinymce\themes\advanced\source_editor.htm" />
+    <Content Include="tinymce\themes\simple\editor_template.js" />
+    <Content Include="tinymce\themes\simple\editor_template_src.js" />
+    <Content Include="tinymce\themes\simple\img\icons.gif" />
+    <Content Include="tinymce\themes\simple\langs\en.js" />
+    <Content Include="tinymce\themes\simple\langs\zh.js" />
+    <Content Include="tinymce\themes\simple\skins\default\content.css" />
+    <Content Include="tinymce\themes\simple\skins\default\ui.css" />
+    <Content Include="tinymce\themes\simple\skins\o2k7\content.css" />
+    <Content Include="tinymce\themes\simple\skins\o2k7\img\button_bg.png" />
+    <Content Include="tinymce\themes\simple\skins\o2k7\ui.css" />
+    <Content Include="tinymce\tiny_mce.js" />
+    <Content Include="tinymce\tiny_mce_popup.js" />
+    <Content Include="tinymce\tiny_mce_src.js" />
+    <Content Include="tinymce\utils\editable_selects.js" />
+    <Content Include="tinymce\utils\form_utils.js" />
+    <Content Include="tinymce\utils\mctabs.js" />
+    <Content Include="tinymce\utils\validate.js" />
+    <Content Include="WebServices\WebServicesAboutGetTimeStamp.asmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\base.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\rewriteUrl.config" />
+    <Content Include="Config\static.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="MasterPage\BBSindex.master" />
+    <Content Include="MasterPage\CourseInfoForCommon.master" />
+    <Content Include="MasterPage\CourseInfoForStudent.master" />
+    <Content Include="MasterPage\CourseInfoForTeacher.master" />
+    <Content Include="MasterPage\FrameManage.master" />
+    <Content Include="MasterPage\ViewExperimentResources.master" />
+    <Content Include="MasterPage\ViewSchoolworkNotify.master" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\USTA.BaseHttpHandler\USTA.BaseHttpHandler.csproj">
+      <Project>{78A930B8-CB83-4AA9-A1C0-868D6D5996CC}</Project>
+      <Name>USTA.BaseHttpHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.BaseHttpModule\USTA.BaseHttpModule.csproj">
+      <Project>{F8A3BBE4-7F83-4CD3-AD88-B8A7C95C28DE}</Project>
+      <Name>USTA.BaseHttpModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.Bll\USTA.Bll.csproj">
+      <Project>{F9F344F6-63CC-4CF8-9040-3F5C3F355EE9}</Project>
+      <Name>USTA.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.Cache\USTA.Cache.csproj">
+      <Project>{4749EFE5-594F-461A-B57B-A804E95672C1}</Project>
+      <Name>USTA.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.Common\USTA.Common.csproj">
+      <Project>{79EEDF90-597F-4555-ACA9-1C4B978C8054}</Project>
+      <Name>USTA.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.Controls\USTA.Controls.csproj">
+      <Project>{6B5E600C-8ABB-4836-8AFE-0740DFF4DF73}</Project>
+      <Name>USTA.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.Dal\USTA.Dal.csproj">
+      <Project>{E4227592-8963-45BD-81B4-FA8395BE79F2}</Project>
+      <Name>USTA.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.Model\USTA.Model.csproj">
+      <Project>{9292801F-43F9-4BF8-ACD4-17F098978844}</Project>
+      <Name>USTA.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.PageBase\USTA.PageBase.csproj">
+      <Project>{00FB00EF-2B1E-4639-B86B-F216ECC5CA23}</Project>
+      <Name>USTA.PageBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USTA.WebServices\USTA.WebServices.csproj">
+      <Project>{81030C4B-EEAE-4EE2-B947-B76240095C1F}</Project>
+      <Name>USTA.WebServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ashx\ajaxUpload.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ashx\upload_json.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ashx\LoginOut.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Teacher\Ashx\BatchDownloadFiles.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Teacher\UploadScore.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Teacher\OutputEnglishExamSignUpExcel.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Administrator\OutputAllEnglishExamSignUpExcel.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Administrator\EnglishExamSignUpExcel\template.xls" />
+    <Content Include="Administrator\OutPutNormExcel.ashx" />
+    <Content Include="Administrator\OutputGradeCheckExcel.ashx" />
+    <Content Include="Administrator\OutPutTeacherSalaryExcel.ashx" />
+    <Content Include="Administrator\OutPutSalaryEntryExcel.ashx" />
+    <Content Include="Config\EmailTemplate\EnglishExam.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Administrator\OutputGradeCheckApplyExcel.ashx" />
+    <Content Include="Administrator\OutputExamSeatArrange.ashx" />
+    <None Include="Teacher\EnglishExamSignUpExcel\template.xls" />
+    <Content Include="Teacher\OutPutTeacherSalaryExcel.ashx" />
+    <Content Include="Teacher\OutPutSalaryEntryExcel.ashx" />
+    <Content Include="Teacher\OutPutProjectExcel.ashx" />
+    <Content Include="Teacher\OutPutProjectReimExcel.ashx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>36672</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://219.219.220.140/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

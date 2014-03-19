@@ -1,0 +1,625 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn">    <!--[if !IE]>|xGv00|0a5eab548cf46aeb54d65332e24448a4<![endif]-->    <head>        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />        <meta http-equiv="Content-Language" content="zh-cn" />        <meta name="robots" content="all" />        <meta name="author" content="Tencent-ISRD" />        <meta name="Copyright" content="Tencent" />        <meta name="Description" content="腾讯旗下站点：QQ团购，您最值得信赖的精品消费团购站点！为您精心搜罗餐厅、酒吧、KTV、SPA、瑜伽、美容美发等各行业特色商家，凑够最低团购人数就能享受超级无敌折扣…" />        <meta name="Keywords" content="团购，QQ团购，腾讯团购，优惠，打折，深圳团购，深圳团购网站，重庆团购，重庆团购网站，上海团购，上海团购网站，北京团购，北京团购网站" />        <title>QQ团购--让生活多一点期待</title>        <link rel="Shortcut Icon" href="http://imgcache.qq.com/ac/club/tuangou/favicon.ico" type="image/x-icon" />        <script type="text/javascript" src="http://imgcache.qq.com/club/portal_new/js/tuan/speedtest.js"></script>                <script type="text/javascript">            SpeedReport.pageFlag = 99;            SpeedReport.init();            SpeedReport.start('diyCss');            SpeedReport.start('onload');			SpeedReport.start('zabodyOnload');                        SpeedReport.start('firstSc');                    </script>		<!--[if IE 6]><script type="text/javascript">try{document.execCommand('BackgroundImageCache',false,true);}catch(e){}</script><![endif]-->                <link rel="stylesheet" rev="stylesheet" href="http://imgcache.qq.com/vipstyle/tuan_v2/css/tuangou/search.css?" type="text/css" media="screen" />                		        <script type="text/javascript">SpeedReport.end('diyCss');SpeedReport.start('diyJs');</script>                <script type="text/javascript">SpeedReport.end('diyJs');SpeedReport.start('qqVipJs');</script>        <script type="text/javascript" src="http://imgcache.qq.com/ac/club/qqvip/v2.0/qqviplib_2.0.0.js"></script>        <script type="text/javascript">SpeedReport.end('qqVipJs');SpeedReport.start('globalJs');</script>        <script type="text/javascript" src="http://imgcache.qq.com/club/portal_new/js/tuan/global.js?v=20111026.js"></script>        <script type="text/javascript">SpeedReport.end('globalJs');SpeedReport.start('tuanJs');</script>        <script type="text/javascript" src="http://imgcache.qq.com/club/portal_new/js/tuan/tuan.js?v=20111027.js"></script>        <script type="text/javascript">SpeedReport.end('tuanJs');</script>        <!--//万圣活动页面定制样式开关，后可删除-->		<script type="text/javascript" src="http://imgcache.qq.com/vipstyle/tuan_v2/flash/swfobjectopt.js"></script>    </head>    <body onload="SpeedReport.end('zabodyOnload');">                <div class="pop_subscribe" id="pop_subscribe" style="display:none; left:50%; margin-left:-350px; top:19%;">          <div class="mod_pop_gd_hd">            <h3 class="hide">订阅每日推荐</h3>                <button type="button" title="关闭弹出层" onclick="closePop();" >关闭</button>          </div>          <div class="mod_pop_gd_bd">            <h4 class="hide">快来订阅QQ团购最新最热资讯！</h4>            <div class="mod_pop_sub">              <div class="sub_city">                    <label>选择城市：</label>                    <div id="subscribe_city_widget" class="bor">                        <input type="text" id="subscribe_city" value="全国" class="" readonly />                        <input type="hidden" id="subscribe_city_real" value="quanguo" />                        <span class="sub"></span>                        <div id="subscribe_city_list" class="mod_list_city" style="display:none;"></div>                    </div>              </div>              <p id="p_sub_mail" style="display:none;" ><input type="checkbox" id="check_sub_mail" class="check" /> 订阅邮件</p>              <div id="p_sub_paipai" style="display:none;">              <p><input type="checkbox" id="check_sub_paipai" class="check" /> 订阅拍拍每日精选（通过QQ发送消息给您）</p>              <p><a href="http://www.paipai.com/promote/aio/aio_order.shtml?showIndex=1?ptag=30597.12.1" class="link_pai" target="_blank">什么是拍拍每日精选>></a></p>              </div>              <button class="subscribe" onclick="jointSub();" ><a class="btn3_tx_4">立即订阅</a></button>              <button class="no_subscribe" onclick="closePop();" ><a class="btn3_tx_4">不订阅</a></button>            </div>            <div class="pop_subscribe_info">              <h4 class="hide">QQ团购是什么？</h4>              <p class="tips">优质实惠资源集中地，轻松三步让您成为时尚达人，享受品质都市生活！</p>              <ul>                <li class="process1"><strong>第1步：</strong>查看今日团购</li>                <li class="process2"><strong>第2步：</strong>付款成功，获得团购凭证</li>                <li class="process3"><strong>第3步：</strong>持团购凭证消费</li>              </ul>            </div>          </div>        </div>                <div class="wrapper">            <script type="text/javascript">                <!--                try {QZFL.event.addEvent(document.body, 'click', clickEngine);} catch (v) {}                -->            </script>            	
+	<div class="vip_top">
+	<div id="toolbar_gb" class="mod_toolbar_gb">
+		<div class="mod_toolbar_gb_con grid_c1">
+			<ul class="tuan_nav">
+								<li><a href="javascript:openLogin(2,'http://tuan.qq.com/my');" pgv="FUNCTION.HEADER.MY" title="我的团购">我的团购</a></li>
+								<li><a href="/quanguo/deals" pgv="FUNCTION.HEADER.HISTORY" title="往期团购" target="_blank">往期团购</a></li>
+				<li><a href="http://tuan.qq.com/learn" pgv="FUNCTION.HEADER.HELP" title="帮助" target="_blank">帮助</a></li>
+			</ul>
+			<div class="mod_userinfo" id="mod_userinfo">
+				<p >您还未登录，请<a href="#" pgv="FUNCTION.HEADER.LOGIN" title="登录" class="mod_userinfo_login" onclick="openLogin(2);return false;"><span>登录</span></a></p>
+			</div>
+			<ul class="pop_vip_service">
+				<li><a href="http://vip.qq.com/" pgv="FUNCTION.HEADER.QQVIP"  target="_blank">QQ会员</a></li>
+				<li><a href="http://piao.qq.com/dianying/index.html?pvsrc=1032" pgv="FUNCTION.HEADER.QQMOVIE" target="_blank">QQ电影</a></li>
+				<li><a href="http://go.qq.com/" pgv="FUNCTION.HEADER.QQGO" target="_blank">QQ旅游</a></li>
+				<li><a href="http://meishi.qq.com/" pgv="FUNCTION.HEADER.QQMEISHI" target="_blank">QQ美食</a></li>
+				<li><a href="http://fanli.qq.com/" pgv="FUNCTION.HEADER.QQFANLI" target="_blank">QQ返利</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="vip_header">
+	<div class="grid_c1 re_pos top_activity">
+		<div class="logo">
+			<h1><a href="/quanguo" pgv="FUNCTION.CITY.LOGO" title="QQ团购" class="ab_pos"></a></h1>
+			<h2 class="hide">每天一团超低折扣消费</h2>
+		</div>
+		<div class="mod_nav_gd ab_pos">
+			<h2 class="hide">QQ团购导航</h2>
+			<map id="map">
+				
+												<ul class="first">					
+										<li class="current">
+						<a pgv="FUNCTION.TAB.INDEX;[PAGE].TAB" href="/quanguo/deal/search/?channelid=1" title="首页"  id="v:nav_1">
+						<span>首页</span>
+						</a>
+					</li>
+									</ul>
+								<span class="sp_line">&nbsp;</span>				<ul >					
+										<li >
+						<a pgv="FUNCTION.TAB.ONLINE;[PAGE].TAB" href="/quanguo/deal/search/?channelid=14" title="商品"  id="v:nav_14">
+						<span>商品</span>
+						</a>
+					</li>
+										<li >
+						<a pgv="FUNCTION.TAB.TRAVEL;[PAGE].TAB" href="/quanguo/deal/search/?channelid=16" title="旅游"  id="v:nav_16">
+						<span>旅游</span>
+						</a>
+					</li>
+										<li >
+						<a pgv="FUNCTION.TAB.HOTEL;[PAGE].TAB" href="/quanguo/deal/search/?channelid=17" title="酒店"  id="v:nav_17">
+						<span>酒店</span>
+						</a>
+					</li>
+									</ul>
+								<span class="sp_line">&nbsp;</span>				<ul >					
+										<li >
+						<a pgv="FUNCTION.TAB.MIAOSHA;[PAGE].TAB" href="/quanguo/miaosha/" title="秒杀"  id="v:nav_41">
+						<span>秒杀</span>
+						</a>
+					</li>
+										<li >
+						<a pgv="FUNCTION.TAB.CHOUJIANG;[PAGE].TAB" href="/quanguo/choujiang/" title="抽奖"  id="v:nav_42">
+						<span>抽奖</span>
+						</a>
+					</li>
+										<li >
+						<a pgv="FUNCTION.TAB.HUODONG;[PAGE].TAB" href="/quanguo/huodong/" title="活动"  id="v:nav_43">
+						<span>活动</span>
+						</a>
+					</li>
+									</ul>
+				
+				<ul class="nav_main">
+															<li><a href="javascript:openLogin(2,'http://tuan.qq.com/my');" pgv="FUNCTION.TAB.MY;[PAGE].TAB" title="我的团购"><span>我的团购</span></a></li>
+														</ul>
+			</map>
+		</div>
+
+				<div class="mod_city_select_gb">
+			<h2 class="hide">选择团购城市</h2>
+			<div id="v:change_city" class="current_city">
+				<strong>全国</strong>
+				<span class="sub"></span>
+			</div>
+			<div class="mod_list_city" id="v:city_list" style="display:none"></div>
+			<iframe id="v:iframe_mask_city" src="##" frameborder="0" scrolling="no" class="iframe_mask_city" style="display:none;"></iframe>
+			<p class="tips" id="v:city_tips" style="display: none">您是不是在<span>上海</span>?请进入<a href="#">上海站 &gt;&gt;</a></p>
+		</div>
+		
+		<form onsubmit="window.location.href = '/quanguo/deal/search?displayclass=1&key=' + escape(this.key.value); return false;">
+			  <div class="mod_search_gb">
+				<div class="sub_mail">
+					<a href="#" pgv="FUNCTION.SUBSCRIBE.SELECT" onclick="NavMailSub();return false;">订阅每日团购</a>
+				</div>
+                <div class="light_tuan">
+                    <a pgv="FUNCTION.HEADER.IMPLATE" target="_blank" href="/huodong/icon">点亮团购图标</a>
+                </div>
+																
+			</div>
+		</form>
+        <a href="http://tuan.qq.com/huodong/c/7/" class="act_activity" style="background:url('http://imgcache.qq.com/vipstyle/tuan_v2/img/tuangou/act/act_hallowmas/bg_top_hw.jpg') no-repeat;" target="_blank" pgv="AD.HEADER.HALLOWMAS;[PAGE].HEADAD" title ="万圣节活动"></a>	</div>
+</div>
+
+
+  <!-- 为万圣节活动调出flash 放置层 开始 -->
+  <div id="hallownase_flash" class="mod_pop_gd_v3" style="width:964px; margin-left:-205px; left:32%; top:20%; display:none;">
+      <div class="mod_pop_wrap">       
+          <div class="bd_pop_gb" style="padding:0;">          
+              <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="960" height="500">
+                  <param name="movie" value="http://imgcache.qq.com/vipstyle/tuan_v2/flash/header.swf" />
+                  <param name="quality" value="high" />
+                  <param name="wmode" value="transparent" />
+                  <param name="swfversion" value="6.0.65.0" />
+                  <!-- 此 param 标签提示使用 Flash Player 6.0 r65 和更高版本的用户下载最新版本的 Flash Player。如果您不想让用户看到该提示，请将其删除。 -->
+                  <param name="expressinstall" value="Scripts/expressInstall.swf" />
+                  <param name="AllowScriptAccess" value="always" />
+                  <!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 -->
+                  <!--[if !IE]>-->
+                  <object type="application/x-shockwave-flash" data="http://imgcache.qq.com/vipstyle/tuan_v2/flash/header.swf" width="960" height="500">
+                      <!--<![endif]-->
+                      <param name="quality" value="high" />
+                      <param name="wmode" value="transparent" />
+                      <param name="swfversion" value="6.0.65.0" />
+                      <param name="expressinstall" value="http://mat1.gtimg.com/2010/js/expressInstall.swf" />
+                      <param name="AllowScriptAccess" value="always" />
+                      <!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 -->
+                      <div>
+                          <h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4>
+                          <p><a href="http://www.adobe.com/go/getflashplayer">获取 Adobe Flash Playe</a></p>
+                      </div>
+                      <!--[if !IE]>-->
+                  </object>
+                  <!--<![endif]-->
+              </object> 					 
+          </div>
+      </div>
+  </div>
+		
+<!-- 为万圣节活动调出flash 放置层 结束 -->
+            
+<div class="pop_show_email">
+	<div class="mod_pop_gd_v2" id="mailtip_success" name="TUAN_DIVTIP" style="display:none; left:50%; top:20%; margin-left:-240px; width:480px;">
+		<div class="hd_pop_gb">
+			<h3 id="mail_tip_window" >邮件订阅</h3>
+			<button type="button" title="关闭" id="mail_tip_close">关闭</button>
+		</div>
+		<div class="bd_pop_gb">
+			<div class="info_success">
+				<p class="c_tx1 fs_tx1 sty_tx1" id="mail_tip_title"></p>
+				<p id="mail_tip_content"></p>
+				<p class="c_tx1" id="mail_tip_help"></p>
+			</div>
+		</div>
+		<div class="ft_pop_gb">
+			<button type="button" class="btn_tx2" id="mail_tip_button">确定</button>
+		</div>
+	</div>
+
+	<div class="mod_pop_gd_v2" id="mailtip_fail" name="TUAN_DIVTIP" style="display:none; left:50%; top:30%; margin-left:-200px; width:400px;">
+		<div class="hd_pop_gb">
+			<h3>温馨提示</h3>
+			<button type="button" title="关闭" id="mailtip_fail_close" onclick="if(needReload){reloadPage();}else{hideDiv('mailtip_fail');}">关闭</button>
+		</div>
+		<div class="bd_pop_gb">
+			<div class="info_alert">
+				<p class="c_tx1 fs_tx1 sty_tx1" id="mailtip_fail_title">激活失败！</p>
+				<p id="mailtip_fail_content">您的订阅没有成功，请稍后尝试！</p>
+			</div>
+		</div>
+		<div class="ft_pop_gb">
+			<button type="button" class="btn_tx2" id="mailtip_fail_ok" onclick="if(needReload){reloadPage();}else{hideDiv('mailtip_fail');}">确定</button>
+		</div>
+	</div>
+	<div class="mod_pop_gd_v3" id="mail_unsub_tip" name="TUAN_DIVTIP" style="display:none; width:510px; margin-left:-255px; left:50%; top:20%;">
+      <div class="mod_pop_wrap">
+        <div class="hd_pop_gb">
+          <h3>温馨提示</h3>
+          <button type="button" title="关闭" id="mail_unsub_tip_close">关闭</button>
+        </div>
+        <div class="bd_pop_gb">
+          <div class="info_success">
+            <h4>邮件退订成功！</h4>
+            <p>您不会收到每日团购信息了。</p>
+          </div>
+          <div class="order_mail_again">
+            <h4>还想再次订阅？</h4>
+            <ul>
+              <li>
+                <label><span>邮件地址：</span>
+                <input type="text" id="mail_unsub_tip_mbox" value="" />
+                </label>
+              </li>
+              <li>
+                <label><span>选择您的城市：</span>
+                <select id="mail_unsub_tip_city">
+                  <option value="shenzhen">深圳</option><option value="shanghai">上海</option><option value="beijing">北京</option><option value="chongqing">重庆</option><option value="guangzhou">广州</option><option value="wuhan">武汉</option><option value="tianjin">天津</option><option value="nanjing">南京</option><option value="chengdu">成都</option><option value="xian">西安</option><option value="zhengzhou">郑州</option><option value="xiamen">厦门</option><option value="fuzhou">福州</option><option value="dalian">大连</option><option value="qingdao">青岛</option><option value="nanchang">南昌</option><option value="shijiazhuang">石家庄</option><option value="changsha">长沙</option><option value="hangzhou">杭州</option><option value="jinan">济南</option><option value="haerbin">哈尔滨</option><option value="suzhou">苏州</option><option value="quanguo" selected="selected">全国</option><option value="xianggang">香港</option><option value="aomen">澳门</option><option value="baoding">保定</option><option value="baotou">包头</option><option value="changchun">长春</option><option value="changzhou">常州</option><option value="dongguan">东莞</option><option value="daqing">大庆</option><option value="foshan">佛山</option><option value="guiyang">贵阳</option><option value="hefei">合肥</option><option value="haikou">海口</option><option value="huhehaote">呼和浩特</option><option value="hengyang">衡阳</option><option value="huizhou">惠州</option><option value="jiaxing">嘉兴</option><option value="kunming">昆明</option><option value="lasa">拉萨</option><option value="lanzhou">兰州</option><option value="liuzhou">柳州</option><option value="luoyang">洛阳</option><option value="nanning">南宁</option><option value="ningbo">宁波</option><option value="nantong">南通</option><option value="qinhuangdao">秦皇岛</option><option value="quanzhou">泉州</option><option value="shenyang">沈阳</option><option value="shaoxing">绍兴</option><option value="shantou">汕头</option><option value="taiyuan">太原</option><option value="tangshan">唐山</option><option value="taizhou">泰州</option><option value="taibei">台北</option><option value="wuxi">无锡</option><option value="wulumuqi">乌鲁木齐</option><option value="wenzhou">温州</option><option value="weifang">潍坊</option><option value="wuhu">芜湖</option><option value="xuzhou">徐州</option><option value="xining">西宁</option><option value="yangzhou">扬州</option><option value="yinchuan">银川</option><option value="yantai">烟台</option><option value="yancheng">盐城</option><option value="yueyang">岳阳</option><option value="zhongshan">中山</option><option value="zhuhai">珠海</option><option value="zhenjiang">镇江</option><option value="zhangjiakou">张家口</option><option value="zhanjiang">湛江</option><option value="bengbu">蚌埠</option><option value="jinjiang">晋江</option><option value="zhuzhou">株洲</option><option value="hanzhong">汉中</option><option value="datong">大同</option><option value="xiangyang">襄阳</option><option value="yichang">宜昌</option><option value="huaian">淮安</option><option value="weinan">渭南</option><option value="baoji">宝鸡</option><option value="zhangzhou">漳州</option><option value="anshan">鞍山</option><option value="yuncheng">运城</option><option value="zibo">淄博</option><option value="lishui">丽水</option><option value="mianyang">绵阳</option><option value="xinxiang">新乡</option><option value="fushun">抚顺</option><option value="jinhua">金华</option><option value="taian">泰安</option><option value="linyi">临沂</option><option value="jiujiang">九江</option><option value="ganzhou">赣州</option><option value="jieyang">揭阳</option><option value="chaozhou">潮州</option><option value="putian">莆田</option><option value="abazhou">阿坝州</option><option value="leshan">乐山</option><option value="sanya">三亚</option><option value="lijiang">丽江</option><option value="guilin">桂林</option><option value="zhangjiajie">张家界</option><option value="xinyang">信阳</option><option value="huangshan">黄山</option><option value="chifeng">赤峰</option><option value="xishuangbanna">西双版纳</option><option value="linfen">临汾</option><option value="maoming">茂名</option><option value="tz">台州</option><option value="shiyan">十堰</option>                </select>
+                </label>
+              </li>
+            </ul>
+            <p id="mail_unsub_tip_qqmail" style="display:none">温馨提示：如果您想使用QQ邮箱订阅，请直接点击 <a href="javascript:void(0);" class="c_tx3" onclick="subQQMail(1,$('mail_unsub_tip_city').value);">QQ邮箱订阅</a></p>
+          </div>
+        </div>
+        <div class="ft_pop_gb">
+          <button type="button" class="btn_tx2 subMail">订阅</button>
+        </div>
+      </div>
+    </div>
+	<div class="mod_pop_gd_v2" id="mail_unsub_tip_unlogin" name="TUAN_DIVTIP" style="display:none; left:50%; top:30%; margin-left:-200px; width:400px;">
+		<div class="hd_pop_gb">
+			<h3>温馨提示</h3>
+			<button type="button" id="mail_unsub_tip_close_unlogin" >关闭</button>
+		</div>
+		<div class="bd_pop_gb">
+			<div class="info_success">
+				<p class="c_tx1 sty_tx1 single_row">邮件退订成功！您不会收到每日团购信息了。</p>
+			</div>
+		</div>
+		<div class="ft_pop_gb">
+			<button type="button" class="btn_tx2" id="mailtip_unsub_unlogin_ok" >确定</button>
+		</div>
+	</div>
+	<div class="mod_pop_gd_v3" id="mail_sub_tip" name="TUAN_DIVTIP" style="display:none; width:510px; margin-left:-255px; left:50%; top:20%;">
+      <div class="mod_pop_wrap">
+        <div class="hd_pop_gb">
+          <h3>邮件订阅</h3>
+          <button type="button" title="关闭" id="mail_sub_tip_close" onclick="hideDiv('mail_sub_tip');">关闭</button>
+        </div>
+        <div class="bd_pop_gb bd_gb">
+          <div class="order_mail_again mail_again_1">
+            <ul>
+              <li>
+                <label><span>邮件地址：</span>
+                <input type="text" value="" id="mail_sub_tip_mbox" />
+                </label>
+              </li>
+              <li>
+                <label><span>选择您的城市：</span>
+                <select id="mail_unsub_tip_city">
+                  <option value="shenzhen">深圳</option><option value="shanghai">上海</option><option value="beijing">北京</option><option value="chongqing">重庆</option><option value="guangzhou">广州</option><option value="wuhan">武汉</option><option value="tianjin">天津</option><option value="nanjing">南京</option><option value="chengdu">成都</option><option value="xian">西安</option><option value="zhengzhou">郑州</option><option value="xiamen">厦门</option><option value="fuzhou">福州</option><option value="dalian">大连</option><option value="qingdao">青岛</option><option value="nanchang">南昌</option><option value="shijiazhuang">石家庄</option><option value="changsha">长沙</option><option value="hangzhou">杭州</option><option value="jinan">济南</option><option value="haerbin">哈尔滨</option><option value="suzhou">苏州</option><option value="quanguo" selected="selected">全国</option><option value="xianggang">香港</option><option value="aomen">澳门</option><option value="baoding">保定</option><option value="baotou">包头</option><option value="changchun">长春</option><option value="changzhou">常州</option><option value="dongguan">东莞</option><option value="daqing">大庆</option><option value="foshan">佛山</option><option value="guiyang">贵阳</option><option value="hefei">合肥</option><option value="haikou">海口</option><option value="huhehaote">呼和浩特</option><option value="hengyang">衡阳</option><option value="huizhou">惠州</option><option value="jiaxing">嘉兴</option><option value="kunming">昆明</option><option value="lasa">拉萨</option><option value="lanzhou">兰州</option><option value="liuzhou">柳州</option><option value="luoyang">洛阳</option><option value="nanning">南宁</option><option value="ningbo">宁波</option><option value="nantong">南通</option><option value="qinhuangdao">秦皇岛</option><option value="quanzhou">泉州</option><option value="shenyang">沈阳</option><option value="shaoxing">绍兴</option><option value="shantou">汕头</option><option value="taiyuan">太原</option><option value="tangshan">唐山</option><option value="taizhou">泰州</option><option value="taibei">台北</option><option value="wuxi">无锡</option><option value="wulumuqi">乌鲁木齐</option><option value="wenzhou">温州</option><option value="weifang">潍坊</option><option value="wuhu">芜湖</option><option value="xuzhou">徐州</option><option value="xining">西宁</option><option value="yangzhou">扬州</option><option value="yinchuan">银川</option><option value="yantai">烟台</option><option value="yancheng">盐城</option><option value="yueyang">岳阳</option><option value="zhongshan">中山</option><option value="zhuhai">珠海</option><option value="zhenjiang">镇江</option><option value="zhangjiakou">张家口</option><option value="zhanjiang">湛江</option><option value="bengbu">蚌埠</option><option value="jinjiang">晋江</option><option value="zhuzhou">株洲</option><option value="hanzhong">汉中</option><option value="datong">大同</option><option value="xiangyang">襄阳</option><option value="yichang">宜昌</option><option value="huaian">淮安</option><option value="weinan">渭南</option><option value="baoji">宝鸡</option><option value="zhangzhou">漳州</option><option value="anshan">鞍山</option><option value="yuncheng">运城</option><option value="zibo">淄博</option><option value="lishui">丽水</option><option value="mianyang">绵阳</option><option value="xinxiang">新乡</option><option value="fushun">抚顺</option><option value="jinhua">金华</option><option value="taian">泰安</option><option value="linyi">临沂</option><option value="jiujiang">九江</option><option value="ganzhou">赣州</option><option value="jieyang">揭阳</option><option value="chaozhou">潮州</option><option value="putian">莆田</option><option value="abazhou">阿坝州</option><option value="leshan">乐山</option><option value="sanya">三亚</option><option value="lijiang">丽江</option><option value="guilin">桂林</option><option value="zhangjiajie">张家界</option><option value="xinyang">信阳</option><option value="huangshan">黄山</option><option value="chifeng">赤峰</option><option value="xishuangbanna">西双版纳</option><option value="linfen">临汾</option><option value="maoming">茂名</option><option value="tz">台州</option><option value="shiyan">十堰</option>                </select>
+                </label>
+              </li>
+            </ul>
+            <p id="mail_sub_tip_qqmail" style="display:none">温馨提示：如果您想使用QQ邮箱订阅，请直接点击 <a href="javascript:void(0);" class="c_tx3" onclick="subQQMail(1,$('mail_unsub_tip_city').value);">QQ邮箱订阅</a></p>
+          </div>
+        </div>
+        <div class="ft_pop_gb">
+          <button type="button" class="btn_tx2 subMail">订阅</button>
+        </div>
+      </div>
+    </div>
+	<div class="mod_pop_gd_v2" id="v:unsub_confirm_div" name="TUAN_DIVTIP" style="display:none; left:50%; top:20%; margin-left:-210px; width:420px;">
+		<div class="hd_pop_gb">
+			<h3>确认退订</h3>
+			<button type="button" title="关闭" onclick="hideDiv('v:unsub_confirm_div');">关闭</button>
+		</div>
+		<div class="bd_pop_gb">
+			<div class="info_alert">
+				<p class="single_row">您确实要退订QQ团购全国站的邮件订阅信息？</p>
+			</div>
+		</div>
+		<div class="ft_pop_gb">
+			<a href="#" class="btn_tx2" id="v:confirm_unsub">退订</a> <a href="#" class="btn_tx3" onclick="hideDiv('v:unsub_confirm_div');return false;">不退订</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+<!--
+	QZFL.event.addEvent(window,'load',function(){
+		TuanMail('mail_sub_tip',true);
+	});
+//-->
+</script>
+<!--[if !IE]>|xGv00|e400fea9e8e91f95022485d2daea4ea7<![endif]--><div style="display: none; left: 50%; top: 20%; margin-left: -240px; width: 480px; z-index: 999;" name="TUAN_DIVTIP" id="paipai_select" class="mod_pop_gd_v2">
+	<div class="hd_pop_gb">
+		<h3>每日精选订阅</h3>
+		<button title="关闭" type="button" onclick="hideDiv('paipai_select')">关闭</button>
+	</div>
+	<div class="bd_pop_gb">
+		<div class="info_success">
+			<p class="c_tx1 fs_tx1 sty_tx1">订阅成功！</p>
+			<p>您订阅了每日精选，每天打开QQ，就会收到一个闪烁的“拍”字图标，点击打开它后就能轻松浏览当天所有超值团购、最新热映电影！</p>
+		</div>
+	</div>
+	<div class="ft_pop_gb">
+		<button class="btn_tx2" type="button" onclick="hideDiv('paipai_select')">确定</button>
+	</div>
+</div>
+
+<div style="display: none; left: 50%; top: 20%; margin-left: -210px; width: 420px;" name="TUAN_DIVTIP" id="v:unsub_paipai_confirm_div" class="mod_pop_gd_v2">
+	<div class="hd_pop_gb">
+		<h3>确认退订</h3>
+		<button onclick="hideDiv('v:unsub_paipai_confirm_div')" title="关闭" type="button">关闭</button>
+	</div>
+	<div class="bd_pop_gb">
+		<div class="info_alert">
+			<p class="single_row">您确定要退订拍拍每日精选吗？</p>
+		</div>
+	</div>
+	<div class="ft_pop_gb">
+		<a id="v:confirm_paipai_unsub" class="btn_tx2" onclick="conformQuitPaipai();" href="javascript:void(0)">退订</a> <a onclick="hideDiv('v:unsub_paipai_confirm_div');return false;" class="btn_tx3" href="javascript:void(0)">不退订</a>
+	</div>
+</div>
+
+<div name="TUAN_DIVTIP" style="display: none; left: 50%; top: 20%; margin-left: -240px; width: 480px; z-index: 1999;" id="paipai_quit_div" class="mod_pop_gd_v2">
+	<div class="hd_pop_gb">
+		<h3>每日精选订阅</h3>
+		<button title="关闭" type="button" onclick="hideDiv('paipai_quit_div')">关闭</button>
+	</div>
+	<div class="bd_pop_gb">
+		<div class="info_success">
+			<p class="c_tx1 fs_tx1 sty_tx1">取消订阅成功！</p>
+			<p>订阅每日精选，每天打开QQ，就会收到一个闪烁的“拍”字图标，点击打开它后就能轻松浏览当天所有最新热映电影、超值团购！</p>
+		</div>
+	</div>
+	<div class="ft_pop_gb">
+		<button class="btn_tx2" type="button" onclick="hideDiv('paipai_quit_div')">确定</button>
+	</div>
+</div>
+
+<!-- 开发请注意：为了让代码更便于管理，首页所有的浮出层请放到pop_show标签内 -->
+<div class="pop_show">
+  <div name="TUAN_DIVTIP" id="mail_pop" class="mod_pop_gd_v3" style="width:510px; margin-left:-255px; left:50%; top:20%; display:none;">
+     <div class="mod_pop_wrap">
+       <div class="hd_pop_gb">
+         <h3>想知道明天有什么团购吗？</h3>
+         <button type="button" title="关闭" onclick="hideDiv('mail_pop');">关闭</button>
+       </div>
+       <div class="bd_pop_gb order_email_gb">
+        <div class="center">
+        	<div id="mail_dingyue"><p class="successful"><strong>您已经成功订阅团购邮件：</strong></p><p>请登录QQ邮箱查看订阅邮件， <a href="javascript:void(0)" pgv="FUNCTION.SUBSCRIBE.CANCEL_MAIL" id="v:unsub_mail">取消订阅</a></p></div>
+		    <div id="paipai_dingyue"><p>您已订阅每日精选，打开QQ就能收到团购资讯，<a onclick="getBookingInfo(2, 'updatePaiPaiInfo');return false;" pgv="FUNCTION.SUBSCRIBE.CANCEL_PAIPAI" href="javascript:void(0);">取消订阅</a></p></div>
+        </div>
+       </div>
+     </div>
+   </div>
+</div>
+
+<script type="text/javascript">
+	var currentCity = 'quanguo';
+	var citiesJson = {"abazhou":{"cnName":"\u963f\u575d\u5dde","provinceName":"\u56db\u5ddd","alpha":"S","isActive":true},"anshan":{"cnName":"\u978d\u5c71","provinceName":"\u8fbd\u5b81","alpha":"L","isActive":true},"aomen":{"cnName":"\u6fb3\u95e8","provinceName":"\u6fb3\u95e8","alpha":"A","isActive":true},"baoding":{"cnName":"\u4fdd\u5b9a","provinceName":"\u6cb3\u5317","alpha":"H","isActive":true},"baoji":{"cnName":"\u5b9d\u9e21","provinceName":"\u9655\u897f","alpha":"S","isActive":true},"baotou":{"cnName":"\u5305\u5934","provinceName":"\u5185\u8499\u53e4","alpha":"N","isActive":true},"beijing":{"cnName":"\u5317\u4eac","provinceName":"\u5317\u4eac","alpha":"B","isActive":true},"bengbu":{"cnName":"\u868c\u57e0","provinceName":"\u5b89\u5fbd","alpha":"A","isActive":true},"changchun":{"cnName":"\u957f\u6625","provinceName":"\u5409\u6797","alpha":"J","isActive":true},"changsha":{"cnName":"\u957f\u6c99","provinceName":"\u6e56\u5357","alpha":"H","isActive":true},"changzhou":{"cnName":"\u5e38\u5dde","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"chaozhou":{"cnName":"\u6f6e\u5dde","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"chengdu":{"cnName":"\u6210\u90fd","provinceName":"\u56db\u5ddd","alpha":"S","isActive":true},"chifeng":{"cnName":"\u8d64\u5cf0","provinceName":"\u5185\u8499\u53e4","alpha":"N","isActive":true},"chongqing":{"cnName":"\u91cd\u5e86","provinceName":"\u91cd\u5e86","alpha":"Z","isActive":true},"dalian":{"cnName":"\u5927\u8fde","provinceName":"\u8fbd\u5b81","alpha":"L","isActive":true},"daqing":{"cnName":"\u5927\u5e86","provinceName":"\u9ed1\u9f99\u6c5f","alpha":"H","isActive":true},"datong":{"cnName":"\u5927\u540c","provinceName":"\u5c71\u897f","alpha":"S","isActive":true},"dongguan":{"cnName":"\u4e1c\u839e","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"foshan":{"cnName":"\u4f5b\u5c71","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"fushun":{"cnName":"\u629a\u987a","provinceName":"\u8fbd\u5b81","alpha":"L","isActive":true},"fuzhou":{"cnName":"\u798f\u5dde","provinceName":"\u798f\u5efa","alpha":"F","isActive":true},"ganzhou":{"cnName":"\u8d63\u5dde","provinceName":"\u6c5f\u897f","alpha":"J","isActive":true},"guangzhou":{"cnName":"\u5e7f\u5dde","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"guilin":{"cnName":"\u6842\u6797","provinceName":"\u5e7f\u897f","alpha":"G","isActive":true},"guiyang":{"cnName":"\u8d35\u9633","provinceName":"\u8d35\u5dde","alpha":"G","isActive":true},"haerbin":{"cnName":"\u54c8\u5c14\u6ee8","provinceName":"\u9ed1\u9f99\u6c5f","alpha":"H","isActive":true},"haikou":{"cnName":"\u6d77\u53e3","provinceName":"\u6d77\u5357","alpha":"H","isActive":true},"hangzhou":{"cnName":"\u676d\u5dde","provinceName":"\u6d59\u6c5f","alpha":"Z","isActive":true},"hanzhong":{"cnName":"\u6c49\u4e2d","provinceName":"\u9655\u897f","alpha":"S","isActive":true},"hefei":{"cnName":"\u5408\u80a5","provinceName":"\u5b89\u5fbd","alpha":"A","isActive":true},"hengyang":{"cnName":"\u8861\u9633","provinceName":"\u6e56\u5357","alpha":"H","isActive":true},"huaian":{"cnName":"\u6dee\u5b89","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"huangshan":{"cnName":"\u9ec4\u5c71","provinceName":"\u5b89\u5fbd","alpha":"A","isActive":true},"huhehaote":{"cnName":"\u547c\u548c\u6d69\u7279","provinceName":"\u5185\u8499\u53e4","alpha":"N","isActive":true},"huizhou":{"cnName":"\u60e0\u5dde","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"jiaxing":{"cnName":"\u5609\u5174","provinceName":"\u6d59\u6c5f","alpha":"Z","isActive":true},"jieyang":{"cnName":"\u63ed\u9633","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"jinan":{"cnName":"\u6d4e\u5357","provinceName":"\u5c71\u4e1c","alpha":"S","isActive":true},"jinhua":{"cnName":"\u91d1\u534e","provinceName":"\u6d59\u6c5f","alpha":"Z","isActive":true},"jinjiang":{"cnName":"\u664b\u6c5f","provinceName":"\u798f\u5efa","alpha":"F","isActive":true},"jiujiang":{"cnName":"\u4e5d\u6c5f","provinceName":"\u6c5f\u897f","alpha":"J","isActive":true},"kunming":{"cnName":"\u6606\u660e","provinceName":"\u4e91\u5357","alpha":"Y","isActive":true},"lanzhou":{"cnName":"\u5170\u5dde","provinceName":"\u7518\u8083","alpha":"G","isActive":true},"lasa":{"cnName":"\u62c9\u8428","provinceName":"\u897f\u85cf","alpha":"X","isActive":true},"leshan":{"cnName":"\u4e50\u5c71","provinceName":"\u56db\u5ddd","alpha":"S","isActive":true},"lijiang":{"cnName":"\u4e3d\u6c5f","provinceName":"\u4e91\u5357","alpha":"Y","isActive":true},"linfen":{"cnName":"\u4e34\u6c7e","provinceName":"\u5c71\u897f","alpha":"S","isActive":true},"linyi":{"cnName":"\u4e34\u6c82","provinceName":"\u5c71\u4e1c","alpha":"S","isActive":true},"lishui":{"cnName":"\u4e3d\u6c34","provinceName":"\u6d59\u6c5f","alpha":"Z","isActive":true},"liuzhou":{"cnName":"\u67f3\u5dde","provinceName":"\u5e7f\u897f","alpha":"G","isActive":true},"luoyang":{"cnName":"\u6d1b\u9633","provinceName":"\u6cb3\u5357","alpha":"H","isActive":true},"maoming":{"cnName":"\u8302\u540d","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"mianyang":{"cnName":"\u7ef5\u9633","provinceName":"\u56db\u5ddd","alpha":"S","isActive":true},"nanchang":{"cnName":"\u5357\u660c","provinceName":"\u6c5f\u897f","alpha":"J","isActive":true},"nanjing":{"cnName":"\u5357\u4eac","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"nanning":{"cnName":"\u5357\u5b81","provinceName":"\u5e7f\u897f","alpha":"G","isActive":true},"nantong":{"cnName":"\u5357\u901a","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"ningbo":{"cnName":"\u5b81\u6ce2","provinceName":"\u6d59\u6c5f","alpha":"Z","isActive":true},"putian":{"cnName":"\u8386\u7530","provinceName":"\u798f\u5efa","alpha":"F","isActive":true},"qingdao":{"cnName":"\u9752\u5c9b","provinceName":"\u5c71\u4e1c","alpha":"S","isActive":true},"qinhuangdao":{"cnName":"\u79e6\u7687\u5c9b","provinceName":"\u6cb3\u5317","alpha":"H","isActive":true},"quanguo":{"cnName":"\u5168\u56fd","provinceName":"","alpha":"","isActive":true},"quanzhou":{"cnName":"\u6cc9\u5dde","provinceName":"\u798f\u5efa","alpha":"F","isActive":true},"sanya":{"cnName":"\u4e09\u4e9a","provinceName":"\u6d77\u5357","alpha":"H","isActive":true},"shanghai":{"cnName":"\u4e0a\u6d77","provinceName":"\u4e0a\u6d77","alpha":"S","isActive":true},"shantou":{"cnName":"\u6c55\u5934","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"shaoxing":{"cnName":"\u7ecd\u5174","provinceName":"\u6d59\u6c5f","alpha":"Z","isActive":true},"shenyang":{"cnName":"\u6c88\u9633","provinceName":"\u8fbd\u5b81","alpha":"L","isActive":true},"shenzhen":{"cnName":"\u6df1\u5733","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"shijiazhuang":{"cnName":"\u77f3\u5bb6\u5e84","provinceName":"\u6cb3\u5317","alpha":"H","isActive":true},"shiyan":{"cnName":"\u5341\u5830","provinceName":"\u6e56\u5317","alpha":"H","isActive":true},"suzhou":{"cnName":"\u82cf\u5dde","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"taian":{"cnName":"\u6cf0\u5b89","provinceName":"\u5c71\u4e1c","alpha":"S","isActive":true},"taibei":{"cnName":"\u53f0\u5317","provinceName":"\u53f0\u6e7e","alpha":"T","isActive":true},"taiyuan":{"cnName":"\u592a\u539f","provinceName":"\u5c71\u897f","alpha":"S","isActive":true},"taizhou":{"cnName":"\u6cf0\u5dde","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"tangshan":{"cnName":"\u5510\u5c71","provinceName":"\u6cb3\u5317","alpha":"H","isActive":true},"tianjin":{"cnName":"\u5929\u6d25","provinceName":"\u5929\u6d25","alpha":"T","isActive":true},"tz":{"cnName":"\u53f0\u5dde","provinceName":"\u6d59\u6c5f","alpha":"Z","isActive":true},"weifang":{"cnName":"\u6f4d\u574a","provinceName":"\u5c71\u4e1c","alpha":"S","isActive":true},"weinan":{"cnName":"\u6e2d\u5357","provinceName":"\u9655\u897f","alpha":"S","isActive":true},"wenzhou":{"cnName":"\u6e29\u5dde","provinceName":"\u6d59\u6c5f","alpha":"Z","isActive":true},"wuhan":{"cnName":"\u6b66\u6c49","provinceName":"\u6e56\u5317","alpha":"H","isActive":true},"wuhu":{"cnName":"\u829c\u6e56","provinceName":"\u5b89\u5fbd","alpha":"A","isActive":true},"wulumuqi":{"cnName":"\u4e4c\u9c81\u6728\u9f50","provinceName":"\u65b0\u7586","alpha":"X","isActive":true},"wuxi":{"cnName":"\u65e0\u9521","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"xiamen":{"cnName":"\u53a6\u95e8","provinceName":"\u798f\u5efa","alpha":"F","isActive":true},"xian":{"cnName":"\u897f\u5b89","provinceName":"\u9655\u897f","alpha":"S","isActive":true},"xianggang":{"cnName":"\u9999\u6e2f","provinceName":"\u9999\u6e2f","alpha":"X","isActive":true},"xiangyang":{"cnName":"\u8944\u9633","provinceName":"\u6e56\u5317","alpha":"H","isActive":true},"xining":{"cnName":"\u897f\u5b81","provinceName":"\u9752\u6d77","alpha":"Q","isActive":true},"xinxiang":{"cnName":"\u65b0\u4e61","provinceName":"\u6cb3\u5357","alpha":"H","isActive":true},"xinyang":{"cnName":"\u4fe1\u9633","provinceName":"\u6cb3\u5357","alpha":"H","isActive":true},"xishuangbanna":{"cnName":"\u897f\u53cc\u7248\u7eb3","provinceName":"\u4e91\u5357","alpha":"Y","isActive":true},"xuzhou":{"cnName":"\u5f90\u5dde","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"yancheng":{"cnName":"\u76d0\u57ce","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"yangzhou":{"cnName":"\u626c\u5dde","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"yantai":{"cnName":"\u70df\u53f0","provinceName":"\u5c71\u4e1c","alpha":"S","isActive":true},"yichang":{"cnName":"\u5b9c\u660c","provinceName":"\u6e56\u5317","alpha":"H","isActive":true},"yinchuan":{"cnName":"\u94f6\u5ddd","provinceName":"\u5b81\u590f","alpha":"N","isActive":true},"yueyang":{"cnName":"\u5cb3\u9633","provinceName":"\u6e56\u5357","alpha":"H","isActive":true},"yuncheng":{"cnName":"\u8fd0\u57ce","provinceName":"\u5c71\u897f","alpha":"S","isActive":true},"zhangjiajie":{"cnName":"\u5f20\u5bb6\u754c","provinceName":"\u6e56\u5357","alpha":"H","isActive":true},"zhangjiakou":{"cnName":"\u5f20\u5bb6\u53e3","provinceName":"\u6cb3\u5317","alpha":"H","isActive":true},"zhangzhou":{"cnName":"\u6f33\u5dde","provinceName":"\u798f\u5efa","alpha":"F","isActive":true},"zhanjiang":{"cnName":"\u6e5b\u6c5f","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"zhengzhou":{"cnName":"\u90d1\u5dde","provinceName":"\u6cb3\u5357","alpha":"H","isActive":true},"zhenjiang":{"cnName":"\u9547\u6c5f","provinceName":"\u6c5f\u82cf","alpha":"J","isActive":true},"zhongshan":{"cnName":"\u4e2d\u5c71","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"zhuhai":{"cnName":"\u73e0\u6d77","provinceName":"\u5e7f\u4e1c","alpha":"G","isActive":true},"zhuzhou":{"cnName":"\u682a\u6d32","provinceName":"\u6e56\u5357","alpha":"H","isActive":true},"zibo":{"cnName":"\u6dc4\u535a","provinceName":"\u5c71\u4e1c","alpha":"S","isActive":true}};
+
+	var hotCities = ['beijing', 'shanghai', 'guangzhou', 'shenzhen', 'chongqing', 'tianjin', 'xian', 'hangzhou', 'nanjing', 'wuhan', 'quanguo'];
+
+	QQVIP.event.addEvent(window, 'load', function() {
+		TUAN.CityList.init('#v\\:city_list', rootUrl, currentCity, citiesJson, hotCities, true);
+		TUAN.CityList.init('#subscribe_city_list', rootUrl, currentCity, citiesJson, hotCities, false);
+		$e('#subscribe_city_list').bind('click', function(evt) {
+			var el = QQVIP.event.getTarget(evt);
+			while (el) {
+				if ((el.tagName || '').toUpperCase() == 'A') {
+					break;
+				}
+				el = el.parentNode;
+			}
+			if (el) {
+				set_sub_city(el, el.href.substr(el.href.lastIndexOf('/') + 1));
+			}
+			QQVIP.event.cancelBubble(evt);
+			QQVIP.event.preventDefault(evt);
+			return false;
+		});
+
+		//订阅浮出层
+		var isHide = true;
+		$e('#subscribe_city_widget').bind('mouseover', function(evt){
+			isHide = false;
+            $e('#subscribe_city').addClass('current');
+			$e('#subscribe_city_list').show();
+		});
+		$e('#subscribe_city_widget').bind('mouseout', function(evt){
+			isHide = true;
+			setTimeout(function() {
+				if (isHide) {
+                    $e('#subscribe_city').removeClass('current');
+					$e('#subscribe_city_list').hide();
+				}
+			}, 100)
+		});
+	});
+
+	var rootUrl = 'http://tuan.qq.com';
+	var userQQ = 0;
+	var paipaikey = '9c97b53823745db63045003b73ddbe45';
+	var mcity = 'quanguo';
+	var jointType = 1;
+
+	QZFL.event.addEvent(window, 'load', function() {
+		attachSubEvent();
+	});
+
+	levent.attachOnCheckLoginFinish(function() {
+		if (QZFL.cookie.get('unsubmail') == 1) {
+			QZFL.cookie.del('unsubmail');
+			unSubMail();
+		}
+
+		//已经登录才继续订阅流程
+		if (userQQ != 0) {
+			var subType = QZFL.cookie.get('qqmailsub');
+			if (subType == 1) {
+				subQQMail(subType);
+			} else if (subType == 2) {
+				jointSub();
+			}
+		} else {
+			QZFL.cookie.del('qqmailsub')
+		}
+	});
+
+	function coverSubMail(type) {
+		getTEXT('mail_unsub', rootUrl + '/' + mcity + "/mail/unsub?r="  + Math.random(), null, function(data) {
+			try {
+				eval(data);
+			} catch (err) {
+				alert('服务忙，请稍候重试');
+				return;
+			}
+			if (RET_COMMON.retcode == 0) {
+				subQQMail(type);
+			} else {
+				showMailError("" + RET_COMMON.retcode, RET_COMMON.retdata.city);
+			}
+		}, null, "GET");
+	}
+
+	function setNote(data){
+		if(data){
+			if(data.i_ret==0){
+				switch(data.data[0]){
+					case 1:
+						$('paipai_dingyue').innerHTML = '已订阅每日精选，<a href="javascript:void(0);" onclick="showDiv(\'v:unsub_paipai_confirm_div\');" >取消订阅</a>';
+						break;
+					case 0:
+						$('paipai_dingyue').innerHTML = '还可以<a href="javascript:void(0);" onclick="return getBookingInfo(1, \'setPaipaiBooking\');" >订阅每日精选</a>，打开QQ就能收到';
+						break;
+					default:
+						break;
+				}
+			}
+		}
+		return false;
+	}
+
+	function delPaipaiMail(){
+		this.disabled="disabled";
+		var token = TUAN.Util.Token.paipaiToken();
+		MyjsLoader('http://service.paipai.com/cgi-bin/shoppingguide_modify?option=2&callback=setPaipaiBooking&aioSrc=7&key='+paipaikey+'&uin='+userQQ+'&g_tk='+token+'&_'+Math.random());
+		return false;
+	}
+
+	function conformQuitPaipai(){
+		getBookingInfo(2, 'setPaipaiBooking');
+		hideDiv('v:unsub_paipai_confirm_div');
+		showDiv('paipai_quit_div');
+		$('paipai_dingyue').innerHTML = '还可以<a href="javascript:void(0);" onclick="return getBookingInfo(1, \'setPaipaiBooking\');" >订阅每日精选</a>，打开QQ就能收到';
+	}
+
+	function bookPaipai() {
+		$('paipai_dingyue').innerHTML = '已订阅每日精选，<a href="javascript:void(0);" onclick="showDiv(\'v:unsub_paipai_confirm_div\');" >取消订阅</a>';
+	}
+
+</script>
+<!--[if !IE]>|xGv00|18d54b97a1eb7c1baeffca671319b78b<![endif]-->    <script type="text/javascript">SpeedReport.pageFlag = 12;</script>
+	<div class="vip_content">
+		<div class="grid_c1 search_wrapper">
+			<!-- 主要内容 开始 -->
+			<div class="mainbar">
+				<!-- 推广banner 开始 -->	
+				<div class="mod_banner_large" id="v:slidemask" style="display:none; ">
+					<ol id="v:slideview" class="banner_content">
+											</ol>
+					<ul id="v:slidelist" class="banner_digital">
+											</ul>
+				</div>
+				<!-- 推广banner结束 -->
+				<!-- 搜索条件选择 开始 -->
+				<div class="search_term search_term_hotel" id="v:searchBar" style="display: none;">
+					<h2 class="hide">团购分类晒选</h2>
+					<ul class="cont">
+						<li id="v:classesBar" class="search_region none_line" style="display:none;"> </li>
+						<li id="v:keyBar" class="search_region none_line" style="display:none;"> </li>
+						<li id="v:areasBar" class="search_region ie_hack" style="display:none;"> </li>
+						<li id="v:businessBar" class="search_range" style="display:none;"> </li>
+						<li id="v:mercBar" class="search_region" style="display:none;"> </li>
+					</ul>
+				</div>
+				<!-- 搜索条件选择 结束 -->
+				<!-- 搜索结果 开始 -->
+				<div class="mod_search_results">
+					<div class="mod_pagenav_top">
+						<p>
+							<span id="v:minipagingBar"> </span>
+							<span id="v:resultBar" class="results_info" style="display: none"> </span>
+						</p>
+					</div>
+					<!-- 搜索结果排序 开始 -->
+					<div class="results_sort" id="v:sortBar" style="display: none"></div>
+					<!-- 搜索结果排序 结束 -->
+					<!-- 搜索结果 搜索页 开始 -->
+					<div class="results_txt" id="v:searchResultBar" style="display: none"></div>
+					<!-- 搜索结果 搜索页  结束 -->
+				</div>
+				<!-- 搜索结果 结束 -->
+				<!-- 搜索结果内容 开始 -->
+				<div id="v:contentBar" class="search_cont">
+					<div class="loading"></div>
+				</div>
+				<!-- 搜索结果内容 结束 -->
+				<!-- 翻页 开始 -->
+				<div class="mod_pagenav_gb_v2" id="v:pagingBar"></div>
+				<!-- 翻页 结束 -->
+			</div>
+			<!-- 主要内容 结束 -->
+		</div>
+	</div>
+	
+	<div class="vip_footer">
+	<div id="bottom_tuan" class="grid_c1">
+		<div class="item what_tommrow">
+			<h4>想知道明天的团购是什么？</h4>
+			<div class="con">
+				<ul>
+					<li><h5><a href="javascript:void(0)" pgv="FUNCTION.FOOTER.SUBSCRIBE" onclick="NavMailSub();">订阅团购信息</a></h5>邮箱订阅，或每日登陆QQ自动获得</li>
+					<li><h5><a href="http://t.qq.com/QQtuangou" pgv="FUNCTION.FOOTER.WEIBO" target="_blank">收听微博</a></h5>每日团购信息登录微博获取</li>
+				</ul>
+			</div>
+		</div>
+		<div class="item what_tuan">
+			<h4>不太了解团购？</h4>
+			<div class="con">
+				<ul>
+					<li><a href="http://service.qq.com/info/47938.html" pgv="FUNCTION.FOOTER.HELP1" target="_blank">QQ团购的操作步骤介绍</a></li>
+					<li><a href="http://service.qq.com/info/47968.html" pgv="FUNCTION.FOOTER.HELP2" target="_blank">我是商家，怎么加盟QQ团购？</a></li>
+					<li><a href="http://service.qq.com/info/47949.html" pgv="FUNCTION.FOOTER.HELP3" target="_blank">在哪里查看团购凭证及有效期？</a></li>
+					<li><a href="http://service.qq.com/info/47954.html" pgv="FUNCTION.FOOTER.HELP4" target="_blank">消费QQ团购产品需要提前预约吗？</a></li>
+				</ul>
+				<p class="lk_more"><a href="http://service.qq.com/category/tuangou.html" pgv="FUNCTION.FOOTER.HELPMORE" target="_blank">查看更多&gt;&gt;</a></p>
+			</div>
+		</div>
+		<div class="item customer_service">
+			<h4>联系客服</h4>
+			<div class="con">
+				<p>客服电话：4008555666</p>
+				<p><a href="http://service.qq.com/cgi-bin/communion?sid=1915" pgv="FUNCTION.FOOTER.QUESTIONS" target="_blank">线上提问&gt;&gt;</a></p>
+			</div>
+		</div>
+		<div class="item business_cooperation">
+			<h4>商户合作</h4>
+			<div class="con">
+				<p><a href="/merc/join" pgv="FUNCTION.FOOTER.JOIN">联系我们</a></p>
+				<p><a href="/quanguo/merc/organize" pgv="FUNCTION.FOOTER.ORGANIZE">全部团购网站</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+<!--[if !IE]>|xGv00|eb36220072a10ce023a4a312fc803768<![endif]-->	
+	<script type="text/javascript">
+	<!--
+		var serverTimer = 1320047918;
+		var pageFlag = 7;
+		var areaJson = null;
+		var categoryJson = [{"id":14,"name":"\u5546\u54c1\u56e2\u8d2d","parentId":0,"sort":999985},{"id":16,"name":"\u65c5\u6e38","parentId":0,"sort":999983},{"id":17,"name":"\u9152\u5e97","parentId":0,"sort":999982},{"id":18,"name":"\u6e38\u620f\u5f69\u7968","parentId":0,"sort":999981},{"id":1400001,"name":"\u98df\u54c1","parentId":14,"sort":-400002},{"id":1400002,"name":"\u5316\u5986\u54c1","parentId":14,"sort":-400003},{"id":1400003,"name":"\u914d\u9970","parentId":14,"sort":-400004},{"id":1400004,"name":"\u5bb6\u5c45","parentId":14,"sort":-400005},{"id":1400005,"name":"\u6bcd\u5a74","parentId":14,"sort":-400006},{"id":1400006,"name":"\u6570\u7801\u7535\u5668","parentId":14,"sort":-400007},{"id":1400007,"name":"\u670d\u88c5","parentId":14,"sort":-400008},{"id":1400008,"name":"\u978b\u5305","parentId":14,"sort":-400009},{"id":1400009,"name":"\u4f18\u60e0\u5238","parentId":14,"sort":-400010},{"id":1400010,"name":"\u5176\u4ed6","parentId":14,"sort":-400011},{"id":1600001,"name":"\u95e8\u7968","parentId":16,"sort":-600002},{"id":1600002,"name":"\u5ea6\u5047\u65c5\u884c","parentId":16,"sort":-600003},{"id":1600004,"name":"\u673a\u7968\u7b7e\u8bc1","parentId":16,"sort":-600005},{"id":1600005,"name":"\u7efc\u5408\u670d\u52a1","parentId":16,"sort":-600006},{"id":1700001,"name":"\u9152\u5e97","parentId":17,"sort":-700002},{"id":1800001,"name":"\u6e38\u620f","parentId":18,"sort":-800002},{"id":1800002,"name":"\u5f69\u7968","parentId":18,"sort":-800003}];
+		var priceJson = [];
+		var renderTarget = {
+			pager: 'v\:pagingBar',
+			minipager: 'v\:minipagingBar',
+			sort: 'v\:sortBar',
+			search: 'v\:searchResultBar',
+			keys: 'v\:keyBar',
+			areas: 'v\:areasBar',
+			business: 'v\:businessBar',
+			prices: 'v\:pricesBar',
+			classes: 'v\:classesBar',
+			content: 'v\:contentBar',
+			result: 'v\:resultBar',
+			merc: 'v\:mercBar',
+			view: 'index',
+			searchUrl: '/quanguo/deal/search/',
+			itemUrl: '/quanguo/deal/show/',
+			tjParam: '?channelid=1'
+		};
+        		var filterObj = {
+			areaid: 0,
+			cityid: 24,
+			classid: 0,
+			channelid: 1,
+			property: '0',
+			displayclass: 1,
+            areasearchdepth : 1,
+			time: '1319990400t1320076799',
+			todaytime: '1319990400',
+			sortkey: '24'
+		};
+        		
+		QZFL.event.addEvent(window, 'load', function() {
+			TUAN.PGVHOT.init('GRIDS.INDEX', 'FUNCTION.PAGE.1');
+			
+			TUAN.Util.Time.setServerTime(serverTimer);
+			TUAN.SearchEngine.init(areaJson, categoryJson, priceJson, [], renderTarget, filterObj);
+			if ('1' != 0) {
+				TUAN.template.initAdvertising('1', '24', 'channel1');
+			}
+		});
+
+function r(){
+if(/in/.test(document.readyState)){
+setTimeout('r()',9);}else{
+            if(TUAN.SearchEngine.Params.isHomePage() && QZFL.cookie.get('act_hallownas_flash_flag') == '')
+            {
+                showDiv('hallownase_flash');  
+                QZFL.cookie.set('act_hallownas_flash_flag',1);
+                setTimeout(function(){
+                    hideDiv('hallownase_flash');
+                },5000);
+            }        
+}
+};
+r();
+	-->
+	</script>
+            <div class="vip_subfooter">                <p><a href="http://www.tencent.com/" target="_blank">关于腾讯</a>&nbsp;|&nbsp;<a href="http://www.tencent.com/index_e.shtml" target="_blank">About Tencent</a>&nbsp;|&nbsp;<a href="http://www.qq.com/contract.shtml" target="_blank">服务条款</a>&nbsp;|&nbsp;<a href="http://www.tencentmind.com/" target="_blank">广告服务</a>&nbsp;|&nbsp;<a href="http://hr.tencent.com" target="_blank">腾讯招聘</a>&nbsp;|&nbsp;<a href="http://service.qq.com/" target="_blank">客服中心</a>&nbsp;|&nbsp;<a href="http://www.qq.com/map/" target="_blank">网站导航</a>&nbsp;|&nbsp;<a href="http://imgcache.qq.com/tuangou/api/list.xml" target="_blank">团购导航API</a>&nbsp;|&nbsp;<a href="http://tuan.qq.com/service/clause/" target="_blank">用户服务协议</a></p>                <p>Copyright &copy; 1998-2011 Tencent. All Rights Reserved.</p>                <p>腾讯公司&nbsp;<a href="http://www.tencent.com/zh-cn/le/copyrightstatement.shtml" target="_blank">版权所有</a></p>                <p><a href="http://bcp.ec.com.cn/creditplat/alert.x?op=showCorpBCP1&amp;cbi.bcpId=BCP56894178" target="_blank" title="QQ团购已通过“中国商务平台（BCP）”信用网站认证"><img src="http://imgcache.qq.com/vipstyle/tuan_v2/images/logo_bcp.png" alt="QQ团购已通过“中国商务平台（BCP）”信用网站认证" /></a>&nbsp; &nbsp; <a href="http://search.cxwz.org/cert/l/CX20111018000606000613" target="_blank" title="首批中国电子商务诚信网站示范企业认证书：QQ团购已通过“中国电子商务协会数字服务中心”信用网站认证"><img src="http://imgcache.qq.com/vipstyle/tuan_v2/images/credit_logo.png" alt="首批中国电子商务诚信网站示范企业认证书：QQ团购已通过“中国电子商务协会数字服务中心”信用网站认证" /></a></p>            </div>            <script type="text/javascript">                <!--                QZFL.event.addEvent(window,'load',function(){                    QQVIP.lazyLoad.init({'lazyTime':0.5});                    SpeedReport.end('onload');					SpeedReport.intervalId = window.setInterval(function () {SpeedReport.report();}, 2000);                });	                loadScript('http://imgcache.qq.com/club/portal_new/js/tuan/aid.js', function(){                    AID.config({                        sTeam : 'tuangou',                        sSite : 'subsite',                        sPage : 'showsearchindex'                    });                    $e("#v\\:nav_join_club").bind('click', function(evt){                        AID.openWindow({sTag:'nav', sPayPars:'ch=self'});                    });                });                //-->            </script>        </div>    </body></html>

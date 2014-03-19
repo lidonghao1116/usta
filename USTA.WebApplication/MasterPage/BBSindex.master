@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage/FrameManage.master" AutoEventWireup="true" Inherits="MasterPage_BBSindex" Codebehind="BBSindex.master.cs" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    
+    <link type="text/css" rel="Stylesheet" href="../javascript/tab/ui.css" />
+    <link type="text/css" rel="Stylesheet" href="../javascript/thickbox.css" />
+
+    <asp:ContentPlaceHolder ID="BBSHead" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <form id="form1" runat="server"> 
+<div id="container-1" style="padding-top: 40px;">
+    <ul class="ui-tabs-nav">
+            <li id="liFragment1" runat="server"><a href="../bbs/BBSCoursesindex.aspx"><span>
+                课程相关讨论区</span></a></li>
+            <li id="liFragment2" runat="server"><a href="../bbs/BBSSpecialindex.aspx"><span>
+                专业方向讨论区</span></a></li>
+            <li id="liFragment3" runat="server"><a href="../bbs/BBSOtherindex.aspx"><span>
+                其他内容讨论区</span></a></li>
+            <li id="liFragment4" runat="server"><a href="../bbs/BBSUserinfo.aspx"><span>
+               交流区设置</span></a></li>
+        </ul>
+        
+        <asp:ContentPlaceHolder ID="BBSContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+        </form>
+</asp:Content>
+

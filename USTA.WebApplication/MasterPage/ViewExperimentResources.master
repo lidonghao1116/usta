@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPage_ViewExperimentForTeacher" 
+    MasterPageFile="~/MasterPage/FrameManage.master" Codebehind="ViewExperimentResources.master.cs" %>
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    
+    <link type="text/css" rel="Stylesheet" href="../javascript/tab/ui.css" />
+    <link type="text/css" rel="Stylesheet" href="../javascript/thickbox.css" />
+
+    
+    <asp:ContentPlaceHolder id="CouserInfoHead" runat="server" />
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <form id="form1" runat="server">    
+        <div id="container-1" style="padding-top: 10px;">
+            <div style="width:600px;border:1px solid #034F93;background:#EDEDED;margin-left:auto;margin-right:auto;clear:both;text-align:center; height:40px; line-height:40px;">
+            批阅相关课程实验 [<a href="CInfoExperimentResource.aspx?courseNo=<%=courseNo%>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>">返回课程页面</a>]
+            </div>
+             <br />
+            <ul class="ui-tabs-nav">
+            <li id="liFragment1" runat="server"><a href="VExpRExperimentReq.aspx?courseNo=<%=courseNo %>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>&experimentResourceId=<%=experimentResourceId %>"><span>
+                实验信息</span></a></li>
+            <li id="liFragment2" runat="server"><a href="VExpRExperimentSubed.aspx?courseNo=<%=courseNo %>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>&experimentResourceId=<%=experimentResourceId %>"><span>
+                上交列表</span></a></li>
+            <li id="liFragment3" runat="server"><a href="VExpRExperimentUnSubed.aspx?courseNo=<%=courseNo %>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>&experimentResourceId=<%=experimentResourceId %>"><span>
+                未上交列表</span></a></li>
+                <li id="liFragment4" runat="server" visible="false"><a href="#"><span>
+               实验批改</span></a></li>
+            </ul>
+            
+             
+        </div>
+         <asp:ContentPlaceHolder ID="CouserInfoContent" runat="server" />
+        </form>
+</asp:Content>
+
+

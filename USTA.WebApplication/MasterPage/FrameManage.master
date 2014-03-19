@@ -1,0 +1,187 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"
+    Inherits="MasterPage_FrameManage" EnableViewState="true" Codebehind="FrameManage.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server" id="masterHead">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico" />
+
+    <script type="text/javascript" src="../javascript/jquery-1.4.min.js"></script>
+
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            getTimeStamp();
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background:#CCCCCC;">
+
+        
+        <a name="top"></a>
+    <div style="width: 1024px; margin-left: auto; margin-right: auto; height: 9px; background: url(../images/topbg.gif) #FFFFFF no-repeat; background-position:top;">
+    </div>
+    <div style="width: 1024px; margin-left: auto; margin-right: auto; height: 80px; background: url(../images/top.gif?v=5.0) #FFFFFF no-repeat 20px; text-align:right; "><span style="margin-right:160px;height:80px;display:block;width:200px;float:right;line-height:100px;">当前系统版本号：<%=systemVersion %></span></div>
+    <div id="menu">
+        <ul class="navigation" id="ulAdmin" runat="server" visible="false" style="padding-left: 20px">
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Common/NotifyList.aspx">
+                首页</a>
+                <ul>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">常用功能</a>
+                <ul>
+                    <li class="noBg"><a class="li" href="../Administrator/NotifyInfoManage.aspx">文章管理</a></li>
+                    <li class="noBg"><a class="li" href="../Administrator/ArchivesManage.aspx?fragment=1">结课资料管理</a></li>
+                    <li class="noBg"><a class="li" href="../Administrator/StudentManager.aspx">学生及成绩审核管理</a></li>
+                    <li class="noBg"><a class="li" href="../Administrator/NormManager.aspx">工作量指标管理</a></li>
+                    <li class="noBg"><a class="li" href="../Administrator/SalaryManage.aspx?fragment=1">教师酬金管理</a></li>
+                    <li class="noBg"><a class="li" href="../Administrator/ProjectManager.aspx?fragment=1">项目基金管理</a></li>
+                    <li class="noBg"><a class="li" href="../Administrator/ExamSeatArrange.aspx?fragment=1">考试座位安排</a></li>
+                    <li class="noBg"><a class="li" runat="server" href="../Administrator/DrawManage.aspx?fragment=1">抽签管理</a></li>
+                    <li class="noBg"><a class="li" runat="server" id="drawAdminTeacher" visible="false" href="../Administrator/EnrollManage.aspx?fragment=2">活动管理</a></li>
+                    <li class="noBg"><a href="../Administrator/ViewFeedBack.aspx">反馈信息管理</a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">系统功能</a>
+                <ul>
+                    <li class="noBg"><a class="li" href="../Administrator/DataBaseSynchronize.aspx">数据同步</a></li>
+                    <li class="noBg"><a class="li" href="../Administrator/BaseConfig.aspx">系统设置</a></li>
+                    <li class="noBg"><a class="li" href="../Administrator/HistoryDataBak.aspx">数据备份</a></li>
+                    <li class="noBg"><a href="../Administrator/ShowUSTALogs.aspx">查看系统日志</a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">课程相关</a>
+                <ul>
+                    <li class="noBg"><a class="li" href="../Administrator/CourseManager.aspx">课程管理</a></li>
+                    <li class="noBg"><a class="li" href="../Common/ViewHistoryData.aspx">查看历史课程</a></li>
+                    <%--<li class="noBg"><a class="li" href="../Administrator/CurrentTermCourseList.aspx">期末归档管理</a></li>--%>
+                    <li class="noBg"><a href="../Administrator/ViewCourses.aspx">课程关注</a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Administrator/EnglishExamManage.aspx">
+                四六级考试管理</a>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
+                进入讨论区</a><ul>
+                    <li class="noBg"><a href="../Administrator/BbsManage.aspx">讨论区管理</a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Ashx/LoginOut.ashx" target="_top">
+                退出登录</a><ul>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navigation" id="ulTeacher" runat="server" visible="false" style="margin-left:10px;">
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Common/NotifyList.aspx">
+                首页</a><ul>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">课程相关</a>
+                <ul>
+                    <li class="noBg"><a class="li" href="../Teacher/Courses.aspx">我的任课</a></li>
+                    <li class="noBg"><a class="li" href="../Teacher/OtherCourses.aspx">其他课程</a></li>
+                    <li class="noBg"><a class="li" href="../Common/ViewHistoryData.aspx">历史课程</a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">常用功能</a>
+                <ul>
+                       <%--<li class="noBg"><a class="li" href="../Common/ViewAllTeachers.aspx">查看教师助教信息</a></li>--%>
+                     <li class="noBg" runat="server" id="myNorm" ><a class="li" href="../Teacher/NormView.aspx">查看我的工作量</a></li>
+                     <li class="noBg" runat="server" id="mySalary"><a class="li" href="../Teacher/SalaryView.aspx">查看我的薪酬</a></li>
+                     <li class="noBg" runat="server" id="englishExamManage" visible="false"><a class="li" href="../Teacher/EnglishExamManage.aspx">四六级报名管理</a></li>
+                     <li class="noBg"><a class="li" href="../Teacher/EditTeacherInfo.aspx">修改联系信息</a></li>
+                     <%if (norm_right)
+                       { %>
+                        <li class="noBg"><a class="li" href="../Teacher/NormManager.aspx">工作量查看</a></li>
+                       <%} %>
+                       <%if (salary_right)
+                         { %>
+                     <li class="noBg"><a class="li" href="../Teacher/SalaryManage.aspx">薪酬查看</a></li>
+                     <%} %>
+                     <%if (project_right)
+                       { %>
+                       <li class="noBg"><a class="li" href="../Teacher/ProjectManager.aspx">项目基金管理</a></li>
+                     <%} %>
+                     <li class="noBg"><a class="li" href="../Teacher/TeacherViewProject.aspx">项目基金查看</a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a class="li" runat="server" id="drawTeacher" visible="false" href="../Teacher/EnrollManage.aspx?fragment=2">活动管理</a>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Common/FeedBack.aspx">意见反馈</a><ul>
+                       <li class="noBg"><a class="li" href="../Common/FeedBack.aspx?fragment=2">查看意见反馈回复</a></li>
+            </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
+                进入讨论区</a><ul>
+            </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Ashx/LoginOut.ashx" target="_top">
+                退出登录</a><ul>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navigation" id="ulStudent" runat="server" visible="false" style="margin-left:25px;">
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Common/NotifyList.aspx">
+                首页</a>
+                <ul>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">课程相关</a>
+                <ul>
+                    <li class="noBg"><a class="li" href="../Student/Courses.aspx">我的课程</a></li>
+                    <li class="noBg"><a class="li" href="../Student/ExperimentsAndSchoolWorksManage.aspx?fragment=1">我的作业管理</a></li>
+                    <li class="noBg"><a class="li" href="../Student/ExperimentsAndSchoolWorksManage.aspx?fragment=2">我的实验管理</a></li>
+                    <li class="noBg"><a class="li" href="../Student/OtherCourses.aspx">其他课程</a></li>
+                    <li class="noBg"><a href="../Common/ViewHistoryData.aspx">历史课程</a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="#">常用功能</a>
+                <ul>
+                    <%--<li class="noBg"><a class="li" href="../Common/ViewAllTeachers.aspx">查看教师助教信息</a></li>--%>
+                    <li class="noBg"><a class="li" href="../bbs/BBSCoursesindex.aspx">进入讨论区</a></li>
+                    <li class="noBg"><a href="../Student/EditStudentinfo.aspx">修改联系信息</a></li>
+                </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Student/EnglishExamSignUp.aspx">四六级报名</a><ul>
+            </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Student/MyGradeCheckManage.aspx">
+                我的成绩审核管理</a><ul>
+            </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Common/FeedBack.aspx">
+                意见反馈</a><ul>
+            </ul>
+            </li>
+            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Ashx/LoginOut.ashx" target="_top">
+                退出登录</a><ul>
+                </ul>
+            </li>
+        </ul><span id="user" runat="server"></span>
+        </div>
+<%--         <div style="width: 1024px; clear: both; margin-left: auto; margin-right: auto; background: #FFFFFF; text-align:center;">
+       <font size="5" color="red"> 系统测试期间的错误反馈，请使用菜单中的 "常用功能--意见反馈"，感谢您的使用！</font>
+        </div>--%>
+        
+    <div style="width: 1024px; clear: both; margin-left: auto; margin-right: auto; background: #FFFFFF;">
+        
+    <div id="getTimeStamp">获取当前教学周信息中...</div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div style="width: 1024px; height: 35px; line-height: 35px; border-top: 1px solid #CCCCCC;
+        text-align: center; margin-left: auto; margin-right: auto; background: #FFFFFF;">
+        <asp:Label ID="lblCopyRight" runat="server" Text=""></asp:Label>
+    </div>
+    <div style="width: 1024px; margin-left: auto; margin-right: auto; height: 9px; background: url(../images/footbg.gif) #FFFFFF no-repeat; background-position:bottom;">
+    </div>
+    
+</body>
+</html>

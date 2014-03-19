@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPage_ViewSchoolworkNotify" 
+    MasterPageFile="~/MasterPage/FrameManage.master" Codebehind="ViewSchoolworkNotify.master.cs" %>
+
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="webdiyer" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    
+    <link type="text/css" rel="Stylesheet" href="../javascript/tab/ui.css" />
+    <link type="text/css" rel="Stylesheet" href="../javascript/thickbox.css" />
+    
+    <script type="text/javascript" src="../javascript/validate/jquery.validate.js"></script>
+
+    <script type="text/javascript" src="../javascript/validate/cmxforms.js"></script>
+    <script type="text/javascript" >
+        var refreshcount = 0;
+        window.onload = function () {
+            if (refreshcount != 0) {
+                window.location.reload();
+            }
+        }
+    </script>
+    <asp:ContentPlaceHolder id="CouserInfoHead" runat="server" />
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <form id="form1" runat="server">    
+        <div id="container-1" style="padding-top: 10px;">
+         <div style="width:600px;border:1px solid #034F93;background:#EDEDED;margin-left:auto;margin-right:auto;clear:both;text-align:center; height:40px; line-height:40px;">
+            批阅相关课程作业<span style="color:Red">(<%=(isOnline?"在线作业":"书面作业")%>)</span>&nbsp;&nbsp;&nbsp; [<a href="CInfoSchoolworkNotify.aspx?courseNo=<%=courseNo%>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag%>">返回课程页面</a>]
+         </div>
+        <br />
+        <ul class="ui-tabs-nav">
+        <li id="liFragment1" runat="server"><a href="VSWorkNWorkReq.aspx?schoolworkNotifyId=<%=schoolworkNotifyId%>&courseNo=<%=courseNo.ToString().Trim()%>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag%>"><span>
+            作业信息</span></a></li>
+        <li id="liFragment2" runat="server"><a href="VSWorkNOnlineWorkSubed.aspx?schoolworkNotifyId=<%=schoolworkNotifyId%>&courseNo=<%=courseNo.ToString().Trim()%>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag%>"><span>
+            在线作业已上交列表</span></a></li>
+        <li id="liFragment3" runat="server"><a href="VSWorkNOnlineWorkUnSubed.aspx?schoolworkNotifyId=<%=schoolworkNotifyId%>&courseNo=<%=courseNo.ToString().Trim()%>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag%>"><span>
+            在线作业未上交列表</span></a></li>
+        <li id="liFragment4" runat="server" ><a href="VSWorkNPaperWork.aspx?schoolworkNotifyId=<%=schoolworkNotifyId%>&courseNo=<%=courseNo.ToString().Trim()%>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag%>"><span>
+            书面作业上交列表</span></a></li>
+        <li id="liFragment5" runat="server" visible="false" ><a href="#"><span>
+            作业批改</span></a></li>
+        </ul>
+            
+        </div>
+        <asp:ContentPlaceHolder ID="CouserInfoContent" runat="server" />
+    </form>
+</asp:Content>
+

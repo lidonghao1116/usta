@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterPage_CourseForCommon" 
+    MasterPageFile="~/MasterPage/FrameManage.master" Codebehind="CourseInfoForCommon.master.cs" %>
+
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="webdiyer" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    
+    <link type="text/css" rel="Stylesheet" href="../javascript/tab/ui.css" />
+    <link type="text/css" rel="Stylesheet" href="../javascript/thickbox.css" />
+
+    
+    <asp:ContentPlaceHolder id="CouserInfoHead" runat="server" />
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <form id="form1" runat="server">    
+        <div id="container-1" style="padding-top: 40px;">
+        <table width="1000px" cellpadding="0" class="mytable" cellspacing="0" align="center" style=" margin:auto; clear:both;">
+            <tr>
+                                    <th scope="col" width="20%">
+                                        课程名称
+                                    </th>
+                                    <th scope="col" width="40%">
+                                        上课时间地点
+                                    </th>
+                                    <th scope="col" width="20%">
+                                        任课教师
+                                    </th>
+                                    <th scope="col" width="20%">
+                                        助教
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="row" width="20%">
+                                    <asp:Literal ID="ltlCourseName" runat="server" Text="暂时未添加课程名称信息"></asp:Literal>(<%=classID.ToString().Trim() %>)
+                                        (<a href="/bbs/BBSTopicList.aspx?forumId=<%=courseNo.ToString().Trim()%>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termTag=<%=termtag.ToString().Trim() %>&tag=1&tagName=<%=courseName %>">进入讨论区</a>)
+                                    </td>
+                                    <td class="row" width="40%">
+                                    <asp:Literal ID="ltlLessonTimeAndAddress" runat="server" Text="暂时未添加上课时间地点信息"></asp:Literal>
+                                        
+                                    </td>
+                                    <td class="row" width="20%">
+                    <asp:Literal ID="ltlTeacherName" runat="server" Text="暂时未添加教师信息"></asp:Literal>
+                                    </td>
+                                    <td class="row" width="20%">
+                    <asp:Literal ID="ltlAssistantName" runat="server" Text="暂时未添加助教信息"></asp:Literal>
+                                    </td>
+                                </tr>
+                            </table>
+        <br />
+        <ul class="ui-tabs-nav">
+            <li id="liFragment1" runat="server"><a href="CInfoCourseIntro.aspx?courseNo=<%=courseNo %>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>"><span>
+                课程简介</span></a></li>
+            <li id="liFragment2" runat="server"><a href="CInfoCourseInfos.aspx?courseNo=<%=courseNo %>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>"><span>
+                课程信息</span></a></li>
+            <li id="liFragment3" runat="server"><a href="CInfoCourseNotify.aspx?courseNo=<%=courseNo %>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>"><span>
+                课程通知</span></a></li>
+            <li id="liFragment4" runat="server"><a href="CInfoCourseResource.aspx?courseNo=<%=courseNo %>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>"><span>
+                课程资源</span></a></li>
+            <li id="liFragment5" runat="server"><a href="CInfoCourseTeacher.aspx?courseNo=<%=courseNo %>&classID=<%=Server.UrlEncode(classID.ToString().Trim()) %>&termtag=<%=termtag %>"><span>
+                教师简介</span></a></li>
+        </ul>
+        </div>
+        <asp:ContentPlaceHolder ID="CouserInfoContent" runat="server" />
+    </form>
+</asp:Content>

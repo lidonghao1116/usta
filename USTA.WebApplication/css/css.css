@@ -1,0 +1,75 @@
+﻿
+body
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+#bottom{text-align:center;}
+#bottom *{color: #ffffff;}
+#bottom a:link {
+	color: #ffffff;
+	text-decoration: none;
+}
+#bottom a:visited {
+	text-decoration: none;
+	color: #ffffff;
+}
+#bottom a:hover {
+	text-decoration: none;
+	color: #ffffff;
+}
+#bottom a:active {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+a:hover {
+	text-decoration: none;
+	color: #000000;
+}
+a:active {
+	text-decoration: none;
+	color: #000000;
+}
+
+.input
+{
+  border-top:1px #FFFFFF solid;
+  border-bottom:1px #FFFFFF solid;
+  border-left:1px #FFFFFF solid;
+  border-right:1px #FFFFFF solid;
+}
+
+.tableBorder {
+	BORDER-RIGHT: #183789 1px solid; BORDER-TOP: #183789 1px solid; BORDER-LEFT: #183789 1px solid; BORDER-BOTTOM: #183789 1px solid; BACKGROUND-COLOR: #ffffff
+}
+
+.tableHeader {
+background: #4455AA;
+color:#FFFFFF;
+text-align:center;
+}
+
+
+.row 
+{
+	padding: 3px;
+	BACKGROUND: #f1f3f5; 	
+}
+
+.sec_menu {	BORDER-RIGHT: white 1px solid; BACKGROUND: #d6dff7; OVERFLOW: hidden; BORDER-LEFT: white 1px solid; BORDER-BOTTOM: white 1px solid
+}
+
+#error{color:Red;}
