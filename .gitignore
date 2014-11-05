@@ -37,13 +37,6 @@ x64/
 *.vssscc
 .builds
 
-# Visual C++ cache files
-ipch/
-*.aps
-*.ncb
-*.opensdf
-*.sdf
-
 # Visual Studio profiler
 *.psess
 *.vsp
@@ -91,7 +84,6 @@ AppPackages/
 # Others
 [Bb]in
 [Oo]bj
-sql
 TestResults
 [Tt]est[Rr]esult*
 #*.Cache
