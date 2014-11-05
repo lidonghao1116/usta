@@ -35,7 +35,7 @@
                     <%#int.Parse(Eval("topicUserType").ToString())<3?"<img src=\"../images/star.png\" align=\"middle\" />":"" %>
                     &nbsp;&nbsp; 发布时间：<%#Eval("updateTime") %><span style=" float:right;"><a name='post<%#Eval("topicId") %>' href='#post<%#Eval("topicId") %>'>楼主</a></span>
                   <hr style="color: #CAD9EA; margin-top: 10px; margin-bottom: 10px;" />
-                    <%#Eval("topicContent")%>
+                    <%#Regex.Replace(Eval("topicContent").ToString().Trim(), "<script", "&lt;script", RegexOptions.IgnoreCase)%>
                     <br />
                     <%#this.GetURL(Eval("attachmentIds").ToString())%>
                     <br />
@@ -54,7 +54,7 @@
                       { %><a href="BBSViewTopic.aspx?del=true&postId=<%#Eval("postId")%>&topicId=<%#Eval("topicId")%>&tag=<%=tag %>" onclick="return deleteTip();">[删除]</a>
                     <%} %>
                     <hr style="color: #CAD9EA; margin-top: 10px; margin-bottom: 10px;" />
-                    <%#Eval("postContent")%>
+                    <%#Regex.Replace(Eval("postContent").ToString().Trim(), "<script", "&lt;script", RegexOptions.IgnoreCase)%>
                     <br />
                     <%#this.GetURL(Eval("attachmentIds").ToString())%>
                     <br />

@@ -16,9 +16,8 @@
             <td class="border">
                 请选择规则所属学年：
             </td>
-            <td class="border">
-               <asp:DropDownList ID="ddlTermYear" runat="server" ClientIDMode="Static">
-            </asp:DropDownList>
+            <td class="border"><asp:CheckBoxList ID="ddlTermYears" runat="server" RepeatColumns="3">
+                </asp:CheckBoxList>
             </td>
         </tr>
         <tr>

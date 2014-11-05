@@ -29,6 +29,7 @@ public partial class MasterPage_FrameManage : CheckUserWithCommonMasterPageBase
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        BaseConfig baseconfig = CacheCollections.GetBaseConfig();
         if (!IsPostBack)
         {
             
@@ -110,10 +111,8 @@ public partial class MasterPage_FrameManage : CheckUserWithCommonMasterPageBase
             //设置系统配置信息
 
             //DalOperationBaseConfig dobc = new DalOperationBaseConfig();
-            BaseConfig baseconfig = CacheCollections.GetBaseConfig();
-            Page.Title = baseconfig.systemName + " 当前系统版本号：" + baseconfig.systemVersion;
-            systemVersion = baseconfig.systemVersion;
-            this.lblCopyRight.Text = baseconfig.systemCopyRight + " 当前系统版本号：" + baseconfig.systemVersion;
+            ltlSystemVersion.Text = baseconfig.systemVersion;
+            this.lblCopyRight.Text = baseconfig.systemCopyRight;
             //判断是否为班主任
             DalOperationAboutEnglishExam dalOperationAboutEnglishExam = new DalOperationAboutEnglishExam();
             if (dalOperationAboutEnglishExam.CheckIsHeadTeacherByTeacherNo(UserCookiesInfo.userNo))
@@ -121,5 +120,6 @@ public partial class MasterPage_FrameManage : CheckUserWithCommonMasterPageBase
                 englishExamManage.Visible = true;
             }
         }
+        pageTitle.Text = baseconfig.systemName + " 当前系统版本号：" + baseconfig.systemVersion;
     }
 }

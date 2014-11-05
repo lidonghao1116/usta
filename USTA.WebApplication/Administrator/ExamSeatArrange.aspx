@@ -59,7 +59,7 @@
                         </asp:DropDownList>&nbsp;&nbsp;
                         <asp:DropDownList ID="ddlCourses" runat="server" ClientIDMode="Static">
                         </asp:DropDownList>&nbsp;&nbsp;&nbsp;&nbsp;请输入行数：<asp:TextBox ID="txtRows" runat="server" ClientIDMode="Static" CssClass="required number" Width="50px"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <asp:Button ID="btnExamSeatArrange" runat="server" Text="计算列数并随机生成考试座位" OnClick="btnExamSeatArrange_Click" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="导出当前所选课程座位排列Excel表" onclick="this.href='OutputExamSeatArrange.ashx?rows='+$('#txtRows').val()+'&courseName='+document.getElementById('ddlCourses').options[document.getElementById('ddlCourses').selectedIndex].text+'&termTag='+$('#ddlTermTags').val();"
+                                <asp:Button ID="btnExamSeatArrange" runat="server" Text="计算列数并随机生成考试座位" OnClick="btnExamSeatArrange_Click" />&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" title="导出当前所选课程座位排列Excel表" onclick="this.href='OutputExamSeatArrange.ashx?rows='+$('#txtRows').val()+'&courseName='+encodeURIComponent(document.getElementById('ddlCourses').options[document.getElementById('ddlCourses').selectedIndex].text)"
                 target="_blank" runat="server" visible="false" id="outputExcel">导出当前所选课程座位排列Excel表</a><br /><br />
 
                 <asp:PlaceHolder ID="phExamSeats" runat="server"></asp:PlaceHolder>

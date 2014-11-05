@@ -20,17 +20,28 @@ using System.Collections;
 public partial class Administrator_StudentManager : System.Web.UI.Page
 {
     public int fileFolderType = (int)FileFolderType.gradeCheck;
+    public int fileFolderType1 = (int)FileFolderType.gradeCheckExcelTemplate;
     public int pageIndex = HttpContext.Current.Request["page"] == null ? 1 : int.Parse(HttpContext.Current.Request["page"]);
     public string studentNo = (HttpContext.Current.Request.QueryString["studentNo"] == null ? string.Empty : HttpContext.Current.Request.QueryString["studentNo"]);
     public string fragmentFlag = "1";
     //已经有的附件数，页面初始化时与前端JS进行交互
     public int iframeCount = 0;
+    public int iframeCount1 = 0;
 
     public string tableHeader = string.Empty;
 
     public List<int> listGradeCheckId = new List<int>();
 
     Hashtable ht = new Hashtable();
+
+    //========
+    public string _ddlSearchYear = HttpContext.Current.Request["ddlSearchYear"] == null ? string.Empty : HttpContext.Current.Request["ddlSearchYear"];
+    public string _ddlSearchMajor = HttpContext.Current.Request["ddlSearchMajor"] == null ? string.Empty : HttpContext.Current.Request["ddlSearchMajor"];
+    public string _ddlSearchSchoolClass = HttpContext.Current.Request["ddlSearchSchoolClass"] == null ? string.Empty : HttpContext.Current.Request["ddlSearchSchoolClass"];
+    public string _ddlGradeCheckDegree = HttpContext.Current.Request["ddlGradeCheckDegree"] == null ? string.Empty : HttpContext.Current.Request["ddlGradeCheckDegree"];
+    public string _ddlGradeCheckLocale = HttpContext.Current.Request["ddlGradeCheckLocale"] == null ? string.Empty : HttpContext.Current.Server.UrlDecode(HttpContext.Current.Request["ddlGradeCheckLocale"]);
+    public string _keyword = HttpContext.Current.Request["keyword"] == null ? string.Empty : HttpContext.Current.Server.UrlDecode(HttpContext.Current.Request["keyword"]);
+    //========
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -59,6 +70,18 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
                     ddlSearchYear.Items.Add(new ListItem("20" + dt.Rows[i]["termYear"].ToString().Trim() + "学年", dt.Rows[i]["termYear"].ToString().Trim()));
                 }
 
+                if (!string.IsNullOrEmpty(_ddlSearchYear))
+                {
+                    for (int i = 0; i < ddlSearchYear.Items.Count; i++)
+                    {
+                        if (ddlSearchYear.Items[i].Value == _ddlSearchYear.Trim())
+                        {
+                            ddlSearchYear.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
                 DalOperationStudentSpecility doss = new DalOperationStudentSpecility();
 
                 dt = doss.FindAllStudentSpecilitye().Tables[0];
@@ -67,6 +90,64 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
                     ddlSearchMajor.Items.Add(new ListItem(dt.Rows[i]["specilityName"].ToString().Trim(), dt.Rows[i]["MajorTypeID"].ToString().Trim()));
                 }
 
+
+                if (!string.IsNullOrEmpty(_ddlSearchMajor))
+                {
+                    for (int i = 0; i < ddlSearchMajor.Items.Count; i++)
+                    {
+                        if (ddlSearchMajor.Items[i].Value == _ddlSearchMajor.Trim())
+                        {
+                            ddlSearchMajor.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(_ddlSearchYear) || (!string.IsNullOrEmpty(_ddlSearchMajor)))
+                {
+                    GetSchoolClassList();
+                }
+
+                if (!string.IsNullOrEmpty(_ddlSearchSchoolClass))
+                {
+                    for (int i = 0; i < ddlSearchSchoolClass.Items.Count; i++)
+                    {
+                        if (ddlSearchSchoolClass.Items[i].Value == _ddlSearchSchoolClass.Trim())
+                        {
+                            ddlSearchSchoolClass.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(_ddlGradeCheckDegree))
+                {
+                    for (int i = 0; i < ddlGradeCheckDegree.Items.Count; i++)
+                    {
+                        if (ddlGradeCheckDegree.Items[i].Value == _ddlGradeCheckDegree.Trim())
+                        {
+                            ddlGradeCheckDegree.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(_ddlGradeCheckLocale))
+                {
+                    for (int i = 0; i < ddlGradeCheckLocale.Items.Count; i++)
+                    {
+                        if (ddlGradeCheckLocale.Items[i].Value == _ddlGradeCheckLocale.Trim())
+                        {
+                            ddlGradeCheckLocale.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(_keyword))
+                {
+                    txtKeyword.Text = _keyword;
+                }
 
                 DataListBind();
             }
@@ -136,7 +217,7 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
 
             if (fragmentFlag.Equals("6"))
             {
-
+                BindGradeCheckExcelTemplate(spanAttachment2, false);
             }
 
             if (Request["studentNo"] != null && fragmentFlag.Equals("7"))
@@ -154,7 +235,12 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
 
             if (fragmentFlag.Equals("8"))
             {
+                BindGradeCheckExcelTemplate(spanExcelTemplate, true);
 
+                if (!IsPostBack)
+                {
+                    Javascript.ExcuteJavascriptCode("initBeforeUnloadEvent('温馨提示：当前页面相关操作必须点击提交才能生效~（此为提示，并不代表您真正未保存数据），确定离开吗？');", Page);
+                }
             }
 
             if (fragmentFlag.Equals("9"))
@@ -173,7 +259,7 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
         }
 
 
-        if (fragmentFlag.Equals("1") || fragmentFlag.Equals("2") || fragmentFlag.Equals("6") || fragmentFlag.Equals("9"))
+        if (fragmentFlag.Equals("1") || fragmentFlag.Equals("2") || fragmentFlag.Equals("6") || fragmentFlag.Equals("8") || fragmentFlag.Equals("9"))
         {
             startTime.Attributes.Remove("class");
             endTime.Attributes.Remove("class");
@@ -191,7 +277,7 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
                 Directory.CreateDirectory(_folder);
             }
 
-            if (UploadFiles.GetExtension((FileUpload1.FileName)).ToLower().Trim() != ".xls")
+            if (!(UploadFiles.GetExtension((FileUpload1.FileName)).ToLower().Trim() == ".xls" || UploadFiles.GetExtension((FileUpload1.FileName)).ToLower().Trim() == ".xlsx"))
             {
                 Javascript.GoHistory(-1, "上传文件类型有误，请上传Excel文件：）", Page);
                 return;
@@ -206,52 +292,72 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
 
             //读取要导入的成绩审核Excel文件的全部数据
             GradeCheckExcelData gradeCheckExcelData = BllOperationAboutExcel.BllImportGradeCheckExcelData(_path, _termYear);
-
+            //Response.End();
             DalOperationAboutGradeCheck dal = new DalOperationAboutGradeCheck();
 
-            foreach (StudentsGradeCheckDetail _studentsGradeCheckDetail in gradeCheckExcelData.listStudentsGradeCheckDetail)
+            for (int i = 0; i < gradeCheckExcelData.listStudentsGradeCheckDetail.Count;i++ )
             {
-                DataTable dt = dal.GetGradeCheckItemsByGradeCheckItemName(_studentsGradeCheckDetail.gradeCheckItemName).Tables[0];
-
-
+                DataTable dt = dal.GetGradeCheckItemsByGradeCheckItemName(gradeCheckExcelData.listStudentsGradeCheckDetail[i].gradeCheckItemName, ddlTermYearImportExcelData.SelectedValue).Tables[0];
+                
                 //Response.Write(_studentsGradeCheckDetail.gradeCheckItemName+"<br/>");
                 if (dt.Rows.Count > 0)
                 {
                     //_studentsGradeCheckDetail.gradeCheckItemName = dt.Rows[0]["gradeCheckItemName"].ToString().Trim();
                     //Response.Write(dt.Rows[0]["gradeCheckItemName"].ToString().Trim()+":"+dt.Rows[0]["gradeCheckId"].ToString().Trim()+"<Br/>");
-                    _studentsGradeCheckDetail.gradeCheckId = int.Parse(dt.Rows[0]["gradeCheckId"].ToString().Trim());
+                    gradeCheckExcelData.listStudentsGradeCheckDetail[i].gradeCheckId = int.Parse(dt.Rows[0]["gradeCheckId"].ToString().Trim());
                     //_studentsGradeCheckDetail.gradeCheckItemDefaultValue = dt.Rows[0]["gradeCheckItemDefaultValue"].ToString().Trim();
                 }
                 else
                 {
+                    Javascript.GoHistory(-1, "成绩审核Excel文件有数据问题，\\n未找到" + ddlTermYearImportExcelData.SelectedItem.Text + "第" + gradeCheckExcelData.listStudentsGradeCheckDetail[i].colNo + "列审核规则\\n请检查此列名是否存在或者与教学辅助系统中的列名完全一致（包括空格标点等）！", Page);
+                    return;
+                }
+            }
+            //Response.Write("ssss");
+            //Response.End();
 
-                    Javascript.GoHistory(-1, "成绩审核Excel文件有数据问题，\\n未找到" + ddlTermYearImportExcelData.SelectedItem.Text + "审核规则" + _studentsGradeCheckDetail.gradeCheckItemName + "\\n请检查此列名是否存在或者与教学辅助系统中的列名完全一致（包括空格标点等）！", Page);
+            //检测是否有不符合选择的学年及培养地要求的记录，只要有一条不符合，则不导入
+            for (int i = 0; i < gradeCheckExcelData.listStudentsGradeCheckDetail.Count; i++)
+            {
+                DataSet _checkdata = dal.CheckDataConsistenceByStudentNoTermYearLocale(gradeCheckExcelData.listStudentsGradeCheckDetail[i].studentNo, ddlTermYearImportExcelData.SelectedValue, ddlLocaleImportExcelData.SelectedValue);
+
+                if (_checkdata.Tables[0].Rows.Count == 0)
+                {
+                    Javascript.GoHistory(-1, "成绩审核Excel文件有数据问题，\\n学号为" + gradeCheckExcelData.listStudentsGradeCheckDetail[i].studentNo + "的学生数据记录不符合所选择的学年及培养地要求\\n请检查！", Page);
                     return;
                 }
             }
 
+
             //Response.Write(gradeCheckExcelData.listStudentsGradeCheckConfirm.Count + "<br/>");
 
+            string errorStudentNo = string.Empty;
             //将获取的导入数据存入数据库，事务控制
             using (TransactionScope scope = new TransactionScope())
             {
                 try
                 {
-                    //首先删除指定学年的成绩审核数据
-                    dal.DeleteStudentsGradeCheckConfirmItemsByTermYear(_termYear);
-                    dal.DeleteStudentsGradeCheckDetailItemsByTermYear(_termYear);
+                    //首先删除指定学年和培养地的成绩审核数据
+                    dal.DeleteStudentsGradeCheckConfirmItemsByTermYear(_termYear, ddlLocaleImportExcelData.SelectedValue.Trim());
+                    dal.DeleteStudentsGradeCheckDetailItemsByTermYear(_termYear, ddlLocaleImportExcelData.SelectedValue.Trim());
 
-                    //接下来遍历获取到的导入数据，并写入数据库，还需要加一个学年验证判断(已添加)
+                    //接下来遍历获取到的导入数据，并写入数据库，还需要加一个学年和培养地验证判断(已添加)
                     //首先导入usta_StudentsGradeCheckConfirm表数据
                     foreach (StudentsGradeCheckConfirm _studentsGradeCheckConfirm in gradeCheckExcelData.listStudentsGradeCheckConfirm)
                     {
                         //Response.Write(_studentsGradeCheckConfirm.studentNo + "<br/>");
+                        errorStudentNo = _studentsGradeCheckConfirm.studentNo;
                         dal.AddStudentGradeCheckConfirm(_studentsGradeCheckConfirm);
                     }
 
                     //其次导入usta_StudentsGradeCheckDetail表数据
                     foreach (StudentsGradeCheckDetail _studentsGradeCheckDetail in gradeCheckExcelData.listStudentsGradeCheckDetail)
                     {
+                        //if (_studentsGradeCheckDetail.colNo == 8)
+                        //{
+                        //    Response.Write(_studentsGradeCheckDetail.gradeCheckId + "_" + _studentsGradeCheckDetail.gradeCheckDetailValue+"<Br/>");
+                        //}
+                        errorStudentNo = _studentsGradeCheckDetail.studentNo;
                         dal.AddGradeCheckDetailByStudentNo(_studentsGradeCheckDetail);
                     }
 
@@ -261,7 +367,7 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
                 catch (System.Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
-                    Javascript.GoHistory(-1, "导入成绩审核数据失败：（", Page);
+                    Javascript.GoHistory(-1, "导入成绩审核数据失败：（\\n学号为：" + errorStudentNo + "的学生数据不符合导入格式要\\n请检查！", Page);
                 }
             }
         }
@@ -337,27 +443,27 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
     //下拉列表事件
     protected void ddlApplyResult_SelectedIndexChanged(object sender, EventArgs e)
     {
-        ddlBindCourses(true);
+        //ddlBindCourses(true);
         DataBindSearchCourse();
     }
 
     //下拉列表事件
     protected void ddlApplyLocale_SelectedIndexChanged(object sender, EventArgs e)
     {
-        ddlBindCourses(true);
+        //ddlBindCourses(true);
         DataBindSearchCourse();
     }
     //下拉列表事件
     protected void ddlTermTags_SelectedIndexChanged(object sender, EventArgs e)
     {
-        ddlBindCourses(true);
+        ddlBindCourses(txtCourseName.Text.Trim().Length == 0);
         //绑定课程列表--学期标识(termTag)
         DataBindSearchCourse();
     }
     //模糊查询学生信息
     protected void btnQueryCourses_Click(object sender, EventArgs e)
     {
-        //ddlBindCourses(false);
+        ddlBindCourses(false);
         DataBindSearchCourse();
     }
 
@@ -373,6 +479,8 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
         DalOperationAboutCourses doac = new DalOperationAboutCourses();
         DataTable dv = doac.SearchCourses(ddlTermTags.SelectedValue, txtCourseName.Text.Trim()).Tables[0];
 
+        bool isSearchNoResult = false;
+
         while (ddlCourses.Items.Count > 0)
         {
             ddlCourses.Items.RemoveAt(0);
@@ -383,9 +491,20 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
             ddlCourses.Items.Add(new ListItem("全部课程", "all"));
         }
 
+        if (dv.Rows.Count == 0)
+        {
+            dv = doac.SearchCourses(ddlTermTags.SelectedValue, "").Tables[0];
+            isSearchNoResult = true;
+        }
+
         for (int i = 0; i < dv.Rows.Count; i++)
         {
             ddlCourses.Items.Add(new ListItem(dv.Rows[i]["courseName"].ToString().Trim() + "(" + dv.Rows[i]["classID"].ToString().Trim() + ")", dv.Rows[i]["termTag"].ToString().Trim() + dv.Rows[i]["courseNo"].ToString().Trim() + dv.Rows[i]["classID"].ToString().Trim()));
+        }
+
+        if (isSearchNoResult)
+        {
+            ddlCourses.Items.Add(new ListItem("全部课程", "all"));
         }
     }
 
@@ -437,7 +556,7 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
             ListItem li = new ListItem(CommonUtility.ChangeTermToString(termTag), termTag);
             ddlTermTags.Items.Add(li);
         }
-        ddlBindCourses(true);
+        ddlBindCourses(txtCourseName.Text.Trim().Length == 0);
     }
 
     protected void BindGradeCheckAllowTime()
@@ -480,6 +599,27 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
         {
             DalOperationAttachments dalOperationAttachments = new DalOperationAttachments();
             spanAttachment.InnerHtml = dalOperationAttachments.GetAttachmentsList(model.attachmentIds, ref iframeCount, true, string.Empty);
+        }
+    }
+
+    protected void BindGradeCheckExcelTemplate(HtmlGenericControl span,bool isDelete)
+    {
+        DalOperationAboutGradeCheck dos = new DalOperationAboutGradeCheck();
+        DataTable dt = dos.GetGradeCheckExcelTemplate().Tables[0];
+
+        string _ids = string.Empty;
+
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            _ids = dt.Rows[i]["excelTemplateAttachmentIds"].ToString().Trim();
+        }
+
+        hidAttachmentId1.Value = _ids;
+
+        if (_ids.Length > 0)
+        {
+            DalOperationAttachments dalOperationAttachments = new DalOperationAttachments();
+            span.InnerHtml = dalOperationAttachments.GetAttachmentsList(_ids, ref iframeCount1, isDelete, "1");
         }
     }
 
@@ -527,7 +667,7 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
         PagedDataSource pds = new PagedDataSource();    //定义一个PagedDataSource类来执行分页功      
         pds.DataSource = dv;
         pds.AllowPaging = true;
-        pds.CurrentPageIndex = AspNetPager2.CurrentPageIndex - 1;
+        pds.CurrentPageIndex = pageIndex - 1;
         pds.PageSize = CommonUtility.pageSize;
 
         this.dlSearchStudent.DataSource = pds;
@@ -756,7 +896,8 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
             DataRowView rowv = (DataRowView)e.Item.DataItem;
             string updateTime = rowv["updateTime"].ToString().Trim();
             DalOperationAboutGradeCheck dalOperationAboutGradeCheck = new DalOperationAboutGradeCheck();
-            DataSet ds = dalOperationAboutGradeCheck.GetGradeCheckDetailByStudentNo(studentNo, updateTime);
+            //DataSet ds = dalOperationAboutGradeCheck.GetGradeCheckDetailByStudentNo(studentNo, updateTime);
+            DataSet ds = dalOperationAboutGradeCheck.GetGradeCheckDetailByStudentNo(studentNo);
             dataList.DataSource = ds.Tables[0].DefaultView;
             dataList.DataBind();
 
@@ -825,12 +966,12 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
         return dalOperationAboutGradeCheck.CheckGradeCheckAllowTime();
     }
 
-    protected string GetGradeCheckApplyInfo(int gradeCheckApplyId)
+    protected string GetGradeCheckApplyInfo(DateTime updateTime)
     {
         StringBuilder sb = new StringBuilder();
         DalOperationAboutGradeCheck dal = new DalOperationAboutGradeCheck();
-        DataTable dt = dal.GetStudentGradeCheckApplyByStudentNoAndUpdateTime(studentNo, gradeCheckApplyId).Tables[0];
-
+        //DataTable dt = dal.GetStudentGradeCheckApplyByStudentNoAndUpdateTime(studentNo, updateTime).Tables[0];
+        DataTable dt = dal.GetStudentGradeCheckApplyByStudentNo(studentNo).Tables[0];
 
         if (dt.Rows.Count > 0)
         {
@@ -900,5 +1041,40 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
             Javascript.GoHistory(-1, "更新重修重考通知及开放时间失败：（", Page);
             return;
         }
+    }
+
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            DalOperationAboutGradeCheck dal = new DalOperationAboutGradeCheck();
+
+            dal.UpdateGradeCheckExcelTemplate(hidAttachmentId1.Value);
+
+            Javascript.AlertAndRedirect("更新重修重考Excel模板成功：）", "/Administrator/StudentManager.aspx?fragment=8", Page);
+        }
+        catch (Exception ex)
+        {
+            MongoDBLog.LogRecord(ex);
+            Javascript.GoHistory(-1, "更新重修重考Excel模板失败：（", Page);
+            return;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="_termYears"></param>
+    /// <returns></returns>
+    public string formatTermYears(string _termYears){
+        string _format = string.Empty;
+        if(_termYears.Trim().Length >0){
+           string[] _items =  _termYears.Split(",".ToCharArray());
+           for (int i = 0; i < _items.Length; i++)
+           {
+               _format += "20" + _items[i] + "学年&nbsp;&nbsp;";
+           }
+        }
+        return _format;
     }
 }

@@ -47,42 +47,74 @@ namespace USTA.WebApplication.Administrator
                 txtDisplayOrder.Text = dt.Rows[i]["displayOrder"].ToString().Trim();
             }
 
-            dt = dalOperationAboutGradeCheck.GetTermYear().Tables[0];
+            DataTable dt1 = dalOperationAboutGradeCheck.GetTermYear().Tables[0];
 
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                ddlTermYear.Items.Add(new ListItem("20" + dt.Rows[i]["termYear"].ToString().Trim() + "学年", dt.Rows[i]["termYear"].ToString().Trim()));
-            }
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    ddlTermYear.Items.Add(new ListItem("20" + dt.Rows[i]["termYear"].ToString().Trim() + "学年", dt.Rows[i]["termYear"].ToString().Trim()));
+            //}
 
-            for (int i = 0; i < ddlTermYear.Items.Count; i++)
+            string termYears = dt.Rows[0]["termYears"].ToString().Trim();
+
+
+            dt1.Columns.Add("termYearFormat", typeof(string), "'20'+termYear+'学年'");
+            ddlTermYears.DataSource = dt1;
+            ddlTermYears.DataTextField = "termYearFormat";
+            ddlTermYears.DataValueField = "termYear";
+            ddlTermYears.DataBind();
+
+            string[] items = termYears.Split(",".ToCharArray());
+            for (int i = 0; i < ddlTermYears.Items.Count; i++)
             {
-                if (ddlTermYear.Items[i].Value.Trim() == "")
+                ListItem _item = ddlTermYears.Items[i];
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ddlTermYear.SelectedIndex = i;
-                    break;
+                    if (_item.Value == items[j].Trim())
+                    {
+                        _item.Selected = true;
+                        break;
+                    }
                 }
             }
+
         }
         //修改
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            DalOperationAboutGradeCheck dalOperationAboutGradeCheck = new DalOperationAboutGradeCheck();
+            string _name = txtGradeCheckItemName.Text.Trim();
+            if (dalOperationAboutGradeCheck.CheckIsExistGradeCheckItemName(_name, gradeCheckId).Tables[0].Rows.Count > 0)
+            {
+                Javascript.GoHistory(-1, "已经存在此名称的规则，请更换规则名或者在已有规则上修改所应用的学年即可！", Page);
+                return;
+            }
+
             if (txtGradeCheckItemName.Text.Trim().Length == 0)
             {
                 Javascript.GoHistory(-1, "请输入成绩审核单项名称！", Page);
             }
             else
             {
-                DalOperationAboutGradeCheck dalOperationAboutGradeCheck = new DalOperationAboutGradeCheck();
                 StudentsGradeCheck model = new StudentsGradeCheck();
                 model.gradeCheckItemName = txtGradeCheckItemName.Text.Trim();
                 model.gradeCheckItemDefaultValue = txtGradeCheckItemDefaultValue.Text.Trim();
                 model.gradeCheckId = gradeCheckId;
                 model.displayOrder = int.Parse(txtDisplayOrder.Text.Trim());
-                model.termYear = ddlTermYear.SelectedValue;
+
+                List<string> items = new List<string>();
+                for (int i = 0; i < ddlTermYears.Items.Count; i++)
+                {
+                    ListItem _item = ddlTermYears.Items[i];
+                    if (_item.Selected)
+                    {
+                        items.Add(_item.Value);
+                    }
+                }
+
+                model.termYears = string.Join(",", items).Trim();
 
                 try
                 {
-
                     dalOperationAboutGradeCheck.UpdateGradeCheckItemById(model);//修改
                     Javascript.RefreshParentWindow("修改成绩审核单项成功！", "/Administrator/StudentManager.aspx?fragment=5", Page);
                 }

@@ -46,7 +46,7 @@ function changeTextControlBgColor() {
     $("textarea").css({ background: "#F4F5F6", border: "1px solid #0278B4" });
     $("select").css({ border: "1px solid #0278B4" });
     $(":submit").addClass("commonBtn");
-    $(":button").addClass("commonBtn");
+    $(":button").addClass("commonBtn").css({ cursor: "pointer" });
 }
 
 //删除提示函数
@@ -162,6 +162,10 @@ function clearHiddenValue() {
     if ($('#hidAttachmentId').length != 0) {
         $('#hidAttachmentId').val("");
     }
+
+    if ($('#hidAttachmentId1').length != 0) {
+        $('#hidAttachmentId1').val("");
+    }
 }
 
 window.onerror = function () {
@@ -173,8 +177,25 @@ $(document).ready(function () {
     changeTextControlBgColor();
 
     hideSelectAllButton();
+
+    $(window).scroll(backTop);
 });
 
+function backTop() {
+    var _top =$('#back-top');
+    var _scrollTop = $(window).scrollTop();
+    var _winWidth = $(window).width();
+    if (_scrollTop > 0) {
+        if (_winWidth > 1024) {
+            _top.css({ left: $('.navigation').position().left+1024+'px', top: ($(window).height() + _scrollTop - 50)+'px' });
+        } else {
+            _top.css({ right: '10px', top: ($(window).height() + _scrollTop - 50)+'px' });
+        }
+        _top.show();
+    } else {
+        _top.hide();
+    }
+}
 
 function initBeforeUnloadEvent(tips) {
     window.onbeforeunload = function () {

@@ -22,11 +22,29 @@ namespace USTA.WebApplication.Administrator
             if (!IsPostBack)
             {
                 DalOperationAboutGradeCheck doan = new DalOperationAboutGradeCheck();
+
+                //检测是否有重名规则
+                string _name = txtGradeCheckItemName.Text.Trim();
+                if (doan.CheckIsExistGradeCheckItemName(_name).Tables[0].Rows.Count > 0)
+                {
+                    Javascript.GoHistory(-1, "已经存在此名称的规则，请更换规则名或者在已有规则上修改所应用的学年即可！", Page);
+                    return;
+                }
+
                 DataTable dt = doan.GetTermYear().Tables[0];
 
-                for (int i = 0; i < dt.Rows.Count; i++)
+                //for (int i = 0; i < dt.Rows.Count; i++)
+                //{
+                //    ddlTermYear.Items.Add(new ListItem("20" + dt.Rows[i]["termYear"].ToString().Trim() + "学年", dt.Rows[i]["termYear"].ToString().Trim()));
+                //}
+                if (dt.Rows[0]["termYear"].ToString().Trim().Length > 0)
                 {
-                    ddlTermYear.Items.Add(new ListItem("20" + dt.Rows[i]["termYear"].ToString().Trim() + "学年", dt.Rows[i]["termYear"].ToString().Trim()));
+
+                    dt.Columns.Add("termYearFormat", typeof(string), "'20'+termYear+'学年'");
+                    ddlTermYears.DataSource = dt;
+                    ddlTermYears.DataTextField = "termYearFormat";
+                    ddlTermYears.DataValueField = "termYear";
+                    ddlTermYears.DataBind();
                 }
             }
         }
@@ -45,7 +63,18 @@ namespace USTA.WebApplication.Administrator
                 model.gradeCheckItemName = txtGradeCheckItemName.Text.Trim();
                 model.gradeCheckItemDefaultValue = txtGradeCheckItemDefaultValue.Text.Trim();
                 model.displayOrder = int.Parse(txtDisplayOrder.Text.Trim());
-                model.termYear = ddlTermYear.SelectedValue;
+
+                List<string> items = new List<string>();
+                for (int i = 0; i < ddlTermYears.Items.Count; i++)
+                {
+                    ListItem _item = ddlTermYears.Items[i];
+                    if (_item.Selected)
+                    {
+                        items.Add(_item.Value);
+                    }
+                }
+
+                model.termYears = string.Join(",", items).Trim();
 
                 try
                 {

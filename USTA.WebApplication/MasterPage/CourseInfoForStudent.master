@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Student_CousrInfo_CourseInfo"
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Student_CousrInfo_CourseInfo" EnableViewState="false" 
     MasterPageFile="~/MasterPage/FrameManage.master" Codebehind="CourseInfoForStudent.master.cs" %>
 
 <%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="webdiyer" %>

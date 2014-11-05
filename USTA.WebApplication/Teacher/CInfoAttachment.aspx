@@ -11,6 +11,6 @@
             <asp:PlaceHolder ID="phUpload" runat="server"></asp:PlaceHolder>
             <!--upload end-->
                 <br />
-            <asp:Button ID="btnUpload" runat="server" Text="提交" OnClick="btnUpload_Click" OnClientClick="if(!checkIsUpload()){alert('无法提交，可能的原因为：\n您未上传任何文件。\n请上传文件后再提交:)');return false;}"  />
+            <asp:Button ID="btnUpload" runat="server" Text="提交" OnClick="btnUpload_Click" OnClientClick="if(!checkIsUpload()){alert('无法提交，可能的原因为：\n您未上传任何文件。\n请上传文件后再提交:)');return false;}else{delBeforeUnloadEvent();}"  />
      </div></div>
 </asp:Content>

@@ -12,7 +12,7 @@
             </span>
         </div>
         <asp:DataList ID="dlstAboutCourses" runat="server" RepeatDirection="Horizontal" RepeatColumns="3"
-            Width="100%" CssClass="bbsDlstAboutCourses">
+            Width="100%" CssClass="bbsDlstAboutCourses" EnableViewState="false">
             <ItemTemplate>
                 <table style="color: #666666;">
                     <tr>

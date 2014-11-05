@@ -80,10 +80,10 @@ namespace USTA.WebApplication.Student
         protected void DlstStudentGradeCheckDataBind()
         {
             DalOperationAboutGradeCheck dal = new DalOperationAboutGradeCheck();
-            DataView dv = dal.GetUpdateTimeByStudentNo(studentNo).Tables[0].DefaultView;
+            //DataView dv = dal.GetUpdateTimeByStudentNo(studentNo).Tables[0].DefaultView;
 
-            this.dlstStudentGradeCheck.DataSource = dv;
-            this.dlstStudentGradeCheck.DataBind();
+            //this.dlstStudentGradeCheck.DataSource = dv;
+            //this.dlstStudentGradeCheck.DataBind();
 
             DataTable dt = dal.GetGradeCheckNotify().Tables[0];
 
@@ -99,30 +99,26 @@ namespace USTA.WebApplication.Student
                     notifyTitle.ToolTip = dt.Rows[i]["notifyTitle"].ToString().Trim();
                 }
             }
+
+            //dlstStudentGradeCheckDataBind();
         }
 
 
 
-        protected void dlstStudentGradeCheck_ItemDataBound(object sender, DataListItemEventArgs e)
+        protected void dlstStudentGradeCheckDataBind()
         {
-            //if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
-            //{
-            //    DataList dataList = (DataList)e.Item.FindControl("dlstStudentGradeCheckItem");
-            //    DataRowView rowv = (DataRowView)e.Item.DataItem;
-            //    string updateTime = rowv["updateTime"].ToString().Trim();
-            //    DalOperationAboutGradeCheck dalOperationAboutGradeCheck = new DalOperationAboutGradeCheck();
-            //    DataSet ds = dalOperationAboutGradeCheck.GetGradeCheckDetailByStudentNo(studentNo, updateTime);
-            //    dataList.DataSource = ds.Tables[0].DefaultView;
-            //    dataList.DataBind();
+            //DalOperationAboutGradeCheck dalOperationAboutGradeCheck = new DalOperationAboutGradeCheck();
+            //DataSet ds = dalOperationAboutGradeCheck.GetStudentGradeCheckApplyByStudentNo(studentNo);
+            //dlstStudentGradeCheck.DataSource = ds.Tables[0].DefaultView;
+            //dlstStudentGradeCheck.DataBind();
 
-            //    if (dataList.Items.Count == 0)
-            //    {
-            //        dataList.ShowFooter = true;
-            //    }
-            //    else
-            //    {
-            //        dataList.ShowFooter = false;
-            //    }
+            //if (dlstStudentGradeCheck.Items.Count == 0)
+            //{
+            //    dlstStudentGradeCheck.ShowFooter = true;
+            //}
+            //else
+            //{
+            //    dlstStudentGradeCheck.ShowFooter = false;
             //}
         }
 
@@ -181,54 +177,37 @@ namespace USTA.WebApplication.Student
         }
 
 
-        protected string GetGradeCheckApplyInfo(int gradeCheckApplyId)
+        protected string GetGradeCheckApplyInfo()
         {
             StringBuilder sb = new StringBuilder();
             UserCookiesInfo UserCookiesInfo = BllOperationAboutUser.GetUserCookiesInfo();
             DalOperationAboutGradeCheck dal = new DalOperationAboutGradeCheck();
-            DataTable dt = dal.GetStudentGradeCheckApplyByStudentNoAndUpdateTime(UserCookiesInfo.userNo, gradeCheckApplyId).Tables[0];
+            DataTable dt = dal.GetStudentGradeCheckApplyByStudentNo(UserCookiesInfo.userNo).Tables[0];
 
 
             if (dt.Rows.Count > 0)
             {
-                sb.Append("<br /><b>当前已申请的重修重考记录：</b><br />");
-            }
+                sb.Append("<br /><b>当前已申请的重修重考记录：</b>");
 
-            //是否有审核未通过记录
-            bool isHasNotAccord = false;
-            //检测是否有未审核过的记录
-            bool isHasNotCheck = false;
+                if (this.isAllowTime())
+                {
+                    sb.Append("<a href=\"GradeCheckApply.aspx?keepThis=true&TB_iframe=true&height=500&width=800\" title=\"申请办理重修重考\" class=\"thickbox\">申请办理重修重考</a>&nbsp;&nbsp;&nbsp;&nbsp;<br/>");
+                }
+            }
 
             int rowsCount = dt.Rows.Count;
 
             for (int i = 0; i < rowsCount; i++)
             {
                 sb.Append("<table class=\"datagrid2\"><th>详细信息</th>");
-                sb.Append("<tr><td>所属学期：" + CommonUtility.ChangeTermToString(dt.Rows[i]["termTag"].ToString().Trim()) + "课程名称：" + dt.Rows[i]["courseName"].ToString().Trim() + "</td></tr><tr><td>审核结果：" + dt.Rows[i]["applyResult"].ToString().Trim() + "</td></tr><tr><td>原因：" + dt.Rows[i]["applyReason"].ToString().Trim() + "</td></tr><tr><td>审核意见：" + dt.Rows[i]["applyChecKSuggestion"].ToString().Trim() + "</td></tr>" + (string.IsNullOrEmpty(dt.Rows[i]["applyResult"].ToString().Trim()) ? "<tr><td><a href=\"?action=delete&gradeCheckApplyId=" + dt.Rows[i]["gradeCheckApplyId"].ToString().Trim() + "\"  onclick=\"return deleteTip();\">删除</a></td></tr>" : string.Empty));
-
-                if (dt.Rows[i]["applyResult"].ToString().Trim() == "不符合")
-                {
-                    isHasNotAccord = true;
-                }
-
-                if (string.IsNullOrEmpty(dt.Rows[i]["applyResult"].ToString().Trim()))
-                {
-                    isHasNotCheck = true;
-                }
+                sb.Append("<tr><td>所属学期：" + CommonUtility.ChangeTermToString(dt.Rows[i]["termTag"].ToString().Trim()) + "课程名称：" + dt.Rows[i]["courseName"].ToString().Trim() + "</td></tr><tr><td>审核结果：" + dt.Rows[i]["applyResult"].ToString().Trim() + "</td></tr><tr><td>原因：" + dt.Rows[i]["applyReason"].ToString().Trim() + "</td></tr><tr><td>审核意见：" + dt.Rows[i]["applyChecKSuggestion"].ToString().Trim() + "</td></tr><tr><td>申请时间：" + dt.Rows[i]["applyUpdateTime"].ToString().Trim() + "</td></tr>" + (string.IsNullOrEmpty(dt.Rows[i]["applyResult"].ToString().Trim()) ? "<tr><td><a href=\"?action=delete&gradeCheckApplyId=" + dt.Rows[i]["gradeCheckApplyId"].ToString().Trim() + "\"  onclick=\"return deleteTip();\">删除</a></td></tr>" : string.Empty));
 
                 sb.Append("</table>");
             }
 
             if (this.isAllowTime())
             {
-                //if (rowsCount == 0)
-                //{
-                //    sb.Append("<a href=\"GradeCheckApply.aspx?updateTime=" + updateTime + "&keepThis=true&TB_iframe=true&height=500&width=800\" title=\"申请办理重修重考\" class=\"thickbox\">申请办理重修重考</a>&nbsp;&nbsp;&nbsp;&nbsp;");
-                //}
-                if (rowsCount > 0 && (isHasNotAccord || isHasNotCheck))
-                {
-                    sb.Append("<a href=\"EditGradeCheckApply.aspx?gradeCheckApplyId=" + gradeCheckApplyId + "&keepThis=true&TB_iframe=true&height=500&width=800\" title=\"修改重修重考申请\" class=\"thickbox\">修改重修重考申请</a>&nbsp;&nbsp;&nbsp;&nbsp;");
-                }
+                sb.Append("<a href=\"GradeCheckApply.aspx?keepThis=true&TB_iframe=true&height=500&width=800\" title=\"申请办理重修重考\" class=\"thickbox\">申请办理重修重考</a>&nbsp;&nbsp;&nbsp;&nbsp;");
             }
 
             return sb.ToString();

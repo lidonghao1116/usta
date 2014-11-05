@@ -291,58 +291,13 @@ public partial class Common_NotifyList {
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl divGameCategory;
     
     /// <summary>
-    /// PlaceHolder1 控件。
+    /// ltlNotifyTypeParent 控件。
     /// </summary>
     /// <remarks>
     /// 自动生成的字段。
     /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
     /// </remarks>
-    protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder1;
-    
-    /// <summary>
-    /// liFragment1 控件。
-    /// </summary>
-    /// <remarks>
-    /// 自动生成的字段。
-    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl liFragment1;
-    
-    /// <summary>
-    /// liFragment4 控件。
-    /// </summary>
-    /// <remarks>
-    /// 自动生成的字段。
-    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl liFragment4;
-    
-    /// <summary>
-    /// liFragment2 控件。
-    /// </summary>
-    /// <remarks>
-    /// 自动生成的字段。
-    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl liFragment2;
-    
-    /// <summary>
-    /// liFragment3 控件。
-    /// </summary>
-    /// <remarks>
-    /// 自动生成的字段。
-    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl liFragment3;
-    
-    /// <summary>
-    /// divFragment4 控件。
-    /// </summary>
-    /// <remarks>
-    /// 自动生成的字段。
-    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-    /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFragment4;
+    protected global::System.Web.UI.WebControls.Literal ltlNotifyTypeParent;
     
     /// <summary>
     /// divFragment1 控件。
@@ -363,13 +318,13 @@ public partial class Common_NotifyList {
     protected global::System.Web.UI.WebControls.DataList dlstNotifyType;
     
     /// <summary>
-    /// divFragment2 控件。
+    /// divFragmentDetail 控件。
     /// </summary>
     /// <remarks>
     /// 自动生成的字段。
     /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFragment2;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFragmentDetail;
     
     /// <summary>
     /// news 控件。
@@ -381,13 +336,13 @@ public partial class Common_NotifyList {
     protected global::System.Web.UI.WebControls.DataList news;
     
     /// <summary>
-    /// divFragment3 控件。
+    /// divFragmentType 控件。
     /// </summary>
     /// <remarks>
     /// 自动生成的字段。
     /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
     /// </remarks>
-    protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFragment3;
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFragmentType;
     
     /// <summary>
     /// dlistNotifyList 控件。

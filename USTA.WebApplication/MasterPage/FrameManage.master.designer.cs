@@ -21,6 +21,15 @@ public partial class MasterPage_FrameManage {
     protected global::System.Web.UI.HtmlControls.HtmlHead masterHead;
     
     /// <summary>
+    /// pageTitle 控件。
+    /// </summary>
+    /// <remarks>
+    /// 自动生成的字段。
+    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlTitle pageTitle;
+    
+    /// <summary>
     /// head 控件。
     /// </summary>
     /// <remarks>
@@ -28,6 +37,15 @@ public partial class MasterPage_FrameManage {
     /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
     /// </remarks>
     protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+    
+    /// <summary>
+    /// ltlSystemVersion 控件。
+    /// </summary>
+    /// <remarks>
+    /// 自动生成的字段。
+    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Literal ltlSystemVersion;
     
     /// <summary>
     /// ulAdmin 控件。

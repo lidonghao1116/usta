@@ -42,17 +42,6 @@ namespace USTA.WebApplication.Administrator
         public void DataBindCourses()
         {
             DalOperationAboutCourses doac = new DalOperationAboutCourses();
-
-            if (doac.termTag.Substring(5, 1) == "0")
-            {
-                while (ddlGradeCheckLocale.Items.Count > 0)
-                {
-                    ddlGradeCheckLocale.Items.RemoveAt(0);
-                }
-
-                ddlGradeCheckLocale.Items.Add(new ListItem("苏州", "苏州"));
-            }
-
             DataTable dt = doac.FindCurrentCoursesByLocale(ddlGradeCheckLocale.SelectedValue).Tables[0];
             for (int i = 0; i < dt.Rows.Count; i++)
             {

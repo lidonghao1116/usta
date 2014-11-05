@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using USTA.Dal;
-using USTA.Model;
 using USTA.Common;
+using USTA.Model;
 using USTA.PageBase;
 using System.Data;
 
@@ -19,31 +19,31 @@ namespace USTA.WebApplication.Administrator
             if (!IsPostBack)
             {
                 DalOperationAboutAdminNotifyType dalNotifyType = new DalOperationAboutAdminNotifyType();
+
                 AdminNotifyType type = dalNotifyType.FindAdminNotifyTypeById(int.Parse(Request["notifyTypeId"].ToString().Trim()));
                 txtTypeName.Text = type.notifyTypeName.ToString().Trim();
                 txtSequence.Text = type.sequence.ToString().Trim();
 
-                txtTypeName.Attributes.Add("class", "required");
-                txtSequence.Attributes.Add("class", "required number");
-
                 DataTable dt = dalNotifyType.FindAllParentAdminNotifyType().Tables[0];
+
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    ddlNotifyType.Items.Add(new ListItem(dt.Rows[i]["notifyTypeName"].ToString().Trim(), dt.Rows[i]["notifyTypeId"].ToString().Trim()));
+                    ListItem _item = new ListItem(dt.Rows[i]["notifyTypeName"].ToString().Trim(), dt.Rows[i]["notifyTypeId"].ToString().Trim());
+                    _item.Attributes.Add("parentId", "0");
+                    ddlNotifyTypeManage.Items.Add(_item);
                 }
 
-                int parentId = dalNotifyType.GetParentIdById(int.Parse(Request["notifyTypeId"].ToString().Trim()));
-
-                for (int i = 0; i < ddlNotifyType.Items.Count; i++)
+                for (int i = 0; i < ddlNotifyTypeManage.Items.Count; i++)
                 {
-                    if (ddlNotifyType.Items[i].Value == parentId.ToString())
+                    if (ddlNotifyTypeManage.Items[i].Value.ToString().Trim() == type.parentId.ToString().Trim())
                     {
-                        ddlNotifyType.SelectedIndex = i;
-                        break;
+                        ddlNotifyTypeManage.SelectedIndex = i;
                     }
                 }
             }
         }
+
+        //****第3个标签：管理文章类型－－－－－－－开始－－－－－－－－－－－－
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -60,8 +60,9 @@ namespace USTA.WebApplication.Administrator
             AdminNotifyType type = new AdminNotifyType();
             type.notifyTypeName = txtTypeName.Text.Trim();
             type.sequence = int.Parse(txtSequence.Text.Trim());
-            type.parentId = int.Parse(ddlNotifyType.SelectedValue.Trim());
-            dalNotifyType.AddAdminNotifyType(type);
+            type.parentId = int.Parse(ddlNotifyTypeManage.SelectedValue);
+            type.notifyTypeId = int.Parse(Request["notifyTypeId"].ToString().Trim());
+            dalNotifyType.UpdateAdminNotifyType(type);
             Javascript.RefreshParentWindow("修改成功", "/Administrator/NotifyInfoManage.aspx?fragment=3", Page);
 
         }

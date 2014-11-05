@@ -45,8 +45,7 @@ public class Upload : IHttpHandler, IRequiresSessionState
         String dirPath = context.Server.MapPath(savePath);
         if (!Directory.Exists(dirPath))
         {
-            //showError("上传目录不存在。");
-            Directory.CreateDirectory(dirPath);
+            showError("上传目录不存在。");
         }
 
         String fileName = imgFile.FileName;

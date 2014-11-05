@@ -43,7 +43,8 @@ namespace USTA.Model
         englishExam = 11,
         gradeCheck = 12,
         //抽签功能附件
-        draw = 13
+        draw = 13,
+        gradeCheckExcelTemplate =14
     }
 
     /// <summary>

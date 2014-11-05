@@ -38,7 +38,7 @@
         </ul>
         <div class="ui-tabs-panel ui-tabs-hide" id="divFragment1" runat="server">
          请选择学期：<asp:DropDownList ID="ddlTermTags" runat="server" ClientIDMode="Static" onchange="location.href='/Administrator/ArchivesManage.aspx?fragment=1&termTag='+$('#ddlTermTags').val() + '&locale='+$('#ddlPlace').val()+'&keyword='+$.trim($('#txtKeyword').val());">
-               <%-- <asp:ListItem Text="在所有学期中查找" Value="all"></asp:ListItem>--%>
+                <asp:ListItem Text="在所有学期中查找" Value="all"></asp:ListItem>
             </asp:DropDownList>&nbsp;&nbsp;请选择开课地点：<asp:DropDownList ID="ddlPlace" runat="server" ClientIDMode="Static" onchange="location.href='/Administrator/ArchivesManage.aspx?fragment=1&termTag='+$('#ddlTermTags').val() + '&locale='+$('#ddlPlace').val()+'&keyword='+$.trim($('#txtKeyword').val());">
                 <asp:ListItem Text="合肥" Value="合肥"></asp:ListItem>
                 <asp:ListItem Text="苏州" Value="苏州"></asp:ListItem>
@@ -53,6 +53,14 @@
                   
             </ItemTemplate><FooterTemplate><%=(this.dlstCourses.Items.Count == 0 ? "未找到数据" : null)%></FooterTemplate><FooterStyle CssClass="datalistNoLine" BorderWidth="0" />
         </asp:DataList>
+            <webdiyer:AspNetPager NumericButtonCount="5" CurrentPageButtonStyle="color:#FFF;" UrlPaging ="true" ID="AspNetPager1" runat="server"
+                FirstPageText="首页" LastPageText="尾页" NextPageText="下一页" OnPageChanged="AspNetPager1_PageChanged"
+                PrevPageText="上一页" LayoutType="Table" AlwaysShow="true" CustomInfoHTML="当前第%CurrentPageIndex%页&amp;nbsp;总页数%PageCount%&amp;nbsp;共%RecordCount%条记录&nbsp;"
+                HorizontalAlign="Left" InvalidPageIndexErrorMessage="请输入要跳转的整数页号" ShowCustomInfoSection="Left"
+                SubmitButtonText="点击跳转" TextBeforePageIndexBox="请输入要跳转的页号：" CssClass="pager"
+                CustomInfoSectionWidth="15%" CustomInfoTextAlign="Right" 
+                TextAfterPageIndexBox="&amp;nbsp;" ShowBoxThreshold="1">
+            </webdiyer:AspNetPager>
         </div>
         <div class="ui-tabs-panel ui-tabs-hide" id="divFragment2" runat="server">
         <div><a href="AddArchivesItem.aspx?keepThis=true&TB_iframe=true&height=300&width=900" title="添加结课资料规则" class="thickbox">添加结课资料规则</a></div>

@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using USTA.Dal;
-using USTA.Model;
 using USTA.Common;
+using USTA.Model;
 using USTA.PageBase;
 
 namespace USTA.WebApplication.Administrator
@@ -15,8 +15,12 @@ namespace USTA.WebApplication.Administrator
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
+
+
+
+
 
         //****第3个标签：管理文章类型－－－－－－－开始－－－－－－－－－－－－
 

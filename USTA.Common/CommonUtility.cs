@@ -121,23 +121,6 @@ namespace USTA.Common
             return isSafe;
         }
 
-        /// <summary>
-        /// 检测传入的参数是否可以转换为int的安全检测
-        /// </summary>
-        /// <typeparam name="T">要转换参数的类型</typeparam>
-        /// <param name="param">要转换的参数</param>
-        /// <param name="tryParseInt">转换后的参数</param>
-        /// <returns>转换是否成功</returns>
-        public static bool SafeCheckByParams<T>(string param, ref int tryParseInt)
-        {
-            bool isSafe = false;
-
-            if (param != null)
-            {
-                isSafe = Int32.TryParse(param.ToString().Trim(), out tryParseInt);
-            }
-            return isSafe;
-        }
 
         /// <summary>
         /// 检测传入的参数是否可以转换为DateTime的安全检测
@@ -848,8 +831,8 @@ namespace USTA.Common
         /// <returns>过滤后的字符</returns>
         public static string JavascriptStringFilterAll(string filteringString)
         {
-            filteringString = Strings.Replace(filteringString, "<script>", "&lt;script&gt;", 1, -1, CompareMethod.Text);
-            filteringString = Strings.Replace(filteringString, "</script>", "&lt;/script&gt;", 1, -1, CompareMethod.Text);
+            filteringString = Regex.Replace(filteringString, "<script", "&lt;script", RegexOptions.IgnoreCase);
+            filteringString = Regex.Replace(filteringString, "/script>", "/script&gt;", RegexOptions.IgnoreCase);
             return filteringString;
         }
         #endregion
@@ -1137,7 +1120,7 @@ namespace USTA.Common
         /// <returns>转换后的文字</returns>
         public static string ChangeTermToString(string termTag)
         {
-            return termTag.Substring(0, 4) + "学年 " + (termTag.Substring(5, 1) == "0" ? "暑假" : "第" + termTag.Substring(5, 1)) + "学期";
+            return termTag.Substring(0, 4) + "学年 第" + termTag.Substring(5, 1) + "学期";
         }
         #endregion
 

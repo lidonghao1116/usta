@@ -60,7 +60,6 @@ namespace USTA.WebApplication.Administrator
 
             AspNetPager2.UrlRewritePattern = "ShowUSTALogs.aspx?datetime=" + dateTime + "&page={0}";
 
-
             DataListUSTALogs.DataSource = resultSet.result;
             DataListUSTALogs.DataBind();
 

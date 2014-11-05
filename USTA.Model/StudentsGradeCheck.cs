@@ -55,6 +55,15 @@ namespace USTA.Model
             set;
             get;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string termYears
+        {
+            set;
+            get;
+        }
         #endregion Model
 
     }

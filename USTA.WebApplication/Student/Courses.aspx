@@ -22,9 +22,10 @@
                 暂时不用</span></a></li>
         </ul>
         <div class="ui-tabs-panel ui-tabs-hide" id="divFragment1" runat="server">
+        <div style="margin-bottom:10px;">
             <asp:DropDownList ID="ddltTerms" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddltTerms_SelectedIndexChanged">
-            </asp:DropDownList>
-                <asp:DataList ID="dlstCourses" runat="server" CssClass="multiRecordsDataList" RepeatDirection="Horizontal" RepeatColumns="4" Width="80%">
+            </asp:DropDownList></div>
+                <asp:DataList ID="dlstCourses" runat="server" CssClass="multiRecordsDataList" RepeatDirection="Horizontal" RepeatColumns="4" Width="100%">
             <ItemTemplate>
                 <img src="../images/BULLET.GIF" align="middle" /><a href="CInfoCourseIntro.aspx?courseNo=<%#Eval("courseNo").ToString().Trim()%>&classID=<%#Server.UrlEncode(Eval("classID").ToString().Trim())%>&termtag=<%#Eval("termTag") %>">
                                         <%#Eval("courseName") %>(<%#Eval("ClassID") %>)</a>

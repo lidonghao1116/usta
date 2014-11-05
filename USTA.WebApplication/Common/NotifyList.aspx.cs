@@ -23,51 +23,49 @@ using USTA.Model;
 public partial class Common_NotifyList : System.Web.UI.Page
 {
     public int pageIndex = HttpContext.Current.Request["page"] == null ? 1 : int.Parse(HttpContext.Current.Request["page"]);
-    public int pid = HttpContext.Current.Request["pid"] == null ? 5 : int.Parse(HttpContext.Current.Request["pid"]);
     public string isAdmin = "0";
+    public int notifyTypeParentId = HttpContext.Current.Request["pid"] == null ? -3 : int.Parse(HttpContext.Current.Request["pid"]);
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            //控制Tab的显示
-            string fragmentFlag = "1";
+            DalOperationAboutAdminNotifyType dalOperationAboutAdminNotifyType = new DalOperationAboutAdminNotifyType();
+            DataSet _ds = dalOperationAboutAdminNotifyType.FindAllParentAdminNotifyType();
 
-            if (Request["fragment"] != null)
+            string strLi = string.Empty;
+
+            for (int i = 0; i < _ds.Tables[0].Rows.Count; i++)
             {
-                fragmentFlag = Request["fragment"];
+                strLi += "<li id=\"liFragment" + _ds.Tables[0].Rows[i]["notifyTypeId"].ToString().Trim() + "\" pid=\"" + _ds.Tables[0].Rows[i]["notifyTypeId"].ToString().Trim() + "\"><a href=\"?pid=" + _ds.Tables[0].Rows[i]["notifyTypeId"].ToString().Trim() + "\"><span>" + _ds.Tables[0].Rows[i]["notifyTypeName"].ToString().Trim() + "</span></a></li>";
+
+                if (i == 0 && notifyTypeParentId == -3)
+                {
+                    notifyTypeParentId = int.Parse(_ds.Tables[0].Rows[i]["notifyTypeId"].ToString().Trim());
+                }
             }
 
-            HtmlControl hcl = new HtmlGenericControl();
+            ltlNotifyTypeParent.Text = strLi;
 
-
-
-            CommonUtility.ShowLiControl(fragmentFlag, liFragment1, liFragment2, liFragment3
-                ,liFragment4, divFragment1, divFragment2, divFragment3, divFragment4);
-
-
-
-            if (fragmentFlag.Equals("1") || fragmentFlag.Equals("4"))
+            if (notifyTypeParentId > 0 || notifyTypeParentId == -3)
             {
-                DataListBindNotifyType(pid);
-                divFragment1.Style.Add("display", "block");
 
-                divFragment4.Style.Add("display", "none");
+                divFragment1.Attributes.Add("pid", notifyTypeParentId.ToString());
+                DataListBindNotifyType(notifyTypeParentId);
+                divFragment1.Visible = true;
             }
 
-            if (fragmentFlag.Equals("2"))
+            if (notifyTypeParentId == -1)
             {
-                liFragment2.Visible = true;
                 ViewAdminNotify();
             }
-            if (fragmentFlag.Equals("3"))
+            if (notifyTypeParentId == -2)
             {
                 if (Request["notifyTypeId"] != null)
                 {
                     int typeId = -1;
                     if (CommonUtility.SafeCheckByParams<string>(Request["notifyTypeId"], ref typeId))
                     {
-                        liFragment3.Visible = true;
                         DataListBindNotifyByTypeId(typeId);
                     }
                     else
@@ -225,14 +223,23 @@ public partial class Common_NotifyList : System.Web.UI.Page
             DataSet ds = DalOperationAboutAdminNotify.FindTheTop5NotifyByTypeId(mainID);
             dataList.DataSource = ds.Tables[0].DefaultView;
             dataList.DataBind();
+
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                dataList.ShowFooter = true;
+            }
+            else
+            {
+                dataList.ShowFooter = false;
+            }
         }
     }
 
     //绑定文章类型列表
-    protected void DataListBindNotifyType(int parendId)
+    protected void DataListBindNotifyType(int notifyTypeParentId)
     {
         DalOperationAboutAdminNotifyType dalOperationAboutAdminNotifyType = new DalOperationAboutAdminNotifyType();
-        DataSet ds = dalOperationAboutAdminNotifyType.FindAdminNotifyInfoByPid(parendId);
+        DataSet ds = dalOperationAboutAdminNotifyType.FindAllAdminNotifyTypeByParentId(notifyTypeParentId);
 
         this.dlstNotifyType.DataSource = ds;
         this.dlstNotifyType.DataBind();

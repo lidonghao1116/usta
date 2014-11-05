@@ -30,7 +30,7 @@ namespace USTA.WebApplication.Administrator
 
             string termYear = context.Request["year"];
 
-            string locale = context.Request["locale"];
+            string locale = context.Server.UrlDecode(context.Request["locale"]);
 
             string allGradeCheckExcel = System.Configuration.ConfigurationManager.AppSettings["AllGradeCheckExcel"];
 
@@ -66,7 +66,7 @@ namespace USTA.WebApplication.Administrator
                 sheet1.CreateRow(i + 1).CreateCell(0).SetCellValue(i + 1);
                 sheet1.CreateRow(i + 1).CreateCell(1).SetCellValue(dt.Rows[i]["studentNo"].ToString().Trim());
                 sheet1.CreateRow(i + 1).CreateCell(2).SetCellValue(dt.Rows[i]["studentName"].ToString().Trim());
-                sheet1.CreateRow(i + 1).CreateCell(3).SetCellValue(dt.Rows[i]["Sex"].ToString().Trim() == "1" ? "男" : "女");
+                sheet1.CreateRow(i + 1).CreateCell(3).SetCellValue(dt.Rows[i]["Sex"].ToString().Trim() == "0" ? "男" : "女");
                 sheet1.CreateRow(i + 1).CreateCell(4).SetCellValue(dt.Rows[i]["SchoolClassName"].ToString().Trim());
                 sheet1.CreateRow(i + 1).CreateCell(5).SetCellValue(termYear + "级");
                 sheet1.CreateRow(i + 1).CreateCell(6).SetCellValue(dt.Rows[i]["HeadteacherName"].ToString().Trim());

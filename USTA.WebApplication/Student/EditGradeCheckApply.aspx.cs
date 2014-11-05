@@ -22,15 +22,9 @@ namespace USTA.WebApplication.Student
     public partial class EditGradeCheckApply : CheckUserWithCommonPageBase
     {
         public DateTime updateTime = DateTime.Now;
-        public int gradeCheckApplyId = -1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!CommonUtility.SafeCheckByParams<int>(Request["gradeCheckApplyId"].ToString(), ref gradeCheckApplyId))
-            {
-                Javascript.ExcuteJavascriptCode("alert('参数有误');parent.tb_remove();", Page);
-                return;
-            }
 
             UserCookiesInfo UserCookiesInfo = BllOperationAboutUser.GetUserCookiesInfo();
 
@@ -48,7 +42,7 @@ namespace USTA.WebApplication.Student
                 DataBindTermTagList();
                 //绑定课程列表--学期标识(termTag)
                 DataBindSearchCourse();
-                this.GetGradeCheckApplyInfo(gradeCheckApplyId);
+                this.GetGradeCheckApplyInfo(updateTime);
             }
         }
 
@@ -61,7 +55,7 @@ namespace USTA.WebApplication.Student
         }
 
 
-        protected void GetGradeCheckApplyInfo(int gradeCheckApplyId)
+        protected void GetGradeCheckApplyInfo(DateTime updateTime)
         {
             if (!this.isAllowTime())
             {
@@ -74,7 +68,7 @@ namespace USTA.WebApplication.Student
             StringBuilder sb = new StringBuilder();
             UserCookiesInfo UserCookiesInfo = BllOperationAboutUser.GetUserCookiesInfo();
             DalOperationAboutGradeCheck dal = new DalOperationAboutGradeCheck();
-            DataTable dt = dal.GetStudentGradeCheckApplyByStudentNoAndUpdateTimeNotDeal(UserCookiesInfo.userNo, gradeCheckApplyId).Tables[0];
+            DataTable dt = dal.GetStudentGradeCheckApplyByStudentNoAndUpdateTimeNotDeal(UserCookiesInfo.userNo, updateTime).Tables[0];
 
 
             if (dt.Rows.Count > 0)
@@ -148,7 +142,6 @@ namespace USTA.WebApplication.Student
 
             for (int i = 0; i < dlstcourses.Items.Count; i++)
             {
-                isChecked = true;
 
                 System.Web.UI.WebControls.CheckBox ck = dlstcourses.Items[i].FindControl("select") as System.Web.UI.WebControls.CheckBox;
                 System.Web.UI.WebControls.DropDownList ddl = dlstcourses.Items[i].FindControl("ddlGradeCheckApplyType") as System.Web.UI.WebControls.DropDownList;
@@ -160,7 +153,8 @@ namespace USTA.WebApplication.Student
 
                 if (ck != null && ck.Checked)
                 {
-                    listStudentsGradeCheckApply.Add(new StudentsGradeCheckApply { studentNo = UserCookiesInfo.userNo, updateTime = updateTime,applyUpdateTime=updateTime, courseNo = ltlCourseNo.InnerText.Trim(), ClassID = ltlClassID.InnerText.Trim(), termTag = ltlTermTag.InnerText.Trim(), gradeCheckApplyType = ddl.SelectedValue,applyReason = ddlApplyReason.SelectedValue});
+                    isChecked = true;
+                    listStudentsGradeCheckApply.Add(new StudentsGradeCheckApply { studentNo = UserCookiesInfo.userNo, updateTime = updateTime, applyUpdateTime = DateTime.Now, courseNo = ltlCourseNo.InnerText.Trim(), ClassID = ltlClassID.InnerText.Trim(), termTag = ltlTermTag.InnerText.Trim(), gradeCheckApplyType = ddl.SelectedValue, applyReason = ddlApplyReason.SelectedValue });
                 }
             }
 
@@ -170,11 +164,24 @@ namespace USTA.WebApplication.Student
                 return;
             }
 
+            //加申请记录唯一性验证
+
+            for (int i = 0; i < listStudentsGradeCheckApply.Count; i++)
+            {
+                DataSet _temp = dal.GetStudentGradeCheckApplyByStudentNoAndTermTagCourseNoClassID(listStudentsGradeCheckApply[i].studentNo, listStudentsGradeCheckApply[i].termTag + listStudentsGradeCheckApply[i].courseNo + listStudentsGradeCheckApply[i].ClassID);
+                
+                if (_temp.Tables[0].Rows.Count > 0 && _temp.Tables[0].Rows[0]["applyResult"].ToString().Trim() == "符合")
+                {
+                    Javascript.GoHistory(-1, "申请重修重考失败，失败原因：\\n当前已经申请了“" + listStudentsGradeCheckApply[i].couseName + "”的重修重考记录，并且已经审核通过，无须重新申请：（", Page);
+                    return;
+                }
+            }
+
             using (TransactionScope scope = new TransactionScope())
             {
                 try
                 {
-                    dal.DeleteStudentGradeCheckApplyByStudentNoAndUpdateTime(UserCookiesInfo.userNo, gradeCheckApplyId);
+                    dal.DeleteStudentGradeCheckApplyByStudentNoAndUpdateTime(UserCookiesInfo.userNo, updateTime);
 
                     for (int i = 0; i < listStudentsGradeCheckApply.Count; i++)
                     {

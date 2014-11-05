@@ -16,27 +16,31 @@
         KindEditor.ready(function (K) {
             initKindEditor(K, 'Textarea1', "100%", "260px");
         });
+
+        function checkNotifyInfo() {
+            if ($('#ddlNotifyTypeChild option:selected').attr('parentId') == '0') {
+                alert('请选择“' + $('#ddlNotifyType option:selected').text() + "”下的二级分类");
+                return false;
+            } 
+        }
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
     <table width="100%" class="tableAddStyleNone">
          <tr>
-                    <td width="100px" class="border">
-                        一级分类：
+                    <td width="200px" class="border">
+                        请选择文章一级分类：
                     </td>
-                    <td width="900px" class="border">
-                        <asp:DropDownList ID="ddlNotifyType" AutoPostBack="True" runat="server"  OnSelectedIndexChanged="ddlNotifyType_SelectedIndexChanged">
-                        </asp:DropDownList>
+                    <td class="border">
+                        <asp:DropDownList ID="ddlNotifyType" runat="server" ClientIDMode="Static" AutoPostBack="True" OnSelectedIndexChanged="ddlNotifyType_SelectedIndexChanged"></asp:DropDownList>
                     </td>
-                </tr>
-                <tr>
-                    <td width="100px" class="border">
-                        二级分类：
+                </tr><tr>
+                    <td class="border">
+                        请选择文章二级分类：
                     </td>
-                    <td width="900px" class="border">
-                        <asp:DropDownList ID="ddlNotifyTypeChild" runat="server">
-                        </asp:DropDownList>
+                    <td class="border">
+                        <asp:DropDownList ID="ddlNotifyTypeChild" runat="server"  ClientIDMode="Static"></asp:DropDownList>
                     </td>
                 </tr>
         <tr>
@@ -81,7 +85,7 @@
         </tr>
         <tr>
             <td colspan="2" class="border">
-                <asp:Button ID="btnUpdate" runat="server" Text="修改" OnClick="btnUpdate_Click" OnClientClick="return checkKindValue('Textarea1');" />
+                <asp:Button ID="btnUpdate" runat="server" Text="修改" OnClick="btnUpdate_Click" OnClientClick="return checkNotifyInfo();return checkKindValue('Textarea1');" />
                 <asp:HiddenField ID="hidAttachmentId" ClientIDMode="Static" runat="server" Value="" />
             </td>
         </tr>

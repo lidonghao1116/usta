@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using USTA.Dal;
 using USTA.Model;
+using USTA.Dal;
 using USTA.Common;
 using USTA.PageBase;
 
@@ -21,9 +21,6 @@ namespace USTA.WebApplication.Administrator
                 AdminNotifyType type = dalNotifyType.FindAdminNotifyTypeById(int.Parse(Request["notifyTypeId"].ToString().Trim()));
                 txtTypeName.Text = type.notifyTypeName.ToString().Trim();
                 txtSequence.Text = type.sequence.ToString().Trim();
-
-                txtTypeName.Attributes.Add("class", "required");
-                txtSequence.Attributes.Add("class", "required number");
             }
         }
 
@@ -39,15 +36,12 @@ namespace USTA.WebApplication.Administrator
             }
 
             DalOperationAboutAdminNotifyType dalNotifyType = new DalOperationAboutAdminNotifyType();
-
             AdminNotifyType type = new AdminNotifyType();
-
             type.notifyTypeId = int.Parse(Request["notifyTypeId"].ToString().Trim());
             type.notifyTypeName = txtTypeName.Text.Trim();
             type.sequence = int.Parse(txtSequence.Text.Trim());
             dalNotifyType.UpdateAdminNotifyType(type);
             Javascript.RefreshParentWindow("修改成功", "/Administrator/NotifyInfoManage.aspx?fragment=3", Page);
-
         }
     }
 }

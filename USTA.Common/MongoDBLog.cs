@@ -105,10 +105,11 @@ namespace USTA.Common
 
                 var collection = dbLog.GetCollection<USTALogs>(date);
                 resultCount = collection.Count();
+                
 
                 var queryResultSet = from p in (collection.Linq().Skip(pageSize * (pageNum - 1)).Take(pageSize))
-                                     orderby p.errorTime descending
                                      select p;
+
                 docResultSet = queryResultSet.ToList<USTALogs>();
 
             }

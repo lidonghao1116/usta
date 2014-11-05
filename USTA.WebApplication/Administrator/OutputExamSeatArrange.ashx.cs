@@ -36,6 +36,7 @@ namespace USTA.WebApplication.Administrator
             context.Response.CacheControl = "no-cache";
 
             string strRows = context.Request["rows"];
+            string courseName = context.Server.UrlDecode(context.Request["courseName"]);
 
             string examSeatArrangeExcel = System.Configuration.ConfigurationManager.AppSettings["ExamSeatArrangeExcel"];
 
@@ -45,7 +46,7 @@ namespace USTA.WebApplication.Administrator
             HSSFWorkbook workbook = new HSSFWorkbook();
 
             //创建WorkSheet
-            HSSFSheet sheet1 = workbook.CreateSheet("随机座位考试安排表");
+            HSSFSheet sheet1 = workbook.CreateSheet(courseName + "_随机座位考试安排表");
 
             List<string> listStudent = new List<string>();
 
@@ -133,7 +134,7 @@ namespace USTA.WebApplication.Administrator
                 }
             }
 
-            string fileName = "随机座位考试安排表_" + UploadFiles.DateTimeString();
+            string fileName = courseName + "_随机座位考试安排表_" + UploadFiles.DateTimeString();
 
             if (!Directory.Exists(context.Server.MapPath(examSeatArrangeExcel)))
             {

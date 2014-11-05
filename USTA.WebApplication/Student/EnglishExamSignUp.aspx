@@ -15,7 +15,7 @@
             <li id="liFragment3" runat="server"><a href="../Common/FeedBack.aspx"><span>疑问反馈</span></a></li>
         </ul>
         <div class="ui-tabs-panel ui-tabs-hide" id="divFragment1" runat="server">
-            <table align="center" width="100%" class="tableAddStyleNone"><tr>
+            <table align="center" width="100%" class="tableAddStyleNone" runat="server" id="tbEnglishtSignUp"><tr>
                     <td width="200px" class="border">                        
                         当前考试类型：
                     </td>

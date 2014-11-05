@@ -862,24 +862,21 @@ namespace USTA.Dal
         public DataSet FindCurrentCoursesByLocale(string locale)
         {
             DataSet ds = new DataSet();
-
-            string sql = "SELECT courseNo,courseName,termTag,classID FROM usta_Courses WHERE termTag=@termTag AND CHARINDEX(@locale,classID)>0";
-
+            string sql = "SELECT courseNo,courseName,termTag,classID FROM usta_Courses WHERE termTag=@termTag AND ";
+            if (locale == "合肥")
+            {
+                sql += "(CHARINDEX(@locale,classID)>0 or CHARINDEX('HF',classID)>0)";
+            }
+            else
+            {
+                locale = "合肥";
+                sql += "(CHARINDEX(@locale,classID)<=0 and CHARINDEX('HF',classID)<=0)";
+            }
 
             SqlParameter[] parameters = new SqlParameter[]{
 			   new SqlParameter("@termTag",termTag),
-			   new SqlParameter("@locale",locale)
+			   new SqlParameter("@locale", locale)
 			};
-
-            if (termTag.Substring(5, 1) == "0")
-            {
-                sql = "SELECT courseNo,courseName,termTag,classID FROM usta_Courses WHERE termTag=@termTag";
-
-                parameters = new SqlParameter[]{
-			        new SqlParameter("@termTag",termTag)
-			    };
-            }
-
             ds = SqlHelper.ExecuteDataset(conn, CommandType.Text, sql, parameters);
             conn.Close();
             return ds;
@@ -1408,16 +1405,14 @@ namespace USTA.Dal
         public DataSet SearchCourses(string termTag, string searchString,string coursePlace)
         {
             string sql = "SELECT [courseNo],[courseName],[period],[credit],[courseSpeciality],[termTag],[classID]   FROM [USTA].[dbo].[usta_Courses]  WHERE termTag=@termTag AND (classID LIKE '%'+ @coursePlace + '%') AND (courseName LIKE '%'+@keyword+'%' OR courseNo LIKE '%'+@keyword+'%') ORDER BY termTag DESC;";
-            
             if (termTag == "all")
             {
                 sql = "SELECT [courseNo],[courseName],[period],[credit],[courseSpeciality],[termTag],[classID]   FROM [USTA].[dbo].[usta_Courses]  WHERE (classID LIKE '%'+ @coursePlace + '%') AND (courseName LIKE '%'+@keyword+'%' OR courseNo LIKE '%'+@keyword+'%')  ORDER BY termTag DESC;";
             }
-
             SqlParameter[] parameters = new SqlParameter[]{
 				 new SqlParameter("@keyword",searchString),
 				 new SqlParameter("@termTag",termTag),
-				 new SqlParameter("@coursePlace",((termTag.Length >= 6 && termTag.Substring(5, 1) == "0") ? "暑期" : coursePlace))
+				 new SqlParameter("@coursePlace",coursePlace)
 			};
             DataSet ds = SqlHelper.ExecuteDataset(conn, CommandType.Text, sql, parameters);
             conn.Close();

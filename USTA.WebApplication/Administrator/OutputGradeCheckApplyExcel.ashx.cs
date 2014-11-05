@@ -29,9 +29,9 @@ namespace USTA.WebApplication.Administrator
 
             context.Response.CacheControl = "no-cache";
 
-            string termTagCourseNoClassID = context.Request["termTagCourseNoClassID"];
+            string termTagCourseNoClassID = context.Server.UrlDecode(context.Request["termTagCourseNoClassID"]);
             string termTag = (context.Request["termTag"] == null ? string.Empty : context.Request["termTag"]);
-            string courseName = (context.Request["courseName"] == null ? string.Empty : context.Request["courseName"]);
+            string courseName = (context.Request["courseName"] == null ? string.Empty : context.Server.UrlDecode(context.Request["courseName"]));
 
             string gradeCheckApplyExcel = System.Configuration.ConfigurationManager.AppSettings["GradeCheckApplyExcel"];
 

@@ -468,6 +468,7 @@ namespace USTA.Bll
             List<StudentsGradeCheckConfirm> _listStudentsGradeCheckConfirm = new List<StudentsGradeCheckConfirm>();
             List<StudentsGradeCheckDetail> _listStudentsGradeCheckDetail = new List<StudentsGradeCheckDetail>();
 
+            int _errorNo = 0;
             try
             {
                 using (FileStream file = new FileStream(filePath, FileMode.Open))
@@ -486,19 +487,24 @@ namespace USTA.Bll
                     int isAccordColumnNo = -1;
                     int remarkColumnNo = -1;
 
-                    Hashtable ht = new Hashtable();
+                    //Hashtable ht = new Hashtable();
+                    Dictionary<string, string> dic = new Dictionary<string, string>();
+
+                    int _columnsCount=0;
 
                     while (rows.MoveNext())
                     {
                         HSSFRow row = (HSSFRow)rows.Current;
 
-                        int _columnsCount = row.PhysicalNumberOfCells;
-
                         StudentsGradeCheckConfirm _studentsGradeCheckConfirm = new StudentsGradeCheckConfirm();
                         _studentsGradeCheckConfirm.updateTime = _now;
 
+                        //HttpContext.Current.Response.Write(_columnsCount + "<Br/>");
+
                         if (exceptionRowNo == 0)
                         {
+                            _columnsCount = row.PhysicalNumberOfCells;
+
                             for (int j = 0; j < _columnsCount; j++)
                             {
                                 string _value = row.GetCell(j).ToString().Trim();
@@ -517,12 +523,15 @@ namespace USTA.Bll
                                         break;
                                 }
 
-                                if (j > 6 && _value != "是否符合学位申请条件" && _value != "不及格科目")
+                                if (j > 5 && _value != "是否符合学位申请条件" && _value != "不及格科目")
                                 {
-                                    ht.Add(j.ToString().Trim(), _value);
+                                    //ht.Add("_cols"+j.ToString().Trim(), _value);
+                                    dic.Add("_cols" + j.ToString().Trim(), _value);
                                 }
                             }
                         }
+                        //HttpContext.Current.Response.Write(_columnsCount);
+                        //HttpContext.Current.Response.End();
                         //HttpContext.Current.Response.Write(ht.Count);
 
                         //foreach (DictionaryEntry _item in ht)
@@ -543,7 +552,7 @@ namespace USTA.Bll
                             {
                                 //HttpContext.Current.Response.Write(j.ToString().Trim());
 
-                                exceptionColNo = j + 1;
+                                exceptionColNo = j;
 
                                 string _value = row.GetCell(j).ToString().Trim();
 
@@ -551,40 +560,48 @@ namespace USTA.Bll
                                 {
                                     //序号
                                     case 0:
+                                        //HttpContext.Current.Response.Write(_value + "<Br/>");
                                         break;
                                     //学号
                                     case 1:
+                                        //HttpContext.Current.Response.Write(_value + "<Br/>");
                                         _studentsGradeCheckConfirm.studentNo = _value;
                                         _studentNo = _value;
                                         break;
                                     //姓名
                                     case 2:
-                                        break;
-                                    //性别
-                                    case 3:
+                                        //HttpContext.Current.Response.Write(_value + "<Br/>");
                                         break;
                                     //班级
-                                    case 4:
+                                    case 3:
+                                        //HttpContext.Current.Response.Write(_value + "<Br/>");
                                         break;
                                     //年级
-                                    case 5:
+                                    case 4:
+                                        //HttpContext.Current.Response.Write(_value + "<Br/>");
+                                        //HttpContext.Current.Response.End();
                                         //判断学年是否正确
                                         if (_value.Length >= 2 && _value.Substring(0, 2) != _termYear)
                                         {
-                                            throw new Exception(errorInfo);
+                                            throw new Exception(errorInfo + "当前选择的学年为：" + _termYear + "，读取到的学年值为：" + _value + "，请检查！");
                                         }
                                         break;
                                     //班主任
-                                    case 6:
+                                    case 5:
                                         break;
                                     default:
                                         break;
                                 }
 
-                                if (j > 6)
+                                if (j > 5)
                                 {
                                     if (isAccordColumnNo == j)
                                     {
+                                        //判断是否符合学位申请列的数据
+                                        if ((_value != "符合" && _value != "不符合"))
+                                        {
+                                            throw new Exception("是否符合学位申请条件列的值只能为“符合”或者“不符合”，当前读取到的值为“" + _value +"”");
+                                        }
                                         _studentsGradeCheckConfirm.isAccord = (_value == "符合" ? 1 : 0);
                                     }
                                     else if (remarkColumnNo == j)
@@ -594,16 +611,31 @@ namespace USTA.Bll
                                     //动态变化列
                                     else
                                     {
+                                        //HttpContext.Current.Response.Write(j+"_"+ht[(object)("_cols" + j).ToString().Trim()].ToString().Trim()+"<br/>");
+                                        //_errorNo = j;
+                                        //if (!dic.ContainsKey("_cols" + j))
+                                        //{
+                                        //    HttpContext.Current.Response.Write(j+"_"+exceptionRowNo+"_"+"<br/>");
+                                        //}
                                         _listStudentsGradeCheckDetail.Add(new StudentsGradeCheckDetail
                                         {
                                             updateTime = _now,
                                             studentNo = _studentNo,
-                                            gradeCheckItemName = ht[(object)j.ToString().Trim()].ToString().Trim(),
+                                            //gradeCheckItemName = ht[(object)("_cols"+j).ToString().Trim()].ToString().Trim(),
+                                            gradeCheckItemName = dic["_cols"+j].ToString().Trim(),
                                             termYear = _termYear,
-                                            gradeCheckDetailValue = _value
+                                            gradeCheckDetailValue = _value,
+                                            colNo = j + 1
                                         });
+                                        if (j == 7)
+                                        {
+                                            //HttpContext.Current.Response.Write(_value);
+                                            //HttpContext.Current.Response.End();
+                                        }
                                     }
                                 }
+
+                                
                             }
                             _listStudentsGradeCheckConfirm.Add(_studentsGradeCheckConfirm);
                         }
@@ -611,13 +643,15 @@ namespace USTA.Bll
                     }
                     gradeCheckExcelData = new GradeCheckExcelData { listStudentsGradeCheckConfirm = _listStudentsGradeCheckConfirm, listStudentsGradeCheckDetail = _listStudentsGradeCheckDetail };
                 }
+               // HttpContext.Current.Response.End();
             }
             catch (Exception ex)
             {
+                //HttpContext.Current.Response.Write(_errorNo);
                 MongoDBLog.LogRecord(ex);
-                HttpContext.Current.Response.Write("<script type='text/javascript'>alert('很抱歉，读取Excel文件数据失败！此次操作未更改任何数据库数据，相关信息如下：\\n\\n出错的单元格行号为：" + exceptionRowNo
-                    //+ "\n出错的单元格列号为：" + exceptionColNo
-                    + "\\n可能的原因为：" + (ex.Message != errorInfo ? "\\n 此单元格数据格式可能不正确，例如：单元格数据是否存在多余的空格。" : errorInfo)
+                HttpContext.Current.Response.Write("<script type='text/javascript'>alert('很抱歉，读取Excel文件数据失败！此次操作未更改任何数据库数据，相关信息如下：\\n\\n出错的单元格行号为：" + (exceptionRowNo + 1)
+                    + "\\n出错的单元格列号为：" + (exceptionColNo+1)
+                    + "\\n可能的原因为：" + ex.Message
                     + "请检查Excel文件数据，修改后重新上传！');history.go(-1);</script>");
             }
 

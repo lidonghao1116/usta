@@ -174,15 +174,6 @@ public partial class Administrator_StudentManager {
     protected global::System.Web.UI.WebControls.TextBox txtKeyword;
     
     /// <summary>
-    /// btnQuery 控件。
-    /// </summary>
-    /// <remarks>
-    /// 自动生成的字段。
-    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnQuery;
-    
-    /// <summary>
     /// dlSearchStudent 控件。
     /// </summary>
     /// <remarks>
@@ -363,6 +354,24 @@ public partial class Administrator_StudentManager {
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFragment6;
     
     /// <summary>
+    /// spanAttachment2 控件。
+    /// </summary>
+    /// <remarks>
+    /// 自动生成的字段。
+    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanAttachment2;
+    
+    /// <summary>
+    /// ddlLocaleImportExcelData 控件。
+    /// </summary>
+    /// <remarks>
+    /// 自动生成的字段。
+    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.DropDownList ddlLocaleImportExcelData;
+    
+    /// <summary>
     /// ddlTermYearImportExcelData 控件。
     /// </summary>
     /// <remarks>
@@ -424,6 +433,33 @@ public partial class Administrator_StudentManager {
     /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
     /// </remarks>
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFragment8;
+    
+    /// <summary>
+    /// spanExcelTemplate 控件。
+    /// </summary>
+    /// <remarks>
+    /// 自动生成的字段。
+    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanExcelTemplate;
+    
+    /// <summary>
+    /// hidAttachmentId1 控件。
+    /// </summary>
+    /// <remarks>
+    /// 自动生成的字段。
+    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.HiddenField hidAttachmentId1;
+    
+    /// <summary>
+    /// Button3 控件。
+    /// </summary>
+    /// <remarks>
+    /// 自动生成的字段。
+    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button Button3;
     
     /// <summary>
     /// divFragment9 控件。

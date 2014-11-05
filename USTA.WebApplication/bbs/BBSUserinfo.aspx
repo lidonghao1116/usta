@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/BBSindex.master" AutoEventWireup="true" Inherits="bbs_BBSUserinfo" Codebehind="BBSUserinfo.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/BBSindex.master" AutoEventWireup="true" EnableViewState="false" Inherits="bbs_BBSUserinfo" Codebehind="BBSUserinfo.aspx.cs" %>
 <%@ MasterType  VirtualPath="~/MasterPage/BBSindex.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="BBSContent" Runat="Server">
 <div class="ui-tabs-panel">

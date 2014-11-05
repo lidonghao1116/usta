@@ -82,6 +82,15 @@ namespace USTA.Model
             set;
             get;
         }
+
+        /// <summary>
+        /// s
+        /// </summary>
+        public int colNo
+        {
+            get;
+            set;
+        }
         #endregion Model
 
     }

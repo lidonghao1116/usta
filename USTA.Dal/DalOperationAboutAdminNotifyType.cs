@@ -49,16 +49,16 @@ namespace USTA.Dal
 			try
 			{
 				string strSql = "insert into usta_AdminNotifyType(";
-				strSql += "notifyTypeName,parentId,sequence) ";
+				strSql += "notifyTypeName,sequence,parentId) ";
 				strSql += " values (";
-				strSql += "@notifyTypeName,@parentId,@sequence)";
+				strSql += "@notifyTypeName,@sequence,@parentId)";
 				SqlParameter[] parameters = {
 					new SqlParameter("@notifyTypeName", SqlDbType.NVarChar,50),
-					new SqlParameter("@parentId", SqlDbType.Int,50),
-					new SqlParameter("@sequence", SqlDbType.Int,4)};
-                parameters[0].Value = notifyType.notifyTypeName;
-                parameters[1].Value = notifyType.parentId;
-				parameters[2].Value = notifyType.sequence;
+					new SqlParameter("@sequence", SqlDbType.Int,4),
+					new SqlParameter("@parentId", SqlDbType.Int,4)};
+				parameters[0].Value = notifyType.notifyTypeName;
+                parameters[1].Value = notifyType.sequence;
+                parameters[2].Value = notifyType.parentId;
 
 				SqlHelper.ExecuteNonQuery(conn, CommandType.Text, strSql, parameters);
 			}
@@ -73,6 +73,77 @@ namespace USTA.Dal
 			}
 		}
 
+        /// <summary>
+        /// 查询所有的一级分类通知类型
+        /// </summary>
+        /// <returns>管理员数据信息集</returns>
+        public DataSet FindAllParentAdminNotifyType()
+        {
+            DataSet ds = null;
+            try
+            {
+                string strSql = "select notifyTypeId,notifyTypeName,sequence from usta_AdminNotifyType where parentId=0 order by sequence asc";
+                ds = SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql);
+            }
+            catch (Exception ex)
+            {
+                MongoDBLog.LogRecord(ex);
+                CommonUtility.RedirectUrl();
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return ds;
+        }
+
+        /// <summary>
+        /// 根据父级Id查询所有的二级分类通知类型
+        /// </summary>
+        /// <returns>管理员数据信息集</returns>
+        public DataSet FindAllAdminNotifyTypeByParentId(int parentId)
+        {
+            DataSet ds = null;
+            try
+            {
+                string strSql = "select notifyTypeId,notifyTypeName,sequence from usta_AdminNotifyType WHERE parentId=" + parentId + " order by sequence asc";
+                ds = SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql);
+            }
+            catch (Exception ex)
+            {
+                MongoDBLog.LogRecord(ex);
+                CommonUtility.RedirectUrl();
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return ds;
+        }
+
+        /// <summary>
+        /// 根据子级Id查询父级Id
+        /// </summary>
+        /// <returns>管理员数据信息集</returns>
+        public DataSet FindParentIdById(int id)
+        {
+            DataSet ds = null;
+            try
+            {
+                string strSql = "select notifyTypeId,notifyTypeName,sequence,parentId from usta_AdminNotifyType WHERE notifyTypeId=" + id + " order by sequence asc";
+                ds = SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql);
+            }
+            catch (Exception ex)
+            {
+                MongoDBLog.LogRecord(ex);
+                CommonUtility.RedirectUrl();
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return ds;
+        }
 		
 		/// <summary>
 		/// 查询所有的管理员通知类型
@@ -97,53 +168,6 @@ namespace USTA.Dal
 			}
 			return ds;
 		}
-
-        public DataSet FindAllParentAdminNotifyType()
-        {
-            DataSet ds = null;
-            try
-            {
-                string strSql = "select notifyTypeId,notifyTypeName,parentId,sequence from usta_AdminNotifyType where parentId=0 order by sequence asc";
-                ds = SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql);
-            }
-            catch (Exception ex)
-            {
-                MongoDBLog.LogRecord(ex);
-                CommonUtility.RedirectUrl();
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return ds;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parentId"></param>
-        /// <returns></returns>
-        public DataSet FindAdminNotifyInfoByPid(int parentId)
-        {
-            DataSet ds = null;
-            try
-            {
-                string commandstring = "select notifyTypeId,notifyTypeName,sequence,parentId from usta_AdminNotifyType where parentId=@parentId order by sequence asc";
-                SqlParameter[] parameters = new SqlParameter[1]{new SqlParameter("@parentId", parentId)
-			};
-                ds = SqlHelper.ExecuteDataset(conn, CommandType.Text, commandstring, parameters);
-            }
-            catch (Exception ex)
-            {
-                MongoDBLog.LogRecord(ex);
-                CommonUtility.RedirectUrl();
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return ds;
-        }
 		
 		/// <summary>
 		/// 按照主键查找通知类型
@@ -153,7 +177,7 @@ namespace USTA.Dal
 		public AdminNotifyType FindAdminNotifyTypeById(int notifyTypeId)
 		{
 			AdminNotifyType model = null;
-			string commandstring = "select notifyTypeId,notifyTypeName,parentId,sequence from usta_AdminNotifyType where notifyTypeId=@notifyTypeId";
+			string commandstring = "select notifyTypeId,notifyTypeName,sequence,parentId from usta_AdminNotifyType where notifyTypeId=@notifyTypeId";
 			SqlParameter[] parameters = new SqlParameter[1]{new SqlParameter("@notifyTypeId",notifyTypeId)
 			};
 
@@ -164,36 +188,14 @@ namespace USTA.Dal
 				{
 					notifyTypeId = int.Parse(dr["notifyTypeId"].ToString().Trim()),
 					notifyTypeName = dr["notifyTypeName"].ToString().Trim(),
-					sequence = int.Parse(dr["sequence"].ToString().Trim())  
+                    sequence = int.Parse(dr["sequence"].ToString().Trim()),
+                    parentId = int.Parse(dr["parentId"].ToString().Trim())    
 				};
 			}
 			dr.Close();
 			conn.Close();
 			return model;
 		}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="notifyTypeId"></param>
-        /// <returns></returns>
-        public int GetParentIdById(int notifyTypeId)
-        {
-            int parentId = 0;
-            string commandstring = "select parentId from usta_AdminNotifyType where notifyTypeId=@notifyTypeId";
-            SqlParameter[] parameters = new SqlParameter[1]{new SqlParameter("@notifyTypeId",notifyTypeId)
-			};
-
-            SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text, commandstring, parameters);
-            if (dr.Read())
-            {
-                parentId = int.Parse(dr["parentId"].ToString().Trim());
-            }
-            dr.Close();
-            conn.Close();
-
-            return parentId;
-        }
 		
 		/// <summary>
 		/// 查询第一个管理员通知类型
@@ -260,10 +262,11 @@ namespace USTA.Dal
 			try
 			{
 				string strSql = "update usta_AdminNotifyType set notifyTypeName=@notifyTypeName,sequence=@sequence where notifyTypeId=@notifyTypeId";
-				SqlParameter[] parameters = new SqlParameter[3]{
+				SqlParameter[] parameters = new SqlParameter[4]{
 					new SqlParameter("@notifyTypeId",notifyType.notifyTypeId),
 					new SqlParameter("@notifyTypeName",notifyType.notifyTypeName),
-					new SqlParameter("@sequence",notifyType.sequence)
+					new SqlParameter("@sequence",notifyType.sequence),
+					new SqlParameter("@parentId",notifyType.parentId)
 				};
 
 				SqlHelper.ExecuteNonQuery(conn, CommandType.Text, strSql, parameters);

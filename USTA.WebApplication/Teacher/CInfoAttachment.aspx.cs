@@ -24,6 +24,7 @@ public partial class Teacher_CInfoAttachment : System.Web.UI.Page
         if (!IsPostBack)
         {
             Master.ShowLiControl(this.Page, "liFragment9");
+            Javascript.ExcuteJavascriptCode("initBeforeUnloadEvent('温馨提示：上传的结课资料数据可能未保存哟~（此为提示，并不代表您真正未保存上传的结课资料数据，请在完成附件上传后点击提交，确保顺利提交结课资料数据）');", Page);
         }
         DataBindArchivesItems();
 
@@ -161,11 +162,13 @@ public partial class Teacher_CInfoAttachment : System.Web.UI.Page
             {
                 archives.archiveId = archiveId;
                 doaa.UpdateArchives(archives);
+                Javascript.ExcuteJavascriptCode("delBeforeUnloadEvent();", Page);
                 Javascript.AlertAndRedirect("上传成功！", "CInfoAttachment.aspx?courseNo=" + archives.courseNo + "&classID=" + Master.classID + "&termtag=" + Master.termtag + "&teacherType=" + Master.teacherType, Page);
             }
             else
             {
                 doaa.AddArchives(archives);
+                Javascript.ExcuteJavascriptCode("delBeforeUnloadEvent();", Page);
                 Javascript.AlertAndRedirect("上传成功！", "CInfoAttachment.aspx?courseNo=" + archives.courseNo + "&classID=" + Master.classID + "&termtag=" + Master.termtag + "&teacherType=" + Master.teacherType, Page);
             }
         }

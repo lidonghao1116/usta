@@ -16,9 +16,13 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -351,11 +355,11 @@
     <Compile Include="Administrator\ViewTeacherSalarySummaryDetail.aspx.designer.cs">
       <DependentUpon>ViewTeacherSalarySummaryDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Common\Error.aspx.cs">
+    <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Common\Error.aspx.designer.cs">
+    <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Common\ViewGameCategoryInfo.aspx.cs">
@@ -364,6 +368,10 @@
     </Compile>
     <Compile Include="Common\ViewGameCategoryInfo.aspx.designer.cs">
       <DependentUpon>ViewGameCategoryInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Student\EditGradeCheckApply.aspx.cs">
       <DependentUpon>EditGradeCheckApply.aspx</DependentUpon>
@@ -871,9 +879,6 @@
     </Compile>
     <Compile Include="Common\ViewTeacherSalaryDetail.aspx.designer.cs">
       <DependentUpon>ViewTeacherSalaryDetail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MasterPage\BBSindex.master.designer.cs">
       <DependentUpon>BBSindex.master</DependentUpon>
@@ -1504,19 +1509,10 @@
     <Folder Include="aspnet_client\system_web\2_0_50727\" />
     <Folder Include="aspnet_client\system_web\4_0_30319\" />
     <Folder Include="bin\" />
+    <Folder Include="LogFiles\" />
     <Folder Include="Teacher\ScoreExcel\" />
     <Folder Include="temp\" />
-    <Folder Include="UploadFiles\AdminNotify\" />
-    <Folder Include="UploadFiles\Archives\" />
-    <Folder Include="UploadFiles\bbsAvatar\" />
-    <Folder Include="UploadFiles\bbs\" />
-    <Folder Include="UploadFiles\CourseNotify\" />
-    <Folder Include="UploadFiles\CourseResources\" />
-    <Folder Include="UploadFiles\emailAttachments\" />
-    <Folder Include="UploadFiles\ExperimentResources\" />
-    <Folder Include="UploadFiles\Experiments\" />
-    <Folder Include="UploadFiles\GradeCheckExcel\" />
-    <Folder Include="UploadFiles\SchoolWorks\" />
+    <Folder Include="UploadFiles\" />
     <Folder Include="UploadImages\" />
   </ItemGroup>
   <ItemGroup>
@@ -1624,7 +1620,7 @@
     <Content Include="Common\CInfoCourseNotify.aspx" />
     <Content Include="Common\CInfoCourseResource.aspx" />
     <Content Include="Common\CInfoCourseTeacher.aspx" />
-    <Content Include="Common\Error.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Common\FeedBack.aspx" />
     <Content Include="Common\NotifyList.aspx" />
     <Content Include="Common\Upload.aspx" />
@@ -1657,6 +1653,7 @@
     <Content Include="images\A_login_04.jpg" />
     <Content Include="images\btnLogin.gif" />
     <Content Include="images\btnReset.gif" />
+    <Content Include="images\btn_top.png" />
     <Content Include="images\BULLET.GIF" />
     <Content Include="images\error48.gif" />
     <Content Include="images\errorbg.gif" />
@@ -1672,6 +1669,7 @@
     <Content Include="images\logo.gif" />
     <Content Include="images\menubg.gif" />
     <Content Include="images\new.gif" />
+    <Content Include="images\news.gif" />
     <Content Include="images\note_error.gif" />
     <Content Include="images\NOTE_OK.GIF" />
     <Content Include="images\onTop.gif" />
@@ -1921,7 +1919,6 @@
     <Content Include="kindeditor\themes\default\default.png" />
     <Content Include="kindeditor\themes\simple\simple.css" />
     <Content Include="kindeditor\说明.htm" />
-    <Content Include="LogFiles\USTALogFile.txt" />
     <Content Include="Student\AddExperiment.aspx" />
     <Content Include="Student\CInfoCourseInfo.aspx" />
     <Content Include="Student\CInfoCourseIntro.aspx" />
@@ -2357,6 +2354,7 @@
     </Content>
     <Content Include="Administrator\OutputGradeCheckApplyExcel.ashx" />
     <Content Include="Administrator\OutputExamSeatArrange.ashx" />
+    <None Include="Properties\PublishProfiles\usta_deploy.pubxml" />
     <None Include="Teacher\EnglishExamSignUpExcel\template.xls" />
     <Content Include="Teacher\OutPutTeacherSalaryExcel.ashx" />
     <Content Include="Teacher\OutPutSalaryEntryExcel.ashx" />

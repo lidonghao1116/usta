@@ -72,9 +72,13 @@ namespace USTA.Dal
         {
             Dictionary<string, string> dic = new Dictionary<string, string>();
 
+            //old:SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text, "SELECT * FROM  MajorType");
             SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text, "SELECT * FROM MajorType");
+
+
             while (dr.Read())
             {
+                //old:dic.Add(dr["MajorTypeID"].ToString().Trim(), dr["MajorTypeName"].ToString().Trim());
                 dic.Add(dr["ID"].ToString().Trim(), dr["MajorTypeName"].ToString().Trim());
             }
             dr.Close();
@@ -93,13 +97,14 @@ namespace USTA.Dal
                         new SqlParameter("@specilityName",dic[key]),
                     new SqlParameter("@MajorTypeID",key)
                                                     };
-                        SqlHelper.ExecuteNonQuery(conn1, CommandType.Text, "INSERT INTO usta_StudentSpecility(specilityName,MajorTypeID)  VALUES(@specilityName, @MajorTypeID)",parameters);
+                        SqlHelper.ExecuteNonQuery(conn1, CommandType.Text, "INSERT INTO usta_StudentSpecility(specilityName,MajorTypeID)  VALUES(@specilityName, @MajorTypeID)", parameters);
                     }
                     scope.Complete();
                 }
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
                 finally
                 {
@@ -167,6 +172,7 @@ namespace USTA.Dal
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
             }
             conn1.Close();
@@ -207,7 +213,7 @@ namespace USTA.Dal
                 listStuNo.Add(dr["StuNo"].ToString().Trim());
                 listName.Add(dr["Name"].ToString().Trim());
                 listPhone.Add(dr["Phone"].ToString().Trim());
-                listEmail.Add(dr["Email"].ToString().Trim().Replace("'",string.Empty));
+                listEmail.Add(dr["Email"].ToString().Trim().Replace("'", string.Empty));
                 listMajorType.Add(dr["MajorType"].ToString().Trim());
                 listSchoolClass.Add(dr["SchoolClass"].ToString().Trim());
                 listRemark.Add(dr["Remark"].ToString().Trim());
@@ -221,9 +227,9 @@ namespace USTA.Dal
             conn.Close();
 
             //读取专业信息数据
-            dr =SqlHelper.ExecuteReader(conn1, CommandType.Text, 
+            dr = SqlHelper.ExecuteReader(conn1, CommandType.Text,
                 "SELECT [specilityName] ,[MajorTypeID] FROM [USTA].[dbo].[usta_StudentSpecility]");
-            while(dr.Read())
+            while (dr.Read())
             {
                 dicMajorType.Add(dr["MajorTypeID"].ToString().Trim(), dr["specilityName"].ToString().Trim());
             }
@@ -298,6 +304,7 @@ namespace USTA.Dal
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
             }
             conn1.Close();
@@ -317,7 +324,7 @@ namespace USTA.Dal
             List<string> listPhone = new List<string>();
             List<string> listEmail = new List<string>();
             List<int> listIsAssistant = new List<int>();
-            List<int> listIsSuperisor = new List<int>();            
+            List<int> listIsSuperisor = new List<int>();
             List<string> listRemark = new List<string>();
             List<string> listEnterpriseID = new List<string>();
             List<string> listIsHeaderTeacher = new List<string>();
@@ -328,7 +335,7 @@ namespace USTA.Dal
 
 
             SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text,
-                "select [ID],[TeacherUSID],[Name],[EmployeeNum],[Email],[IsAssistant],[IsSuperisor],[Remark],[Sex],[EnterpriseID],[IsHeadteacher],[TeacherType],[IsBusinessGuru] from Teacher WHERE isIncumbent=1;");
+                "select [ID],[TeacherUSID],[Name],[EmployeeNum],[Email],[IsAssistant],[IsSuperisor],[Remark],[Sex],[EnterpriseID],[IsHeadteacher],[TeacherType],[IsBusinessGuru] from  Teacher WHERE isIncumbent=1;");
             while (dr.Read())
             {
                 listTeacherID.Add(dr["ID"].ToString().Trim());
@@ -405,6 +412,7 @@ namespace USTA.Dal
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
             }
             conn1.Close();
@@ -466,12 +474,13 @@ namespace USTA.Dal
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
             }
             conn1.Close();
         }
         #endregion
-        
+
         #region 课程数据同步
         /// <summary>
         /// 课程数据同步
@@ -497,7 +506,12 @@ namespace USTA.Dal
 
             //先查基本信息
             SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text,
-                "SELECT [TheoryHours],[TestHours],[Credit],[writer],[ObjectivesAndrequirements],[CoursesInfo],[KeyAndDifficult],[TeachingMaterials],[MainContentsAndHoursAllocation],[ClassID],B.[CourseID],B.[CourseName],[DetailLocation],[TimeAndRoom],[IsDelete],[NewSchoolYear],[Experimental] FROM [Course] A,[CoursePlan] B WHERE A.CourseID =B.CourseID AND isDelete=0;");
+                "SELECT [TheoryHours],[TestHours],[Credit],[writer],[ObjectivesAndrequirements],[CoursesInfo],[KeyAndDifficult],"
+                + "[TeachingMaterials],[MainContentsAndHoursAllocation],[ClassID],B.[CourseID],B.[CourseName],[DetailLocation],[TimeAndRoom],"
+                + "[IsDelete],[NewSchoolYear],[Experimental] "
+                + " FROM [Course] A,[CoursePlan] B "
+                + " WHERE A.CourseID =B.CourseID AND isDelete=0;"
+                );
             while (dr.Read())
             {
                 listCourseID.Add(dr["CourseID"].ToString().Trim());
@@ -525,8 +539,9 @@ namespace USTA.Dal
                             new SqlParameter("@classID",listClassID[i])
                         };
                 dr = SqlHelper.ExecuteReader(conn, CommandType.Text,
-                "select [ID],[ClassID],[CourseName],[StartStopWeek],[Week],[ClassTime],[Room],[Location],[Year],[ISExperimental] from [CourseTimePlan] WHERE ClassID=@classID AND Year=@termTag AND CourseName=@courseName", parameters);
-                while(dr.Read())
+                "select [id],[ClassID],[CourseName],[StartStopWeek],[Week],[ClassTime],[Room],[Location],[Year],[ISExperimental]"
+                + "from [CourseTimePlan] WHERE ClassID=@classID AND Year=@termTag AND CourseName=@courseName", parameters);
+                while (dr.Read())
                 {
                     _timeAndRoom += (dr["StartStopWeek"].ToString().Trim() + "_" + dr["Week"].ToString().Trim() + "_" + dr["ClassTime"].ToString().Trim() + "_" + dr["Room"].ToString().Trim() + "_" + dr["Location"].ToString().Trim() + "<br />");
                 }
@@ -750,7 +765,7 @@ namespace USTA.Dal
                             strSql.Append("isDelete=@isDelete,");
                             strSql.Append("TestHours=@TestHours");
                             strSql.Append(" where courseNo=@courseNo AND termTag=@termTag AND classID=@classID");
-                             parameters = new SqlParameter[]{
+                            parameters = new SqlParameter[]{
 					new SqlParameter("@courseName", SqlDbType.NChar,50),
 					new SqlParameter("@period", SqlDbType.NChar,50),
 					new SqlParameter("@credit", SqlDbType.Float,8),
@@ -771,17 +786,17 @@ namespace USTA.Dal
 					new SqlParameter("@courseNo", SqlDbType.NChar,20),
 					new SqlParameter("@termTag", SqlDbType.NVarChar,50),
 					new SqlParameter("@ClassID", SqlDbType.NVarChar,50)};
-                             parameters[0].Value = listCourseName[i];
-                             parameters[1].Value = listPeriod[i];
-                             parameters[2].Value = listCredit[i];
-                             parameters[3].Value = listCourseSpeciality[i];
-                             parameters[4].Value = listCourseIntroduction[i];
-                             parameters[5].Value = listTimeAndRoom[i];
-                             parameters[6].Value = listIsDelete[i];
-                             parameters[7].Value = listTestHours[i];
-                             parameters[8].Value = listCourseID[i];
-                             parameters[9].Value = listNewSchoolYear[i];
-                             parameters[10].Value = listClassID[i];
+                            parameters[0].Value = listCourseName[i];
+                            parameters[1].Value = listPeriod[i];
+                            parameters[2].Value = listCredit[i];
+                            parameters[3].Value = listCourseSpeciality[i];
+                            parameters[4].Value = listCourseIntroduction[i];
+                            parameters[5].Value = listTimeAndRoom[i];
+                            parameters[6].Value = listIsDelete[i];
+                            parameters[7].Value = listTestHours[i];
+                            parameters[8].Value = listCourseID[i];
+                            parameters[9].Value = listNewSchoolYear[i];
+                            parameters[10].Value = listClassID[i];
 
                             SqlHelper.ExecuteNonQuery(conn1, CommandType.Text,
                                 strSql.ToString(), parameters);
@@ -793,6 +808,7 @@ namespace USTA.Dal
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
             }
             conn1.Close();
@@ -904,7 +920,7 @@ namespace USTA.Dal
                         {
                             new SqlParameter("@teacherName",listTeacherName[i].Substring(0, (listTeacherName[i].IndexOf('(') != -1 ? listTeacherName[i].IndexOf('(') : 0)))
                         };
-                        
+
                         dr = SqlHelper.ExecuteReader(conn1, CommandType.Text,
                             "select [teacherNo] from [usta_TeachersList] WHERE [teacherName]=@teacherName", parameters);
 
@@ -929,8 +945,8 @@ namespace USTA.Dal
 
                         //if (!isHasValue)
                         //{
-                            SqlHelper.ExecuteNonQuery(conn1, CommandType.Text,
-                                "INSERT INTO usta_CoursesTeachersCorrelation([teacherNo],[courseNo],[atCourseType],[termTag],[ClassID]) VALUES(@teacherNo,@courseNo,@atCourseType,@termTag,@ClassID)", parameters);
+                        SqlHelper.ExecuteNonQuery(conn1, CommandType.Text,
+                            "INSERT INTO usta_CoursesTeachersCorrelation([teacherNo],[courseNo],[atCourseType],[termTag],[ClassID]) VALUES(@teacherNo,@courseNo,@atCourseType,@termTag,@ClassID)", parameters);
                         //}
                         //else
                         //{
@@ -943,6 +959,7 @@ namespace USTA.Dal
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
             }
             conn1.Close();
@@ -963,12 +980,12 @@ namespace USTA.Dal
 
 
             SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text,
-                "select DISTINCT [ID],[CourseID],[StudentNO],[Year],[ClassID] from ElectiveStudent");
+                "select DISTINCT [ID],[CourseID],[StudentNo],[Year],[ClassID] from ElectiveStudent");
             while (dr.Read())
             {
                 listObjectID.Add(dr["ID"].ToString().Trim());
                 listCourseID.Add(dr["CourseID"].ToString().Trim());
-                listStudentID.Add(dr["StudentNO"].ToString().Trim());
+                listStudentID.Add(dr["StudentNo"].ToString().Trim());
                 listYear.Add(dr["Year"].ToString().Trim());
                 listClassID.Add(dr["ClassID"].ToString().Trim());
             }
@@ -1001,6 +1018,7 @@ namespace USTA.Dal
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
                 finally
                 {
@@ -1040,7 +1058,7 @@ namespace USTA.Dal
                 };
 
                 dr = SqlHelper.ExecuteReader(conn1, CommandType.Text,
-                "select [courseNo],[Year],[ClassID] from [usta_CoursesStudentsCorrelation] where studentNo=@studentNo;",parameters);
+                "select [courseNo],[Year],[ClassID] from [usta_CoursesStudentsCorrelation] where studentNo=@studentNo;", parameters);
                 while (dr.Read())
                 {
                     listCoursesStudentsCorrelationCourseNo.Add(dr["courseNo"].ToString().Trim());
@@ -1179,6 +1197,7 @@ namespace USTA.Dal
                 catch (Exception ex)
                 {
                     MongoDBLog.LogRecord(ex);
+                    throw ex;
                 }
             }
             conn1.Close();

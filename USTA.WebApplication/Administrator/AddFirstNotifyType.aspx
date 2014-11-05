@@ -11,31 +11,28 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    <table align="center" width="100%" class="tableAddStyle">
-                    <tr>
-                        <td>
-                            类别名称：<asp:TextBox ID="txtTypeName" runat="server" Width="200px" CssClass="required"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            显示顺序：<asp:TextBox ID="txtSequence" runat="server" Width="30px" CssClass="required number"></asp:TextBox>(输入整数)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:Button ID="btnSubmit" runat="server" Width="78px" Text="添加" OnClick="btnSubmit_Click" />
-                        </td>
-                    </tr>
-                </table>
-    </div>
+    <table width="100%" class="tableAddStyleNone">
+            <tr>
+            <td class="border">
+                请输入一级分类名称：
+            </td>
+            <td class="border">
+              <asp:TextBox ID="txtTypeName" runat="server" Width="200px" CssClass="required"></asp:TextBox>
+            </td>
+        </tr>
+            <tr>
+            <td class="border">
+                显示顺序：
+            </td>
+            <td class="border">
+              <asp:TextBox ID="txtSequence" runat="server" Width="30px" CssClass="required number"></asp:TextBox>(输入整数)
+            </td>
+        </tr><tr>
+            <td class="border">
+            </td>
+            <td class="border"><asp:Button ID="btnSubmit" runat="server" Width="78px" Text="添加" OnClick="btnSubmit_Click" /></td>
+        </tr>
+        </table>
     </form>
-    
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#form1").validate();
-        });
-        </script>
 </body>
 </html>

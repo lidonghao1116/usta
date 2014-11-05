@@ -101,13 +101,16 @@ namespace USTA.Model
             get;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public DateTime applyUpdateTime
         {
-            get;
             set;
+            get;
+        }
+
+        public string couseName
+        {
+            set;
+            get;
         }
 
         #endregion Model

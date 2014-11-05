@@ -165,29 +165,11 @@ public partial class Administrator_NotifyInfoManage {
     protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFragment3;
     
     /// <summary>
-    /// ddlNotifyTypeLevel 控件。
+    /// dlstNotifyTypeParent 控件。
     /// </summary>
     /// <remarks>
     /// 自动生成的字段。
     /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
     /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlNotifyTypeLevel;
-    
-    /// <summary>
-    /// ddlNotifyTypeModify 控件。
-    /// </summary>
-    /// <remarks>
-    /// 自动生成的字段。
-    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.DropDownList ddlNotifyTypeModify;
-    
-    /// <summary>
-    /// dlstNotifyType 控件。
-    /// </summary>
-    /// <remarks>
-    /// 自动生成的字段。
-    /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.DataList dlstNotifyType;
+    protected global::System.Web.UI.WebControls.DataList dlstNotifyTypeParent;
 }

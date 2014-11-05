@@ -36,37 +36,11 @@ public partial class Administrator_EditNotifyInfo : CheckUserWithCommonPageBase
         }
     }
 
-
-    //第2个标签；开始
-    protected void ddlNotifyType_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        DalOperationAboutAdminNotifyType dalNotifyType = new DalOperationAboutAdminNotifyType();
-        DataTable dt = dalNotifyType.FindAdminNotifyInfoByPid(int.Parse(ddlNotifyType.SelectedValue)).Tables[0];
-
-        while (ddlNotifyTypeChild.Items.Count > 0)
-        {
-            ddlNotifyTypeChild.Items.RemoveAt(0);
-        }
-
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
-            ddlNotifyTypeChild.Items.Add(new ListItem(dt.Rows[i]["notifyTypeName"].ToString().Trim(), dt.Rows[i]["notifyTypeId"].ToString().Trim()));
-        }
-    }
-
     //初始化编辑页面
     public void InitialNotifyEdit(int notifyId)
     {
-        DalOperationAboutAdminNotifyType dalNotifyType = new DalOperationAboutAdminNotifyType();
-        DataTable dt = dalNotifyType.FindAllParentAdminNotifyType().Tables[0];
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
-            ddlNotifyType.Items.Add(new ListItem(dt.Rows[i]["notifyTypeName"].ToString().Trim(), dt.Rows[i]["notifyTypeId"].ToString().Trim()));
-        }
-
         DalOperationAboutAdminNotify doan = new DalOperationAboutAdminNotify();
         AdminNotifyInfo notify = doan.FindNotifyByNo(notifyId);
-
         if (notify == null)
         {
             Javascript.AlertAndRedirect("要修改的信息不存在，请检查！", "/Administrator/NotifyInfoManage.aspx", Page);
@@ -82,49 +56,76 @@ public partial class Administrator_EditNotifyInfo : CheckUserWithCommonPageBase
 
             hidAttachmentId.Value = notify.attachmentIds;
 
-            int parentId = dalNotifyType.GetParentIdById(notify.notifyTypeId);
-
-            for (int i = 0; i < ddlNotifyType.Items.Count; i++)
-            {
-                if (ddlNotifyType.Items[i].Value == parentId.ToString())
-                {
-                    ddlNotifyType.SelectedIndex = i;
-                    break;
-                }
-            }
-
             if (notify.attachmentIds.Length > 0)
             {
                 DalOperationAttachments dalOperationAttachments = new DalOperationAttachments();
                 ltlAttachment.Text = dalOperationAttachments.GetAttachmentsList(notify.attachmentIds, ref iframeCount, true,string.Empty);
             }
+        }
 
-            dt = dalNotifyType.FindAdminNotifyInfoByPid(int.Parse(ddlNotifyType.SelectedValue)).Tables[0];
 
-            while (ddlNotifyTypeChild.Items.Count > 0)
+        DalOperationAboutAdminNotifyType dalNotifyType = new DalOperationAboutAdminNotifyType();
+        DataTable dt = dalNotifyType.FindAllParentAdminNotifyType().Tables[0];
+
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            ListItem _item = new ListItem(dt.Rows[i]["notifyTypeName"].ToString().Trim(), dt.Rows[i]["notifyTypeId"].ToString().Trim());
+            ddlNotifyType.Items.Add(_item);
+        }
+
+        if (dalNotifyType.FindParentIdById(notify.notifyTypeId).Tables[0].Rows.Count > 0)
+        {
+            for (int i = 0; i < ddlNotifyType.Items.Count; i++)
             {
-                ddlNotifyTypeChild.Items.RemoveAt(0);
-            }
 
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                ddlNotifyTypeChild.Items.Add(new ListItem(dt.Rows[i]["notifyTypeName"].ToString().Trim(), dt.Rows[i]["notifyTypeId"].ToString().Trim()));
-            }
-
-
-            for (int i = 0; i < ddlNotifyTypeChild.Items.Count; i++)
-            {
-                if (ddlNotifyTypeChild.Items[i].Value == notify.notifyTypeId.ToString().Trim())
+                if (ddlNotifyType.Items[i].Value.ToString().Trim() == dalNotifyType.FindParentIdById(notify.notifyTypeId).Tables[0].Rows[0]["parentId"].ToString().Trim())
                 {
-                    ddlNotifyTypeChild.SelectedIndex = i;
-                    break;
+                    ddlNotifyType.SelectedIndex = i;
                 }
+            }
+
+            DataTable _dt = dalNotifyType.FindAllAdminNotifyTypeByParentId(int.Parse(ddlNotifyType.SelectedValue)).Tables[0];
+
+            for (int j = 0; j < _dt.Rows.Count; j++)
+            {
+                ddlNotifyTypeChild.Items.Add(new ListItem(_dt.Rows[j]["notifyTypeName"].ToString().Trim(), _dt.Rows[j]["notifyTypeId"].ToString().Trim()));
+            }
+        }
+
+        for (int i = 0; i < ddlNotifyTypeChild.Items.Count; i++)
+        {
+            if (ddlNotifyTypeChild.Items[i].Value.ToString().Trim() == notify.notifyTypeId.ToString().Trim())
+            {
+                ddlNotifyTypeChild.SelectedIndex = i;
             }
         }
     }
+
+    //第1个标签；开始
+    protected void ddlNotifyType_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        while (ddlNotifyTypeChild.Items.Count > 0)
+        {
+            ddlNotifyTypeChild.Items.RemoveAt(0);
+        }
+
+        DalOperationAboutAdminNotifyType dalNotifyType = new DalOperationAboutAdminNotifyType();
+        DataTable _dt = dalNotifyType.FindAllAdminNotifyTypeByParentId(int.Parse(ddlNotifyType.SelectedValue)).Tables[0];
+        for (int j = 0; j < _dt.Rows.Count; j++)
+        {
+            ddlNotifyTypeChild.Items.Add(new ListItem(_dt.Rows[j]["notifyTypeName"].ToString().Trim(), _dt.Rows[j]["notifyTypeId"].ToString().Trim()));
+        }
+    }
+
     //修改
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
+        if (ddlNotifyTypeChild.Items.Count == 0)
+        {
+            Javascript.GoHistory(-1, "请选择“" + ddlNotifyType.SelectedItem.Text + "”下的二级分类\n若无二级分类，请在文章类别管理页面添加相应地的二级分类", Page);
+            return;
+        }
+
         if (txtTitle.Text.Trim().Length == 0 || this.Textarea1.Value.Trim().Length == 0)
         {
             Javascript.GoHistory(-1, "标题和内容不能为空，请输入！", Page);

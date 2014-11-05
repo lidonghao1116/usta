@@ -26,7 +26,7 @@ namespace USTA.WebApplication
 
         void Application_Error(object sender, EventArgs e)
         {
-            Server.Transfer(ConfigurationManager.AppSettings["errorPage"]);
+            //Server.Transfer(ConfigurationManager.AppSettings["errorPage"]);
         }
 
         void Session_Start(object sender, EventArgs e)

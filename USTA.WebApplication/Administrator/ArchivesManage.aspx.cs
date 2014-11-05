@@ -26,6 +26,8 @@ namespace USTA.WebApplication.Administrator
         public string locale = HttpContext.Current.Request["locale"] != null ? HttpContext.Current.Server.UrlDecode(HttpContext.Current.Request["locale"]) : string.Empty;
         public string keyword = HttpContext.Current.Request["keyword"] != null ? HttpContext.Current.Request["keyword"] : string.Empty;
 
+        public int pageIndex = HttpContext.Current.Request["page"] == null ? 1 : int.Parse(HttpContext.Current.Request["page"]);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -72,7 +74,7 @@ namespace USTA.WebApplication.Administrator
         protected void DataBindArchivesConfigInfo()
         {
             DalOperationAboutArchivesConfig dal = new DalOperationAboutArchivesConfig();
-            DataTable dt= dal.GetArchivesConfig().Tables[0];
+            DataTable dt = dal.GetArchivesConfig().Tables[0];
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -111,48 +113,44 @@ namespace USTA.WebApplication.Administrator
         {
             DalOperationAboutCourses doac = new DalOperationAboutCourses();
 
+            for (int i = 0; i < ddlTermTags.Items.Count; i++)
+            {
+                if (ddlTermTags.Items[i].Value == termTag)
+                {
+                    ddlTermTags.SelectedIndex = i;
+                }
+            }
+
+            for (int i = 0; i < ddlPlace.Items.Count; i++)
+            {
+                if (ddlPlace.Items[i].Value == locale)
+                {
+                    ddlPlace.SelectedIndex = i;
+                }
+            }
+
             DataView dv;
 
-            if (!string.IsNullOrEmpty(termTag) && !string.IsNullOrEmpty(locale))
+            if (!string.IsNullOrEmpty(termTag) && !string.IsNullOrEmpty(locale) && !string.IsNullOrEmpty(keyword))
             {
-
-                for (int i = 0; i < ddlTermTags.Items.Count; i++)
-                {
-                    if (ddlTermTags.Items[i].Value == termTag)
-                    {
-                        ddlTermTags.SelectedIndex = i;
-                    }
-                }
-
-                if (termTag.Length >= 6 && termTag.Substring(5, 1) == "0")
-                {
-                    while (ddlPlace.Items.Count > 0)
-                    {
-                        ddlPlace.Items.RemoveAt(0);
-                    }
-
-                    ddlPlace.Items.Add(new ListItem("苏州", "苏州"));
-                }
-                else
-                {
-                    for (int i = 0; i < ddlPlace.Items.Count; i++)
-                    {
-                        if (ddlPlace.Items[i].Value == locale)
-                        {
-                            ddlPlace.SelectedIndex = i;
-                        }
-                    }
-                }
-
-                dv = doac.SearchCourses(termTag, keyword, ddlPlace.SelectedValue).Tables[0].DefaultView;
+                dv = doac.SearchCourses(termTag, keyword, locale).Tables[0].DefaultView;
             }
             else
             {
                 dv = doac.SearchCourses(ddlTermTags.SelectedValue, txtKeyword.Text.Trim(), ddlPlace.SelectedValue).Tables[0].DefaultView;
 
             }
+            AspNetPager1.RecordCount = dv.Count;
+            AspNetPager1.PageSize = 2;
 
-            this.dlstCourses.DataSource = dv;
+            PagedDataSource pds = new PagedDataSource();    //定义一个PagedDataSource类来执行分页功      
+            pds.DataSource = dv;
+            pds.AllowPaging = true;
+
+            pds.CurrentPageIndex = pageIndex - 1;
+            pds.PageSize = AspNetPager1.PageSize;
+
+            this.dlstCourses.DataSource = pds;
             this.dlstCourses.DataBind();
 
             if (dv.Count == 0)
@@ -163,6 +161,11 @@ namespace USTA.WebApplication.Administrator
             {
                 this.dlstCourses.ShowFooter = false;
             }
+        }
+
+        protected void AspNetPager1_PageChanged(object sender, EventArgs e)
+        {
+            DataBindSearchCourse();
         }
 
         /// <summary>
@@ -244,7 +247,7 @@ namespace USTA.WebApplication.Administrator
             int iframeCount = 0;
 
             DalOperationAboutArchivesItems doac = new DalOperationAboutArchivesItems();
-            DataTable dv = doac.GetArchivesItemByTeacherType(teacherType,termtag).Tables[0];
+            DataTable dv = doac.GetArchivesItemByTeacherType(teacherType, termtag).Tables[0];
             DalOperationAboutArchives doaa = new DalOperationAboutArchives();
             DalOperationAttachments attachment = new DalOperationAttachments();
 

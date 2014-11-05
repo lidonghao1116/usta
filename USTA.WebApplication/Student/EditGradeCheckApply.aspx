@@ -20,25 +20,25 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="border-bottom:0px;">
                 <asp:DataList ID="dlstcourses" runat="server" RepeatDirection="Horizontal" RepeatColumns="1"
                     Width="100%" CssClass="multiRecordsDataList" OnItemDataBound="dlstcourses_ItemDataBound">
                     <ItemTemplate>
-                        <label>
+                    <table width="100%"><tr><td style="border-bottom:0px;width:30%;"><label>
                             <asp:CheckBox ID="select" runat="server" />
                             <span id="courseName" runat="server">
-                                <%#Eval("courseName").ToString().Trim()%>(<%#Eval("classID").ToString().Trim() %>)</span></label>
+                                <%#Eval("courseName").ToString().Trim()%>(<%#Eval("classID").ToString().Trim() %>)</span></label></td><td style="border-bottom:0px;width:20%;">
                         请选择方式：<asp:DropDownList ID="ddlGradeCheckApplyType" runat="server">
-                            <asp:ListItem Value="重修">重修</asp:ListItem>
                             <asp:ListItem Value="重考">重考</asp:ListItem>
-                        </asp:DropDownList>&nbsp;&nbsp;&nbsp;&nbsp;请选择原因：
+                            <asp:ListItem Value="重修">重修</asp:ListItem>
+                        </asp:DropDownList></td><td style="border-bottom:0px;width:50%;">请选择原因：
                 <asp:DropDownList ID="ddlApplyReason" runat="server">
                 </asp:DropDownList>
                         <span id="courseNo" runat="server" visible="false">
                             <%#Eval("courseNo").ToString().Trim()%></span> <span id="classID" runat="server"
                                 visible="false">
                                 <%#Eval("classID").ToString().Trim()%></span> <span id="termTag" runat="server" visible="false">
-                                    <%#Eval("termTag").ToString().Trim()%></span>
+                                    <%#Eval("termTag").ToString().Trim()%></span></td></tr></table>
                     </ItemTemplate>
                     <FooterTemplate>
                         <%=(this.dlstcourses.Items.Count == 0 ? "未找到数据" : null)%></FooterTemplate>

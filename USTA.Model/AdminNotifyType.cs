@@ -26,19 +26,19 @@ namespace USTA.Model
             set;
             get;
 		}
+        /// <summary>
+        /// 
+        /// </summary>
+        public int sequence
+        {
+            set;
+            get;
+        }
 
         /// <summary>
         /// 
         /// </summary>
         public int parentId
-        {
-            set;
-            get;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int sequence
         {
             set;
             get;

@@ -43,6 +43,7 @@ namespace USTA.WebApplication.Student
                     
                     if (drc.Count == 0)
                     {
+                        tbEnglishtSignUp.Visible = false;
                         Javascript.AlertAndRedirect("您好，当前无四六级报名信息！", "/Student/EnglishExamSignUp.aspx?fragment=2", Page);
                         return;
                     }

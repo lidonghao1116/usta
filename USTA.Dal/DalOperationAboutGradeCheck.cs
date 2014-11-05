@@ -47,7 +47,7 @@ namespace USTA.Dal
         public DataSet GetTermYear()
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select DISTINCT SUBSTRING(LTRIM(SchoolClassName),1,2) as termYear from usta_StudentsList WHERE LTRIM(RTRIM(SchoolClassName))<>'暂无分配' and LTRIM(RTRIM(SchoolClassName))<>'暂未分配' ORDER BY termYear DESC;");
+            strSql.Append("select DISTINCT SUBSTRING(LTRIM(SchoolClassName),1,2) as termYear from usta_StudentsList WHERE LTRIM(RTRIM(SchoolClassName))<>'暂无分配' ORDER BY termYear DESC;");
 
             return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString());
         }
@@ -129,7 +129,7 @@ namespace USTA.Dal
         public DataSet GetAllGradeCheckItems()
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select gradeCheckId,gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear from usta_StudentsGradeCheck ORDER BY displayOrder ASC,termYear DESC;");
+            strSql.Append("select gradeCheckId,gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear,termYears from usta_StudentsGradeCheck ORDER BY displayOrder ASC,termYear DESC;");
 
             return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString());
 
@@ -147,8 +147,8 @@ namespace USTA.Dal
         public DataSet GetGradeCheckItemsByTermYear(string termYear)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select gradeCheckId,gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear from usta_StudentsGradeCheck ");
-            strSql.Append(" where termYear=@termYear ORDER BY displayOrder ASC;");
+            strSql.Append("select gradeCheckId,gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear,termYears from usta_StudentsGradeCheck ");
+            strSql.Append(" where charindex(@termYear,termYears)>0 ORDER BY displayOrder ASC;");
             SqlParameter[] parameters = {
 					new SqlParameter("@termYear", SqlDbType.NVarChar, 50)
 };
@@ -166,16 +166,19 @@ namespace USTA.Dal
         /// 
         /// </summary>
         /// <param name="gradeCheckItemName"></param>
+        /// <param name="termYear"></param>
         /// <returns></returns>
-        public DataSet GetGradeCheckItemsByGradeCheckItemName(string gradeCheckItemName)
+        public DataSet GetGradeCheckItemsByGradeCheckItemName(string gradeCheckItemName, string termYear)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select top 1 gradeCheckId,gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear from usta_StudentsGradeCheck ");
-            strSql.Append(" where gradeCheckItemName=@gradeCheckItemName ORDER BY displayOrder ASC;");
+            strSql.Append("select top 1 gradeCheckId,gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear,termYears from usta_StudentsGradeCheck ");
+            strSql.Append(" where gradeCheckItemName=@gradeCheckItemName AND CHARINDEX(@termYear,termYears) ORDER BY displayOrder ASC;");
             SqlParameter[] parameters = {
-					new SqlParameter("@gradeCheckItemName", SqlDbType.NChar, 50)
+					new SqlParameter("@gradeCheckItemName", SqlDbType.NChar, 50),
+					new SqlParameter("@termYear", SqlDbType.NVarChar, 50)
 };
             parameters[0].Value = gradeCheckItemName;
+            parameters[1].Value = termYear;
 
             return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString(), parameters);
 
@@ -183,6 +186,30 @@ namespace USTA.Dal
 
         #endregion
 
+        #region 根据学号、学年、培养地来判断是否符合数据一致性
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gradeCheckItemName"></param>
+        /// <returns></returns>
+        public DataSet CheckDataConsistenceByStudentNoTermYearLocale(string studentNo,string termYear,string locale)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("SELECT studentNo FROM usta_StudentsList A,usta_StudentClass B where A.SchoolClass=B.SchoolClassID AND SUBSTRING(B.className,1,2)=@termYear AND B.locale=@locale And A.studentNo=@studentNo");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@studentNo", SqlDbType.NChar,10),
+                    new SqlParameter("@termYear", SqlDbType.NChar,2),
+                    new SqlParameter("@locale", SqlDbType.NVarChar,20)
+};
+            parameters[0].Value = studentNo;
+            parameters[1].Value = termYear;
+            parameters[2].Value = locale;
+
+            return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString(), parameters);
+
+        }
+
+        #endregion
 
         #region 根据ID获取成绩审核单项数据
         /// <summary>
@@ -193,7 +220,7 @@ namespace USTA.Dal
         public DataSet GetGradeCheckItemById(int gradeCheckId)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 gradeCheckId,gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear from usta_StudentsGradeCheck ");
+            strSql.Append("select  top 1 gradeCheckId,gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear,termYears from usta_StudentsGradeCheck ");
             strSql.Append(" where gradeCheckId=@gradeCheckId");
             SqlParameter[] parameters = {
 					new SqlParameter("@gradeCheckId", SqlDbType.Int,4)
@@ -242,19 +269,19 @@ namespace USTA.Dal
             strSql.Append("gradeCheckItemName=@gradeCheckItemName,");
             strSql.Append("gradeCheckItemDefaultValue=@gradeCheckItemDefaultValue,");
             strSql.Append("displayOrder=@displayOrder,");
-            strSql.Append("termYear=@termYear");
+            strSql.Append("termYears=@termYears");
             strSql.Append(" where gradeCheckId=@gradeCheckId");
             SqlParameter[] parameters = {
 					new SqlParameter("@gradeCheckItemName", SqlDbType.NChar,50),
 					new SqlParameter("@gradeCheckItemDefaultValue", SqlDbType.NChar,50),
 					new SqlParameter("@gradeCheckId", SqlDbType.Int,4),
 					new SqlParameter("@displayOrder", SqlDbType.Int,4),
-					new SqlParameter("@termYear", SqlDbType.NVarChar,50)};
+					new SqlParameter("@termYears", SqlDbType.NVarChar,200)};
             parameters[0].Value = model.gradeCheckItemName;
             parameters[1].Value = model.gradeCheckItemDefaultValue;
             parameters[2].Value = model.gradeCheckId;
             parameters[3].Value = model.displayOrder;
-            parameters[4].Value = model.termYear;
+            parameters[4].Value = model.termYears;
 
 
             return SqlHelper.ExecuteNonQuery(conn, CommandType.Text, strSql.ToString(), parameters);
@@ -274,18 +301,18 @@ namespace USTA.Dal
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into usta_StudentsGradeCheck(");
-            strSql.Append("gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYear)");
+            strSql.Append("gradeCheckItemName,gradeCheckItemDefaultValue,displayOrder,termYears)");
             strSql.Append(" values (");
-            strSql.Append("@gradeCheckItemName,@gradeCheckItemDefaultValue,@displayOrder,@termYear);");
+            strSql.Append("@gradeCheckItemName,@gradeCheckItemDefaultValue,@displayOrder,@termYears);");
             SqlParameter[] parameters = {
 					new SqlParameter("@gradeCheckItemName", SqlDbType.NChar,50),
 					new SqlParameter("@gradeCheckItemDefaultValue", SqlDbType.NChar,50),
 					new SqlParameter("@displayOrder", SqlDbType.Int,4),
-					new SqlParameter("@termYear", SqlDbType.NVarChar,50)};
+					new SqlParameter("@termYears", SqlDbType.NVarChar,200)};
             parameters[0].Value = model.gradeCheckItemName;
             parameters[1].Value = model.gradeCheckItemDefaultValue;
             parameters[2].Value = model.displayOrder;
-            parameters[3].Value = model.termYear;
+            parameters[3].Value = model.termYears;
 
 
             return SqlHelper.ExecuteNonQuery(conn, CommandType.Text, strSql.ToString(), parameters);
@@ -323,7 +350,7 @@ namespace USTA.Dal
         public DataSet GetUpdateTimeByStudentNo(string studentNo)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select updateTime,gradeCheckApplyId from usta_StudentsGradeCheckApply WHERE studentNo=@studentNo;");
+            strSql.Append("select DISTINCT updateTime from usta_StudentsGradeCheckDetail WHERE studentNo=@studentNo;");
 
             SqlParameter[] parameters = {
 					new SqlParameter("@studentNo", SqlDbType.NChar,10)
@@ -334,26 +361,21 @@ namespace USTA.Dal
         }
         #endregion
 
-        #region 根据学号和更新时间获取成绩审核单项具体数据
+        #region 根据学号获取成绩审核单项具体数据
         /// <summary>
         /// 
         /// </summary>
         /// <param name="studentNo"></param>
-        /// <param name="updateTime"></param>
         /// <returns></returns>
-        public DataSet GetGradeCheckDetailByStudentNo(string studentNo, string updateTime)
+        public DataSet GetGradeCheckDetailByStudentNo(string studentNo)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select gradeCheckDetailId,A.gradeCheckId,gradeCheckDetailValue, A.updateTime from usta_StudentsGradeCheckDetail A");
-            strSql.Append(" WHERE a.studentNo=@studentNo AND A.updateTime=@updateTime");
+            strSql.Append(" WHERE a.studentNo=@studentNo");
             SqlParameter[] parameters = {
-					new SqlParameter("@studentNo", SqlDbType.NChar,10),
-					new SqlParameter("@updateTime", SqlDbType.DateTime)
+					new SqlParameter("@studentNo", SqlDbType.NChar,10)
 };
             parameters[0].Value = studentNo;
-            parameters[1].Value = updateTime;
-
-
 
             return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString(), parameters);
 
@@ -706,6 +728,43 @@ namespace USTA.Dal
 
 
             return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString());
+        }
+        #endregion
+
+
+        #region 获取重修重考Excel模板文件
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetGradeCheckExcelTemplate()
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 excelTemplateAttachmentIds from usta_StudentsGradeCheckConfig;");
+
+
+            return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString());
+        }
+        #endregion
+
+        #region 更新重修重考Excel模板文件
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="excelTemplateAttachmentIds"></param>
+        /// <returns></returns>
+        public int UpdateGradeCheckExcelTemplate(string excelTemplateAttachmentIds)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update usta_StudentsGradeCheckConfig set ");
+            strSql.Append("excelTemplateAttachmentIds=@excelTemplateAttachmentIds;");
+            SqlParameter[] parameters = {
+					new SqlParameter("@excelTemplateAttachmentIds", SqlDbType.NVarChar,200)
+                                        };
+            parameters[0].Value = excelTemplateAttachmentIds;
+
+
+            return SqlHelper.ExecuteNonQuery(conn, CommandType.Text, strSql.ToString(), parameters);
         }
         #endregion
 
@@ -1072,7 +1131,7 @@ namespace USTA.Dal
 					new SqlParameter("@applyReason", SqlDbType.NVarChar,50),
 					new SqlParameter("@applyUpdateTime", SqlDbType.DateTime)};
             parameters[0].Value = model.studentNo;
-            parameters[1].Value = model.updateTime;
+            parameters[1].Value = DateTime.Now;
             parameters[2].Value = model.courseNo;
             parameters[3].Value = model.ClassID;
             parameters[4].Value = model.termTag;
@@ -1157,17 +1216,17 @@ namespace USTA.Dal
         /// <param name="studentNo"></param>
         /// <param name="updateTime"></param>
         /// <returns></returns>
-        public int DeleteStudentGradeCheckApplyByStudentNoAndUpdateTime(string studentNo, int gradeCheckApplyId)
+        public int DeleteStudentGradeCheckApplyByStudentNoAndUpdateTime(string studentNo, DateTime updateTime)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("delete from usta_StudentsGradeCheckApply ");
-            strSql.Append(" where studentNo=@studentNo AND gradeCheckApplyId=@gradeCheckApplyId AND applyResult IS NULL");
+            strSql.Append(" where studentNo=@studentNo AND updateTime=@updateTime AND applyResult IS NULL");
             SqlParameter[] parameters = {
 					new SqlParameter("@studentNo", SqlDbType.NChar,10),
-					new SqlParameter("@gradeCheckApplyId", SqlDbType.Int)
+					new SqlParameter("@updateTime", SqlDbType.DateTime)
 };
             parameters[0].Value = studentNo;
-            parameters[1].Value = gradeCheckApplyId;
+            parameters[1].Value = updateTime;
 
             return SqlHelper.ExecuteNonQuery(conn, CommandType.Text, strSql.ToString(), parameters);
         }
@@ -1196,31 +1255,48 @@ namespace USTA.Dal
         #endregion
 
 
-        #region 根据学号和更新时间获取重修重考记录
+        #region 根据学号获取重修重考记录
         /// <summary>
         /// 
         /// </summary>
         /// <param name="studentNo"></param>
-        /// <param name="updateTime"></param>
         /// <returns></returns>
-        public DataSet GetStudentGradeCheckApplyByStudentNoAndUpdateTime(string studentNo, int gradeCheckApplyId)
+        public DataSet GetStudentGradeCheckApplyByStudentNo(string studentNo)
         {
             StringBuilder strSql = new StringBuilder();
-            //strSql.Append("select [applyReason],[gradeCheckApplyId],courseName,[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],[gradeCheckApplyType],[applyResult],[applyChecKSuggestion] from [usta_StudentsGradeCheckApply] A,[usta_Courses] B");
-            //strSql.Append(" WHERE studentNo=@studentNo AND updateTime=@updateTime AND A.courseNo=B.courseNo AND A.ClassID=B.ClassID AND A.termTag=B.termTag;");
-            strSql.Append("select [applyReason],[gradeCheckApplyId],courseName,[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],[gradeCheckApplyType],[applyResult],[applyChecKSuggestion] from [usta_StudentsGradeCheckApply] A,[usta_Courses] B");
-            strSql.Append(" WHERE studentNo=@studentNo AND gradeCheckApplyId=@gradeCheckApplyId AND A.courseNo=B.courseNo AND A.ClassID=B.ClassID AND A.termTag=B.termTag;"); 
+            strSql.Append("select [applyReason],[gradeCheckApplyId],courseName,[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],[gradeCheckApplyType],[applyResult],[applyChecKSuggestion],[applyUpdateTime] from [usta_StudentsGradeCheckApply] A,[usta_Courses] B");
+            strSql.Append(" WHERE studentNo=@studentNo AND A.courseNo=B.courseNo AND A.ClassID=B.ClassID AND A.termTag=B.termTag;");
             SqlParameter[] parameters = {
-					new SqlParameter("@studentNo", SqlDbType.NChar,10),
-					new SqlParameter("@gradeCheckApplyId", SqlDbType.Int)
+					new SqlParameter("@studentNo", SqlDbType.NChar,10)
 };
             parameters[0].Value = studentNo;
-            parameters[1].Value = gradeCheckApplyId;
 
             return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString(), parameters);
         }
         #endregion
 
+        #region 根据学号和课程号判断是否有重复的重修重考记录
+        /// <summary>
+        /// 根据学号和课程号判断是否有重复的重修重考记录
+        /// </summary>
+        /// <param name="studentNo"></param>
+        /// <param name="termTagCourseNoClassID"></param>
+        /// <returns></returns>
+        public DataSet GetStudentGradeCheckApplyByStudentNoAndTermTagCourseNoClassID(string studentNo, string termTagCourseNoClassID)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select top 1 [applyReason],[gradeCheckApplyId],courseName,[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],[gradeCheckApplyType],[applyResult],[applyChecKSuggestion],[applyUpdateTime] from [usta_StudentsGradeCheckApply] A,[usta_Courses] B");
+            strSql.Append(" WHERE studentNo=@studentNo AND A.courseNo=B.courseNo AND A.ClassID=B.ClassID AND A.termTag=B.termTag AND (RTRIM(A.termTag)+RTRIM(A.courseNo)+RTRIM(A.ClassID))=@termTagCourseNoClassID;");
+            SqlParameter[] parameters = {
+					new SqlParameter("@studentNo", SqlDbType.NChar,10),
+					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120)
+};
+            parameters[0].Value = studentNo;
+            parameters[1].Value = termTagCourseNoClassID;
+
+            return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString(), parameters);
+        }
+        #endregion
 
         #region 根据学号和更新时间获取未处理的重修重考记录
         /// <summary>
@@ -1229,17 +1305,17 @@ namespace USTA.Dal
         /// <param name="studentNo"></param>
         /// <param name="updateTime"></param>
         /// <returns></returns>
-        public DataSet GetStudentGradeCheckApplyByStudentNoAndUpdateTimeNotDeal(string studentNo, int gradeCheckApplyId)
+        public DataSet GetStudentGradeCheckApplyByStudentNoAndUpdateTimeNotDeal(string studentNo, DateTime updateTime)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select [gradeCheckApplyId],courseName,[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],[gradeCheckApplyType],[applyResult],[applyChecKSuggestion],[applyReason] from [usta_StudentsGradeCheckApply] A,[usta_Courses] B");
-            strSql.Append(" WHERE studentNo=@studentNo AND gradeCheckApplyId=@gradeCheckApplyId AND A.courseNo=B.courseNo AND A.ClassID=B.ClassID AND A.termTag=B.termTag AND applyResult IS NULL;");
+            strSql.Append(" WHERE studentNo=@studentNo AND updateTime=@updateTime AND A.courseNo=B.courseNo AND A.ClassID=B.ClassID AND A.termTag=B.termTag AND applyResult IS NULL;");
             SqlParameter[] parameters = {
 					new SqlParameter("@studentNo", SqlDbType.NChar,10),
-					new SqlParameter("@gradeCheckApplyId", SqlDbType.Int)
+					new SqlParameter("@updateTime", SqlDbType.DateTime)
 };
             parameters[0].Value = studentNo;
-            parameters[1].Value = gradeCheckApplyId;
+            parameters[1].Value = updateTime;
 
             return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString(), parameters);
         }
@@ -1285,7 +1361,7 @@ namespace USTA.Dal
             {
                 string _termTag = termTagCourseNoClassID.Split("_".ToCharArray())[1];
 
-                strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                 strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND A.termTag=@termTag ORDER BY applyResult ASC;");
                 parameters = new SqlParameter[]{
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120),
@@ -1296,7 +1372,7 @@ namespace USTA.Dal
 
                 if (applyResult == "all" && locale == "all")
                 {
-                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                     strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND A.termTag=@termTag ORDER BY applyResult ASC;");
                     parameters = new SqlParameter[]{
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120),
@@ -1308,7 +1384,7 @@ namespace USTA.Dal
                 else if (applyResult == "all")
                 {
                     strSql = new StringBuilder();
-                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                     strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND C.locale=@locale AND A.termTag=@termTag ORDER BY applyResult ASC;");
                     parameters = new SqlParameter[] {
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120),
@@ -1322,7 +1398,7 @@ namespace USTA.Dal
                 else if (locale == "all")
                 {
                     strSql = new StringBuilder();
-                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                     strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND A.applyResult=@applyResult AND A.termTag=@termTag ORDER BY applyResult ASC;");
                     parameters = new SqlParameter[] {
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120),
@@ -1336,7 +1412,7 @@ namespace USTA.Dal
                 else
                 {
                     strSql = new StringBuilder();
-                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                     strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND C.locale=@locale AND A.applyResult=@applyResult AND A.termTag=@termTag ORDER BY applyResult ASC;");
                     parameters = new SqlParameter[] {
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120),
@@ -1354,7 +1430,7 @@ namespace USTA.Dal
             {
                 if (applyResult == "all" && locale == "all")
                 {
-                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                     strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND (RTRIM(A.termTag)+RTRIM(A.courseNo)+RTRIM(A.ClassID))=@termTagCourseNoClassID ORDER BY applyResult ASC;");
                     parameters = new SqlParameter[]{
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120)
@@ -1364,7 +1440,7 @@ namespace USTA.Dal
                 else if (applyResult == "all")
                 {
                     strSql = new StringBuilder();
-                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                     strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND (RTRIM(A.termTag)+RTRIM(A.courseNo)+RTRIM(A.ClassID))=@termTagCourseNoClassID AND C.locale=@locale ORDER BY applyResult ASC;");
                     parameters = new SqlParameter[] {
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120),
@@ -1376,7 +1452,7 @@ namespace USTA.Dal
                 else if (locale == "all")
                 {
                     strSql = new StringBuilder();
-                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                     strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND (RTRIM(A.termTag)+RTRIM(A.courseNo)+RTRIM(A.ClassID))=@termTagCourseNoClassID AND A.applyResult=@applyResult ORDER BY applyResult ASC;");
                     parameters = new SqlParameter[] {
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120),
@@ -1388,7 +1464,7 @@ namespace USTA.Dal
                 else
                 {
                     strSql = new StringBuilder();
-                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
+                    strSql.Append("select C.locale,[gradeCheckApplyId],B.[studentNo],[updateTime],A.[courseNo],A.[ClassID],A.[termTag],D.courseName,A.[applyResult],A.applyReason,A.[gradeCheckApplyType],A.[applyChecKSuggestion],A.[applyUpdateTime],[studentName],[studentSpeciality],[mobileNo],[emailAddress],[SchoolClassName] from [usta_StudentsGradeCheckApply] A,[usta_StudentsList] B, usta_StudentClass C,usta_Courses D");
                     strSql.Append(" where B.SchoolClass=C.SchoolClassID AND D.courseNo=A.courseNo AND D.termTag=A.termTag AND D.classID=A.classID AND A.studentNo=B.studentNo AND (RTRIM(A.termTag)+RTRIM(A.courseNo)+RTRIM(A.ClassID))=@termTagCourseNoClassID AND C.locale=@locale AND A.applyResult=@applyResult ORDER BY applyResult ASC;");
                     parameters = new SqlParameter[] {
 					new SqlParameter("@termTagCourseNoClassID", SqlDbType.NVarChar,120),
@@ -1419,15 +1495,17 @@ namespace USTA.Dal
         /// </summary>
         /// <param name="termYear"></param>
         /// <returns></returns>
-        public int DeleteStudentsGradeCheckConfirmItemsByTermYear(string termYear)
+        public int DeleteStudentsGradeCheckConfirmItemsByTermYear(string termYear,string locale)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("delete from usta_StudentsGradeCheckConfirm ");
-            strSql.Append(" WHERE studentNo in(SELECT studentNo FROM usta_StudentsList A,usta_StudentClass B where A.SchoolClass=B.SchoolClassID AND SUBSTRING(B.className,1,2)=@termYear);");
+            strSql.Append(" WHERE studentNo in(SELECT studentNo FROM usta_StudentsList A,usta_StudentClass B where A.SchoolClass=B.SchoolClassID AND SUBSTRING(B.className,1,2)=@termYear AND B.locale=@locale);");
             SqlParameter[] parameters = {
-                    new SqlParameter("@termYear", SqlDbType.NChar,2)
+                    new SqlParameter("@termYear", SqlDbType.NChar,2),
+                    new SqlParameter("@locale", SqlDbType.NVarChar,20)
 };
             parameters[0].Value = termYear;
+            parameters[1].Value = locale;
 
 
             return SqlHelper.ExecuteNonQuery(conn, CommandType.Text, strSql.ToString(), parameters);
@@ -1438,22 +1516,67 @@ namespace USTA.Dal
         /// 删除usta_StudentsGradeCheckDetail表指定学年的数据
         /// </summary>
         /// <param name="termYear"></param>
+        /// <param name="locale"></param>
         /// <returns></returns>
-        public int DeleteStudentsGradeCheckDetailItemsByTermYear(string termYear)
+        public int DeleteStudentsGradeCheckDetailItemsByTermYear(string termYear, string locale)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("delete from usta_StudentsGradeCheckDetail ");
-            strSql.Append(" WHERE studentNo in(SELECT studentNo FROM usta_StudentsList A,usta_StudentClass B where A.SchoolClass=B.SchoolClassID AND SUBSTRING(B.className,1,2)=@termYear);");
+            strSql.Append(" WHERE studentNo in(SELECT studentNo FROM usta_StudentsList A,usta_StudentClass B where A.SchoolClass=B.SchoolClassID AND SUBSTRING(B.className,1,2)=@termYear AND B.locale=@locale);");
             SqlParameter[] parameters = {
-                    new SqlParameter("@termYear", SqlDbType.NChar,2)
+                    new SqlParameter("@termYear", SqlDbType.NChar,2),
+                    new SqlParameter("@locale", SqlDbType.NVarChar,20)
 };
             parameters[0].Value = termYear;
+            parameters[1].Value = locale;
 
 
             return SqlHelper.ExecuteNonQuery(conn, CommandType.Text, strSql.ToString(), parameters);
 
         }
 
+        #endregion
+
+        #region 查询是否有重名的规则
+        /// <summary>
+        /// 查询是否有重名的规则
+        /// </summary>
+        /// <param name="gradeCheckItemName"></param>
+        /// <returns></returns>
+        public DataSet CheckIsExistGradeCheckItemName(string gradeCheckItemName)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("SELECT gradeCheckItemName FROM dbo.usta_StudentsGradeCheck where gradeCheckItemName=@gradeCheckItemName");
+            SqlParameter[] parameters = {
+					new SqlParameter("@gradeCheckItemName", SqlDbType.NChar,50)
+};
+            parameters[0].Value = gradeCheckItemName;
+
+            return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString(), parameters);
+        }
+        #endregion
+
+
+        #region 查询是否有重名的规则
+        /// <summary>
+        /// 查询是否有重名的规则
+        /// </summary>
+        /// <param name="gradeCheckItemName"></param>
+        /// <param name="gradeCheckId"></param>
+        /// <returns></returns>
+        public DataSet CheckIsExistGradeCheckItemName(string gradeCheckItemName, int gradeCheckId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("SELECT gradeCheckItemName FROM dbo.usta_StudentsGradeCheck where gradeCheckItemName=@gradeCheckItemName and gradeCheckId=@gradeCheckId");
+            SqlParameter[] parameters = {
+					new SqlParameter("@gradeCheckItemName", SqlDbType.NChar,50),
+					new SqlParameter("@gradeCheckId", SqlDbType.Int,4)
+};
+            parameters[0].Value = gradeCheckItemName;
+            parameters[1].Value = gradeCheckId;
+
+            return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString(), parameters);
+        }
         #endregion
 
         #endregion

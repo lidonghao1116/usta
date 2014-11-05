@@ -6,6 +6,44 @@
     
     <link type="text/css" rel="Stylesheet" href="../javascript/tab/ui.css" />
     <link type="text/css" rel="Stylesheet" href="../javascript/thickbox.css" />
+    <script type="text/javascript">
+
+        function getRequestParam(paras) {
+            var url = location.href;
+            var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+            var paraObj = {}
+            for (i = 0; j = paraString[i]; i++) {
+                paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+            }
+            var returnValue = paraObj[paras.toLowerCase()];
+            if (typeof (returnValue) == "undefined") {
+                return "";
+            } else {
+                return returnValue;
+            }
+        }
+
+        $(document).ready(function () {
+            var _pid = getRequestParam('pid');
+            if(_pid == '')
+            {
+                _pid = '<%=notifyTypeParentId %>';
+            }
+
+            $('#container-1 li').each(function () {
+                if (_pid == $(this).attr('pid')) {
+                    $(this).addClass("ui-tabs-selected");
+                    $(this).show();
+                }
+            });
+
+            $('#container-1>div').each(function () {
+                if (_pid == $(this).attr('pid')) {
+                    $(this).removeClass("ui-tabs-hide");
+                }
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <form id="form1" runat="server">
@@ -163,37 +201,32 @@
         </table>
     <div id="container-1">
         <ul class="ui-tabs-nav">
-            <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
-            <li id="liFragment1" runat="server"><a href="?pid=5&fragment=1"><span>教学相关</span></a></li>
-            <li id="liFragment4" runat="server"><a href="?pid=6&fragment=4"><span>学位论文申请</span></a></li>
-            <li id="liFragment2" visible="false" runat="server"><a href="?fragment=2"><span>查看通知信息</span></a></li>
-            <li id="liFragment3" visible="false" runat="server"><a href="javascript:void(0);"><span>
+            <asp:Literal ID="ltlNotifyTypeParent" runat="server"></asp:Literal>
+            <li id="liFragment2" pid="-1" style="display:none;"><a href="?pid=-1"><span>查看通知信息</span></a></li>
+            <li id="liFragment3" pid="-2" style="display:none;"><a href="?pid=-2"><span>
                 <%=Request["notifyTypeName"] %></span></a></li>
         </ul>
-        <div class="ui-tabs-panel ui-tabs-hide" id="divFragment4" runat="server">
-        </div>
         <div class="ui-tabs-panel ui-tabs-hide" id="divFragment1" runat="server">
-            <asp:DataList ID="dlstNotifyType" runat="server" align="center" Width="100%" CellPadding="0"
+         <asp:DataList ID="dlstNotifyType" runat="server" align="center" Width="100%" CellPadding="0"
                 OnItemDataBound="dlstNotifyType_ItemDataBound" RepeatDirection="Horizontal" RepeatColumns="2">
                 <ItemTemplate>
-                    <table style="border-bottom: 1px solid #056FAE; height: 25px;" width="90%">
+                    <table style="border-bottom: 1px solid #056FAE; height: 25px;" width="95%">
                         <tr>
-                            <td style="height: 25px; width: 70%;">
-                                <%#Eval("notifyTypeName")%>
+                            <td style="height: 25px; width: 70%;"><%#Eval("notifyTypeName")%>
                             </td>
                             <td style="height: 25px; width: 30%; text-align: right;">
-                                <a href="?fragment=3&notifyTypeId=<%#Eval("notifyTypeId") %>&notifyTypeName=<%#Eval("notifyTypeName")%>">
+                                <a href="?pid=-2&notifyTypeId=<%#Eval("notifyTypeId") %>&notifyTypeName=<%#Eval("notifyTypeName")%>">
                                     更多>></a></span>
                             </td>
                         </tr>
                     </table>
                     <asp:DataList ID="dlstNotify" runat="server" CellPadding="0" Width="100%" Style="margin-bottom: 10px;">
                         <ItemTemplate>
-                            <table style="border-bottom: 1px dashed #CCCCCC;" width="90%">
+                            <table style="border-bottom: 1px dashed #CCCCCC;" width="95%">
                                 <tr>
                                     <td width="70%" style="height: 25px;">
                                         <img src="../images/BULLET.GIF" align="absmiddle" />
-                                        <a href="/Common/NotifyList.aspx?fragment=2&adminNotifyInfoId=<%#Eval("adminNotifyInfoId") %>">
+                                        <a href="/Common/NotifyList.aspx?pid=-1&adminNotifyInfoId=<%#Eval("adminNotifyInfoId") %>">
                                             <%#Eval("notifyTitle")%></a>
                                         <%#(Convert.ToInt32((Eval("isTop").ToString().Trim().Length>0?Eval("isTop").ToString().Trim():"0".ToString()))>0?"<img src=\"../images/onTop.gif\" width=\"36\" height=\"13\" alt=\"置顶\" align='absmiddle' />":null) %>
                                         <%#(isNew(Eval("updateTime").ToString()))?"<img src='../images/new.gif' align='middle' style='margin-bottom:5px;'/>":"" %>
@@ -204,17 +237,15 @@
                                 </tr>
                             </table>
                         </ItemTemplate>
+                <ItemStyle Width="50%" VerticalAlign="Top" />
+                <FooterTemplate>未找到数据</FooterTemplate>
+                <FooterStyle CssClass="datalistNoLine" />
                     </asp:DataList>
                 </ItemTemplate>
                 <ItemStyle Width="50%" VerticalAlign="Top" />
-                <FooterTemplate>
-                    <%=(this.dlstNotifyType.Items.Count == 0 ? "未找到数据" : null)%></FooterTemplate>
-                <FooterStyle CssClass="datalistNoLine" />
-                <HeaderTemplate>
-                </HeaderTemplate>
             </asp:DataList>
         </div>
-        <div class="ui-tabs-panel ui-tabs-hide" id="divFragment2" runat="server">
+        <div class="ui-tabs-panel ui-tabs-hide" id="divFragmentDetail" pid="-1" runat="server">
             <asp:DataList ID="news" runat="server" Width="100%">
                 <ItemTemplate>
                     <table class="tableEditStyle" style="width: 100%;">
@@ -230,7 +261,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style="border-bottom:none;">
                                 <%#Eval("notifyContent").ToString().Trim() %>
                                 <br />
                                 <br />
@@ -241,14 +272,14 @@
                 </ItemTemplate>
             </asp:DataList>
         </div>
-        <div class="ui-tabs-panel ui-tabs-hide" id="divFragment3" runat="server">
+        <div class="ui-tabs-panel ui-tabs-hide" id="divFragmentType" pid="-2" runat="server">
             <asp:DataList ID="dlistNotifyList" runat="server" align="center" Width="100%" CellPadding="0">
                 <ItemTemplate>
                     <table style="border-bottom: 1px dashed #CCCCCC;" width="100%">
                         <tr>
                             <td width="50%" style="height: 25px;">
                                 <img src="../images/BULLET.GIF" align="absmiddle" />
-                                <a href="/Common/NotifyList.aspx?fragment=2&adminNotifyInfoId=<%#Eval("adminNotifyInfoId") %>">
+                                <a href="/Common/NotifyList.aspx?pid=-1&adminNotifyInfoId=<%#Eval("adminNotifyInfoId") %>">
                                     <%#Eval("notifyTitle")%></a>
                                 <%#(Convert.ToInt32((Eval("isTop").ToString().Trim().Length>0?Eval("isTop").ToString().Trim():"0".ToString()))>0?"<img src=\"../images/onTop.gif\" width=\"36\" height=\"13\" alt=\"置顶\" align='absmiddle' />":null) %>
                                 <%#(isNew(Eval("updateTime").ToString()))?"<img src='../images/new.gif' align='middle' style='margin-bottom:5px;'/>":"" %>

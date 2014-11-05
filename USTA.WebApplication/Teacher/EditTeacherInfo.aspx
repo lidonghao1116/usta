@@ -8,7 +8,7 @@
     <form id="form1" runat="server">
     <div id="container-1" style="padding-top: 40px;">
         <ul class="ui-tabs-nav">
-            <li id="liFragment1" runat="server"><a href="?fragment=1"><span>修改联系信息</span></a></li>
+            <li id="liFragment1" runat="server"><a href="?fragment=1"><span>我的联系信息</span></a></li>
             <li id="liFragment2" class="ui-tabs-hide" runat="server"><a href="?fragment=2"><span>
                 暂时不使用</span></a></li>
             <li id="liFragment3" class="ui-tabs-hide" runat="server"><a href="?fragment=3"><span>
@@ -37,7 +37,7 @@
                 </td></tr>
                 <tr>
                     <td colspan="2">
-                        <asp:Button ID="btnUpdate" runat="server" Text="确定" OnClick="btnUpdate_Click" />
+                        <asp:Button ID="btnUpdate" runat="server" Text="确定并修改" OnClick="btnUpdate_Click" />
                     </td>
                 </tr>
             </table>
