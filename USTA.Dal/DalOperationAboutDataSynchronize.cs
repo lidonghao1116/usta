@@ -335,7 +335,7 @@ namespace USTA.Dal
 
 
             SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text,
-                "select [ID],[TeacherUSID],[Name],[EmployeeNum],[Email],[IsAssistant],[IsSuperisor],[Remark],[Sex],[EnterpriseID],[IsHeadteacher],[TeacherType],[IsBusinessGuru] from  Teacher WHERE isIncumbent=1;");
+                "select [ID],[TeacherUSID],[Name],[EmployeeNum],[Email],[IsAssistant],[IsSuperisor],[Remark],[Sex],[EnterpriseID],[IsHeadteacher],[TeacherType],[IsBusinessGuru] from  Teacher;");
             while (dr.Read())
             {
                 listTeacherID.Add(dr["ID"].ToString().Trim());
