@@ -992,6 +992,42 @@ namespace USTA.Dal
             dr.Close();
             conn.Close();
 
+            Hashtable _ht = new Hashtable();
+
+            for (int xxx = 0; xxx < listObjectID.Count; xxx++)
+            {
+                if (listStudentID[xxx].IndexOf("JG") > -1 && !_ht.Contains(listStudentID[xxx]))
+                {
+                    SqlDataReader dr1 = SqlHelper.ExecuteReader(conn1, CommandType.Text,
+                   "SELECT [studentNo] FROM usta_StudentsList WHERE [StudentUSID] in (select [StudentUSID] FROM usta_StudentsList where studentNo='" + listStudentID[xxx] + "')");
+
+                    int totalCount = 0;
+                    string _studentNo = string.Empty;
+
+                    while (dr1.Read())
+                    {
+                        if (listStudentID[xxx] != dr1["studentNo"].ToString().Trim())
+                        {
+                            _studentNo = dr1["studentNo"].ToString().Trim();
+                        }
+
+                        totalCount++;
+                    }
+                    dr1.Close();
+
+                    if (totalCount == 2)
+                    {
+                        listObjectID.Add(listObjectID[xxx]);
+                        listCourseID.Add(listCourseID[xxx]);
+                        listStudentID.Add(_studentNo);
+                        listYear.Add(listYear[xxx]);
+                        listClassID.Add(listClassID[xxx]);
+                    }
+
+                    _ht.Add(listStudentID[xxx], listStudentID[xxx]);
+                }
+            }
+
             SqlParameter[] parameters;
 
             using (TransactionScope scope = new TransactionScope())
