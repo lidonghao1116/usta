@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutStudent.cs" />
+    <Compile Include="ElectiveStudent.cs" />
     <Compile Include="AdminNotifyInfo.cs" />
     <Compile Include="AdminNotifyType.cs" />
     <Compile Include="Archives.cs" />

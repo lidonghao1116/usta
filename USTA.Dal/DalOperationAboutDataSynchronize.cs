@@ -978,53 +978,82 @@ namespace USTA.Dal
             List<string> listYear = new List<string>();
             List<string> listClassID = new List<string>();
 
+            Hashtable _htStudentSGNoList = new Hashtable();
 
             SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text,
                 "select DISTINCT [ID],[CourseID],[StudentNo],[Year],[ClassID] from ElectiveStudent");
             while (dr.Read())
             {
-                listObjectID.Add(dr["ID"].ToString().Trim());
-                listCourseID.Add(dr["CourseID"].ToString().Trim());
-                listStudentID.Add(dr["StudentNo"].ToString().Trim());
-                listYear.Add(dr["Year"].ToString().Trim());
-                listClassID.Add(dr["ClassID"].ToString().Trim());
+                string _studentNo = dr["StudentNo"].ToString().Trim();
+                string _ID = dr["ID"].ToString().Trim();
+                string _CourseID = dr["CourseID"].ToString().Trim();
+                string _Year = dr["Year"].ToString().Trim();
+                string _ClassID = dr["ClassID"].ToString().Trim();
+
+                listObjectID.Add(_ID);
+                listCourseID.Add(_CourseID);
+                listStudentID.Add(_studentNo);
+                listYear.Add(_Year);
+                listClassID.Add(_ClassID);
+
+                if (_studentNo.ToLower().IndexOf("sg") == 0)
+                {
+                    ElectiveStudent electiveStudentModel = new ElectiveStudent { ID=_ID, CourseID=_CourseID, studentNo=_studentNo, ClassID=_ClassID, Year= _Year };
+
+                    if (!_htStudentSGNoList.Contains(_studentNo))
+                    {
+                        List<ElectiveStudent> electiveStudent = new List<ElectiveStudent>();
+                        electiveStudent.Add(electiveStudentModel);
+                        _htStudentSGNoList.Add(_studentNo, electiveStudent);
+                    }else{
+                        List<ElectiveStudent> _electiveStudent = (List<ElectiveStudent>)(_htStudentSGNoList[_studentNo]);
+                        _electiveStudent.Add(electiveStudentModel);
+                    }
+                }
             }
             dr.Close();
             conn.Close();
 
-            Hashtable _ht = new Hashtable();
+            Hashtable _htStudentSGNoCacheList = new Hashtable();
 
-            for (int xxx = 0; xxx < listObjectID.Count; xxx++)
+            for (int xxii = 0; xxii < listObjectID.Count; xxii++)
             {
-                if (listStudentID[xxx].IndexOf("JG") > -1 && !_ht.Contains(listStudentID[xxx]))
+                if (listStudentID[xxii].ToLower().IndexOf("jg") == 0 && !_htStudentSGNoCacheList.Contains(listStudentID[xxii]))
                 {
                     SqlDataReader dr1 = SqlHelper.ExecuteReader(conn1, CommandType.Text,
-                   "SELECT [studentNo] FROM usta_StudentsList WHERE [StudentUSID] in (select [StudentUSID] FROM usta_StudentsList where studentNo='" + listStudentID[xxx] + "')");
+                   "SELECT [studentNo] FROM usta_StudentsList WHERE [StudentUSID] in (select [StudentUSID] FROM usta_StudentsList where studentNo='" + listStudentID[xxii] + "')");
 
                     int totalCount = 0;
-                    string _studentNo = string.Empty;
+                    string _studentSGNo = string.Empty;
 
                     while (dr1.Read())
                     {
-                        if (listStudentID[xxx] != dr1["studentNo"].ToString().Trim())
+                        if (listStudentID[xxii] != dr1["studentNo"].ToString().Trim())
                         {
-                            _studentNo = dr1["studentNo"].ToString().Trim();
+                            _studentSGNo = dr1["studentNo"].ToString().Trim();
                         }
 
                         totalCount++;
                     }
                     dr1.Close();
 
-                    if (totalCount == 2)
+                    if (totalCount == 2 && _htStudentSGNoList.Contains(_studentSGNo))
                     {
-                        listObjectID.Add(listObjectID[xxx]);
-                        listCourseID.Add(listCourseID[xxx]);
-                        listStudentID.Add(_studentNo);
-                        listYear.Add(listYear[xxx]);
-                        listClassID.Add(listClassID[xxx]);
+                        List<ElectiveStudent> _electiveStudentList = (List<ElectiveStudent>)(_htStudentSGNoList[_studentSGNo]);
+
+                        for (int xxjj = 0; xxjj < _electiveStudentList.Count; xxjj++)
+                        {
+                            ElectiveStudent _electiveStudentModelTmp = _electiveStudentList[xxjj];
+
+                            listObjectID.Add(_electiveStudentModelTmp.ID);
+                            listCourseID.Add(_electiveStudentModelTmp.CourseID);
+                            listStudentID.Add(listStudentID[xxii]);
+                            listYear.Add(_electiveStudentModelTmp.Year);
+                            listClassID.Add(_electiveStudentModelTmp.ClassID);
+                        }
                     }
 
-                    _ht.Add(listStudentID[xxx], listStudentID[xxx]);
+                    _htStudentSGNoCacheList.Add(listStudentID[xxii], listStudentID[xxii]);
                 }
             }
 
