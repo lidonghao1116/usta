@@ -49,7 +49,7 @@ namespace USTA.WebApplication.Student
         public void DataBindTermTagList()
         {
             DalOperationAboutCourses doac = new DalOperationAboutCourses();
-            string termTag = DalCommon.GetTermTag(doac.conn);
+            string termTag = DalCommon.GetGradeReBuildTermTag(doac.conn);
             ListItem li = new ListItem(CommonUtility.ChangeTermToString(termTag), termTag);
             ddlTermTags.Items.Add(li);
         }
