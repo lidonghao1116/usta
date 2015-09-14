@@ -15,7 +15,6 @@
     <script type="text/javascript">
 
         $(document).ready(function() {
-            getTimeStamp();
         });
     </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -65,8 +64,8 @@
                     <li class="noBg"><a href="../Administrator/ViewCourses.aspx">课程关注</a></li>
                 </ul>
             </li>
-            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Administrator/EnglishExamManage.aspx">
-                四六级考试管理</a>
+            <!--<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Administrator/EnglishExamManage.aspx">
+                四六级考试管理</a>-->
             </li>
             <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
                 进入讨论区</a><ul>
@@ -149,9 +148,9 @@
                     <li class="noBg"><a href="../Student/EditStudentinfo.aspx">我的联系信息</a></li>
                 </ul>
             </li>
-            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Student/EnglishExamSignUp.aspx?fragment=2">四六级报名</a><ul>
+            <!--<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Student/EnglishExamSignUp.aspx?fragment=2">四六级报名</a><ul>
             </ul>
-            </li>
+            </li>-->
             <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Student/MyGradeCheckManage.aspx">
                 我的重修重考管理</a><ul>
             </ul>
@@ -172,7 +171,6 @@
         
     <div style="width: 1024px; clear: both; margin-left: auto; margin-right: auto; background: #FFFFFF;">
         
-    <div id="getTimeStamp">获取当前教学周信息中...</div>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
     </div>

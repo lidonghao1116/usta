@@ -430,7 +430,7 @@ namespace USTA.Dal
             List<string> list = new List<string>();
 
 
-            SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text, "SELECT DISTINCT NewSchoolYear FROM CoursePlan");
+            SqlDataReader dr = SqlHelper.ExecuteReader(conn, CommandType.Text, "SELECT DISTINCT NewSchoolYear FROM CoursePlan WHERE IsDelete=0");
             while (dr.Read())
             {
                 list.Add(dr["NewSchoolYear"].ToString().Trim());
