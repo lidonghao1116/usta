@@ -65,13 +65,13 @@
                 </ul>
             </li>
             <!--<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Administrator/EnglishExamManage.aspx">
-                四六级考试管理</a>-->
-            </li>
-            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
+                四六级考试管理</a>
+            </li>-->
+            <%--<li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
                 进入讨论区</a><ul>
                     <li class="noBg"><a href="../Administrator/BbsManage.aspx">讨论区管理</a></li>
                 </ul>
-            </li>
+            </li>--%>
             <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Ashx/LoginOut.ashx" target="_top">
                 退出登录</a><ul>
                 </ul>
@@ -117,10 +117,10 @@
                        <li class="noBg"><a class="li" href="../Common/FeedBack.aspx?fragment=2">查看意见反馈回复</a></li>
             </ul>
             </li>
-            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
+           <%-- <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
                 进入讨论区</a><ul>
             </ul>
-            </li>
+            </li>--%>
             <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Ashx/LoginOut.ashx" target="_top">
                 退出登录</a><ul>
                 </ul>
@@ -155,10 +155,10 @@
                 我的重修重考管理</a><ul>
             </ul>
             </li>
-            <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
+           <%-- <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../bbs/BBSCoursesindex.aspx">
                 进入讨论区</a><ul>
             </ul>
-            </li>
+            </li>--%>
             <li onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)"><a href="../Ashx/LoginOut.ashx" target="_top">
                 退出登录</a><ul>
                 </ul>

@@ -65,6 +65,8 @@ public partial class Administrator_StudentManager : System.Web.UI.Page
                 DalOperationAboutGradeCheck doan = new DalOperationAboutGradeCheck();
                 DataTable dt = doan.GetTermYear().Tables[0];
 
+                ddlSearchYear.Items.Add(new ListItem("所有", "all"));
+
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     ddlSearchYear.Items.Add(new ListItem("20" + dt.Rows[i]["termYear"].ToString().Trim() + "学年", dt.Rows[i]["termYear"].ToString().Trim()));

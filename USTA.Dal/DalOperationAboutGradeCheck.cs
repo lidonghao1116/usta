@@ -47,7 +47,7 @@ namespace USTA.Dal
         public DataSet GetTermYear()
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select DISTINCT SUBSTRING(LTRIM(SchoolClassName),1,2) as termYear from usta_StudentsList WHERE LTRIM(RTRIM(SchoolClassName))<>'暂无分配' ORDER BY termYear DESC;");
+            strSql.Append("select DISTINCT SUBSTRING(LTRIM(SchoolClassName),1,2) as termYear from usta_StudentsList WHERE LTRIM(RTRIM(SchoolClassName)) not like '%暂%' ORDER BY termYear DESC;");
 
             return SqlHelper.ExecuteDataset(conn, CommandType.Text, strSql.ToString());
         }

@@ -250,21 +250,23 @@ namespace USTA.Dal
             {
                 try
                 {
+                    SqlHelper.ExecuteNonQuery(conn1, CommandType.Text, "TRUNCATE TABLE usta_StudentsList;");
+
                     for (int i = 0; i < listStudentID.Count; i++)
                     {
                         parameters = new SqlParameter[]{
                         new SqlParameter("@studentNo",listStuNo[i])
                                                      };
-                        dr = SqlHelper.ExecuteReader(conn1, CommandType.Text,
-                             "select [studentNo],[studentName],[studentUserPwd],[studentSpeciality],[mobileNo],[emailAddress],[remark],[classNo],[StudentID],[MajorType],[SchoolClass],[SchoolClassName] from [usta_StudentsList] WHERE studentNo=@studentNo;", parameters);
+                        //dr = SqlHelper.ExecuteReader(conn1, CommandType.Text,
+                        //     "select [studentNo],[studentName],[studentUserPwd],[studentSpeciality],[mobileNo],[emailAddress],[remark],[classNo],[StudentID],[MajorType],[SchoolClass],[SchoolClassName] from [usta_StudentsList] WHERE studentNo=@studentNo;", parameters);
 
-                        bool isHasValue = false;
+                        //bool isHasValue = false;
 
-                        while (dr.Read())
-                        {
-                            isHasValue = true;
-                        }
-                        dr.Close();
+                        //while (dr.Read())
+                        //{
+                        //    isHasValue = true;
+                        //}
+                        //dr.Close();
 
                         parameters = new SqlParameter[]{
                         new SqlParameter("@studentNo",listStuNo[i]),
@@ -286,17 +288,17 @@ namespace USTA.Dal
                         new SqlParameter("@MatriculationDate",listMatriculationDate[i])
                                                      };
 
-                        if (!isHasValue)
-                        {
+                        //if (!isHasValue)
+                        //{
                             SqlHelper.ExecuteNonQuery(conn1, CommandType.Text,
                                 "INSERT INTO [usta_StudentsList] ([studentNo] ,[studentName] ,[studentUserPwd] ,[studentSpeciality] ,[mobileNo] ,[emailAddress] ,[remark] ,[classNo],[StudentID],[MajorType],[SchoolClass],[SchoolClassName],[StudentUSID],[Sex],[CardType],[CardNum],[MatriculationDate])" +
                                 " VALUES (@studentNo ,@studentName ,@studentUserPwd ,@studentSpeciality,@mobileNo,@emailAddress,@remark ,@classNo,@StudentID,@MajorType,@SchoolClass,@SchoolClassName,@StudentUSID,@Sex,@CardType,@CardNum,@MatriculationDate);", parameters);
-                        }
-                        else
-                        {
-                            SqlHelper.ExecuteNonQuery(conn1, CommandType.Text,
-                                "UPDATE [usta_StudentsList] SET [studentNo]=@studentNo,[studentName]=@studentName,[studentUserPwd]='默认密码' ,[studentSpeciality]=@studentSpeciality ,[mobileNo]=@mobileNo,[emailAddress]=@emailAddress,[remark]=@remark,[classNo]=@classNo,[StudentID]=@StudentID,[StudentUSID]=@StudentUSID,[MajorType]=@MajorType,[SchoolClass]=@SchoolClass,[SchoolClassName]=@SchoolClassName,[Sex]=@Sex,[CardType]=@CardType,[CardNum]=@CardNum,[MatriculationDate]=@MatriculationDate WHERE studentNo=@studentNo", parameters);
-                        }
+                        //}
+                        //else
+                        //{
+                        //    SqlHelper.ExecuteNonQuery(conn1, CommandType.Text,
+                        //        "UPDATE [usta_StudentsList] SET [studentNo]=@studentNo,[studentName]=@studentName,[studentUserPwd]='默认密码' ,[studentSpeciality]=@studentSpeciality ,[mobileNo]=@mobileNo,[emailAddress]=@emailAddress,[remark]=@remark,[classNo]=@classNo,[StudentID]=@StudentID,[StudentUSID]=@StudentUSID,[MajorType]=@MajorType,[SchoolClass]=@SchoolClass,[SchoolClassName]=@SchoolClassName,[Sex]=@Sex,[CardType]=@CardType,[CardNum]=@CardNum,[MatriculationDate]=@MatriculationDate WHERE studentNo=@studentNo", parameters);
+                        //}
 
                     }
                     scope.Complete();
